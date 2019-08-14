@@ -17,6 +17,11 @@ These RPMs must have been built with the `ModularityLabel` header set to an
 appropriate `N:S:V:C` value for the module.
 
 
+## Installation
+To install from source, just do `python3 setup.py install --user`. This will
+put the `repo2module` tool in your `~/.local/bin` path.
+
+
 ## CLI Usage
 Example:
 
