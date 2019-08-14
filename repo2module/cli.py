@@ -16,7 +16,7 @@ from gi.repository import Modulemd
 from dnf.subject import Subject
 import hawkey
 
-DEFAULT_PROFILE = 'common'
+DEFAULT_PROFILE = 'everything'
 
 
 def parse_repodata(path):
