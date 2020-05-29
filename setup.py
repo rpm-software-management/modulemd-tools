@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='repo2module',
-    version='1.0',
+    version='0.1',
     packages=['repo2module'],
     url='https://github.com/sgallagher/repo2module',
     license='MIT',
