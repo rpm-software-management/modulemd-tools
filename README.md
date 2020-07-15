@@ -16,3 +16,5 @@ dir2module - Generates a module YAML definition based on essential module
 
 createrepo_mod - A small wrapper around `createrepo_c` and `modifyrepo_c` to
     provide an easy tool for generating module repositories.
+
+modulemd-merge - merge several modules.yaml files into one
