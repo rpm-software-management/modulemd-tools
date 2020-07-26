@@ -20,6 +20,7 @@ import os
 import sys
 import subprocess
 import argparse
+import fnmatch
 
 
 def run_createrepo(args):
@@ -43,10 +44,36 @@ def run_modifyrepo(path, compress_type=None):
     return proc.returncode
 
 
+def find_module_yamls(path):
+    """
+    Recursivelly find modulemd YAML files and return a list of their relative
+    paths.
+    """
+    matches = []
+    for root, dirnames, filenames in os.walk(path):
+        for filename in fnmatch.filter(filenames, "*.yaml"):
+            matches.append(os.path.join(root, filename))
+    return matches
+
+
+def dump_modules_yaml(path, yamls):
+    """
+    Go through all module YAMLs and merge them into one big YAML file.
+    Then store the output as modules.yaml file in the `path` directory
+    """
+    cmd = ["modulemd-merge", "-i"]
+    for yaml in yamls:
+        cmd.append(yaml)
+    cmd.append("modules.yaml")
+    subprocess.run(cmd)
+
+
 def main():
     run_createrepo(sys.argv[1:])
     parser = get_arg_parser()
     args, _ = parser.parse_known_args()
+    yamls = find_module_yamls(args.path)
+    dump_modules_yaml(args.path, yamls)
     run_modifyrepo(args.path, "gz")
 
 
