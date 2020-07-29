@@ -51,8 +51,9 @@ def find_module_yamls(path):
     """
     matches = []
     for root, dirnames, filenames in os.walk(path):
-        for filename in fnmatch.filter(filenames, "*.yaml"):
-            matches.append(os.path.join(root, filename))
+        for filename in filenames:
+            if filename.endswith((".yaml", ".yaml.gz")):
+                matches.append(os.path.join(root, filename))
     return matches
 
 
