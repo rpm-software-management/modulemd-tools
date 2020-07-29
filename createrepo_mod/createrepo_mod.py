@@ -22,6 +22,10 @@ import subprocess
 import argparse
 import fnmatch
 
+import gi
+gi.require_version("Modulemd", "2.0")
+from gi.repository import Modulemd
+
 
 def run_createrepo(args):
     cmd = ["createrepo_c"] + args
@@ -52,9 +56,27 @@ def find_module_yamls(path):
     matches = []
     for root, dirnames, filenames in os.walk(path):
         for filename in filenames:
-            if filename.endswith((".yaml", ".yaml.gz")):
-                matches.append(os.path.join(root, filename))
+            if not filename.endswith((".yaml", ".yaml.gz")):
+                continue
+            filepath = os.path.join(root, filename)
+            if not is_yaml_valid_modulemd(filepath):
+                continue
+            matches.append(filepath)
     return matches
+
+
+def is_yaml_valid_modulemd(path):
+    """
+    Determine whether a YAML file is a valid modulemd file.
+    If this simple check gets more and more complex, instead of adding
+    logic here, consider calling `modulemd-validator` command, e.g.
+
+        modulemd-validator -q foo.yaml
+
+    """
+    idx = Modulemd.ModuleIndex.new()
+    (ret, _) = idx.update_from_file(path, strict=True)
+    return ret
 
 
 def dump_modules_yaml(path, yamls):
