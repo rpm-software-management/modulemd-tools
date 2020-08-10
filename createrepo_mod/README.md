@@ -8,6 +8,10 @@ have the modularity support implemented in `createrepo_c` itself. See
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1816753
 
+This tool can be used as a drop-in replacement for `createrepo_c` with
+one caveat. You need to specify `<directory>` before `[options]`.
+Otherwise it works fine with both module and non-module repositories.
+
 Please see the official Fedora Modularity documentation for the reference of how
 module repositories should be created
 

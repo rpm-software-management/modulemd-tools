@@ -96,6 +96,8 @@ def main():
     parser = get_arg_parser()
     args, _ = parser.parse_known_args()
     yamls = find_module_yamls(args.path)
+    if not yamls:
+        return
     dump_modules_yaml(args.path, yamls)
     run_modifyrepo(args.path, "gz")
 
