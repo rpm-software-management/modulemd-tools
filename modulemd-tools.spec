@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.3
+Version: 0.4
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -75,6 +75,9 @@ cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
 
 
 %changelog
+* Mon Aug 10 2020 Jakub Kadlcik <frostyx@email.cz> 0.4-1
+- createrepo_mod: support also non-module repositories (frostyx@email.cz)
+
 * Wed Jul 29 2020 Jakub Kadlcik <frostyx@email.cz> 0.3-1
 - Add createrepo_mod and modulemd-merge scripts
 
