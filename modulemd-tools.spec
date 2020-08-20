@@ -16,7 +16,8 @@ BuildRequires: python3-click
 BuildRequires: python3-dnf
 BuildRequires: python3-hawkey
 BuildRequires: python3-createrepo_c
-BuildRequires: python3-gobject
+BuildRequires: python3-pyyaml
+BuildRequires: python3-parameterized
 
 Requires: libmodulemd >= 2
 Requires: createrepo_c
@@ -24,7 +25,7 @@ Requires: python3-click
 Requires: python3-dnf
 Requires: python3-hawkey
 Requires: python3-createrepo_c
-Requires: python3-gobject
+Requires: python3-pyyaml
 
 
 %description
@@ -63,9 +64,13 @@ cp dir2module/dir2module.py %{buildroot}%{_bindir}/dir2module
 cp createrepo_mod/createrepo_mod.py %{buildroot}%{_bindir}/createrepo_mod
 cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
 
+cp -r modulemd_tools/modulemd_tools %{buildroot}%{python3_sitelib}/modulemd_tools
+
 
 %check
 %{python3} repo2module/setup.py test
+cd modulemd_tools
+%{python3} -m unittest
 
 
 %files
@@ -77,6 +82,7 @@ cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod
 %{_bindir}/modulemd-merge
+%{python3_sitelib}/modulemd_tools
 
 
 %changelog
