@@ -87,7 +87,7 @@ def dump_modules_yaml(path, yamls):
     cmd = ["modulemd-merge", "-i"]
     for yaml in yamls:
         cmd.append(yaml)
-    cmd.append("modules.yaml")
+    cmd.append(os.path.join(path, "modules.yaml"))
     subprocess.run(cmd)
 
 
