@@ -343,20 +343,17 @@ class TestYaml(unittest.TestCase):
 
         with self.assertRaises(ValueError) as context:
             _yaml2stream("")
-        self.assertIn("Provided YAML did not begin with a module document",
+        self.assertIn("YAML didn't begin with STREAM_START.",
                       str(context.exception))
 
         with self.assertRaises(ValueError) as context:
             _yaml2stream(yaml5_multiple_streams)
-        self.assertIn("Provided YAML contains multiple streams "
-                      "['master', 'stable'] of a module 'foo'. "
-                      "It is ambiguous which one to use.",
+        self.assertIn("YAML contained more than a single subdocument",
                       str(context.exception))
 
         with self.assertRaises(ValueError) as context:
             _yaml2stream(yaml5_multiple_modules)
-        self.assertIn("Provided YAML contains multiple modules "
-                      "['bar', 'foo']. It is ambiguous which one to use.",
+        self.assertIn("YAML contained more than a single subdocument",
                       str(context.exception))
 
     def test_stream2yaml(self):

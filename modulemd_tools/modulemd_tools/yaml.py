@@ -285,27 +285,10 @@ def _generate_filename(mod_yaml):
 
 
 def _yaml2stream(mod_yaml):
-    if not mod_yaml:
-        raise ValueError("Provided YAML did not begin with a module document")
-
-    idx = Modulemd.ModuleIndex.new()
-    idx.update_from_string(mod_yaml, strict=True)
-
-    mod_names = idx.get_module_names()
-    if len(mod_names) > 1:
-        raise ValueError("Provided YAML contains multiple modules {0}. "
-                           "It is ambiguous which one to use."
-                           .format(mod_names))
-
-    mod_name = idx.get_module_names()[0]
-    mod = idx.get_module(mod_name)
-    streams = mod.get_all_streams()
-    if len(streams) > 1:
-        raise ValueError("Provided YAML contains multiple streams {0} of "
-                           "a module '{1}'. It is ambiguous which one to use."
-                           .format([x.get_stream_name() for x in streams],
-                                   mod_name))
-    return streams[0]
+    try:
+        return Modulemd.ModuleStreamV2.read_string(mod_yaml, True, None, None)
+    except gi.repository.GLib.GError as ex:
+        raise ValueError(ex.message)
 
 
 def _stream2yaml(mod_stream):
