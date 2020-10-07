@@ -9,6 +9,7 @@ URL: https://github.com/rpm-software-management/modulemd-tools
 Source0: https://github.com/rpm-software-management/modulemd-tools/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: python3-devel
+BuildRequires: python3-setuptools
 BuildRequires: python3-click
 BuildRequires: python3-dnf
 BuildRequires: python3-libmodulemd
