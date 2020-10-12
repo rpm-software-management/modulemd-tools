@@ -286,7 +286,7 @@ def _generate_filename(mod_yaml):
 
 def _yaml2stream(mod_yaml):
     try:
-        return Modulemd.ModuleStreamV2.read_string(mod_yaml, True, None, None)
+        return Modulemd.ModuleStream.read_string(mod_yaml, True, None, None)
     except gi.repository.GLib.GError as ex:
         raise ValueError(ex.message)
 
