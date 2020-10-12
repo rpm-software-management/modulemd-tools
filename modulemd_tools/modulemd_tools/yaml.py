@@ -227,10 +227,11 @@ def upgrade(mod_yaml, version):
     if parsed["version"] > version:
         raise ValueError("Cannot downgrade modulemd version")
 
-    mod_stream = Modulemd.ModuleStream.new(parsed["version"])
-    mod_stream = mod_stream.read_string(mod_yaml, True,
-                                        parsed["data"].get("name", ""),
-                                        parsed["data"].get("stream", ""))
+    mod_stream = Modulemd.ModuleStream.read_string(
+        mod_yaml,
+        True,
+        parsed["data"].get("name", ""),
+        parsed["data"].get("stream", ""))
     mod_stream_upgraded = mod_stream.upgrade(version)
     return _stream2yaml(mod_stream_upgraded)
 
