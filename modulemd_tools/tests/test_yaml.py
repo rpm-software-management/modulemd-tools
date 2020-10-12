@@ -23,6 +23,13 @@ class TestYaml(unittest.TestCase):
         self.assertIn("The module and stream names are required",
                       str(context.exception))
 
+    def test_validate_wrong_format(self):
+        with self.assertRaises(RuntimeError) as context:
+            validate("this is not yaml")
+        self.assertIsInstance(context.exception, RuntimeError)
+        self.assertIn("Unexpected YAML event in document stream",
+                      str(context.exception))
+
     def test_create(self):
         result = create("foo", "stable")
         mod1 = yaml.safe_load(result)

@@ -28,7 +28,10 @@ def validate(mod_yaml):
     Same as `is_valid` but raises exception if the YAML is not valid.
     """
     idx = Modulemd.ModuleIndex.new()
-    ret, failures = idx.update_from_string(mod_yaml, strict=True)
+    try:
+        ret, failures = idx.update_from_string(mod_yaml, strict=True)
+    except gi.repository.GLib.GError as ex:
+        raise RuntimeError(ex)
     if not ret:
         raise RuntimeError(failures[0].get_gerror().message)
     return ret
