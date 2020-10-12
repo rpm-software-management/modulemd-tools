@@ -16,8 +16,11 @@ def is_valid(mod_yaml):
     Determine whether the `mod_yaml` string is a valid modulemd YAML definition
     """
     idx = Modulemd.ModuleIndex.new()
-    ret, _ = idx.update_from_string(mod_yaml, strict=True)
-    return ret
+    try:
+        ret, _ = idx.update_from_string(mod_yaml, strict=True)
+        return ret
+    except gi.repository.GLib.GError:
+        return False
 
 
 def validate(mod_yaml):
