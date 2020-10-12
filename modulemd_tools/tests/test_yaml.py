@@ -13,6 +13,9 @@ class TestYaml(unittest.TestCase):
         self.assertTrue(is_valid(yaml1))
         self.assertFalse(is_valid(yaml2_invalid))
 
+    def test_is_valid_wrong_format(self):
+        self.assertFalse(is_valid("this is not yaml"))
+
     def test_validate(self):
         self.assertTrue(validate(yaml1))
         with self.assertRaises(Exception) as context:
