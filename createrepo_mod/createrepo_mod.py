@@ -21,6 +21,7 @@ import sys
 import subprocess
 import argparse
 import fnmatch
+from packaging import version
 
 import gi
 gi.require_version("Modulemd", "2.0")
@@ -91,8 +92,22 @@ def dump_modules_yaml(path, yamls):
     subprocess.run(cmd)
 
 
+def createrepo_c_with_builtin_module_support():
+    """
+    There is a built-in support for module metadata in createrepo_c since
+    version 0.16.1, please see the change log:
+    rpm -q --changelog createrepo_c |less
+    """
+    cmd = ["rpm", "-q", "createrepo_c", "--queryformat", "%{VERSION}"]
+    createrepo_c_version = subprocess.check_output(cmd).decode("utf-8")
+    return version.parse(createrepo_c_version) >= version.parse("0.16.1")
+
+
 def main():
     run_createrepo(sys.argv[1:])
+    if createrepo_c_with_builtin_module_support():
+        return
+
     parser = get_arg_parser()
     args, _ = parser.parse_known_args()
     yamls = find_module_yamls(args.path)
