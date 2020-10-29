@@ -47,6 +47,10 @@ createrepo_mod - A small wrapper around createrepo_c and modifyrepo_c to provide
 modulemd-merge - Merge several modules.yaml files into one. This is useful for
     example if you have several yum repositories and want to merge them into one.
 
+modulemd-generate-macros - Generate module-build-macros SRPM package, which is
+    a central piece for building modules. It should be present in the buildroot
+    before any other module packages are submitted to be built.
+
 
 %prep
 %setup -q
@@ -67,6 +71,8 @@ cd ..
 cp dir2module/dir2module.py %{buildroot}%{_bindir}/dir2module
 cp createrepo_mod/createrepo_mod.py %{buildroot}%{_bindir}/createrepo_mod
 cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
+cp modulemd-generate-macros/modulemd-generate-macros.py \
+    %{buildroot}%{_bindir}/modulemd-generate-macros
 
 cp -r modulemd_tools/modulemd_tools %{buildroot}%{python3_sitelib}/modulemd_tools
 
@@ -89,6 +95,7 @@ cd modulemd_tools
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod
 %{_bindir}/modulemd-merge
+%{_bindir}/modulemd-generate-macros
 %{python3_sitelib}/modulemd_tools
 
 %{_mandir}/man1/repo2module.1*
