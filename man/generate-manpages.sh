@@ -37,3 +37,13 @@ argparse-manpage \
     --project-name "dir2module" \
     --url HOMEPAGE \
     > ./man/modulemd-merge.1
+
+
+argparse-manpage \
+    --pyfile modulemd-generate-macros/modulemd-generate-macros.py \
+    --function get_arg_parser \
+    --author "Jakub Kadlčík" \
+    --author-email "jkadlcik@redhat.com" \
+    --project-name "modulemd-generate-macros" \
+    --url HOMEPAGE \
+    > ./man/modulemd-generate-macros.1

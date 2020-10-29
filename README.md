@@ -38,6 +38,16 @@ For more information about `modulemd-merge`, please see
 [modulemd-merge/README.md](modulemd-merge/README.md)
 
 
+### modulemd-generate-macros
+
+Generate `module-build-macros` SRPM package, which is a central piece
+for building modules. It should be present in the buildroot before any
+other module packages are submitted to be built.
+
+For more information about `modulemd-generate-macros`, please see
+[modulemd-generate-macros/README.md](modulemd-generate-macros/README.md)
+
+
 ### modulemd_tools (python library)
 Provides convenient functions for working with modulemd
 YAML definitions. It is a place for sharing code among other tools
