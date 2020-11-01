@@ -21,7 +21,7 @@ import sys
 import subprocess
 import argparse
 import fnmatch
-from packaging import version
+from distutils.version import LooseVersion
 
 import gi
 gi.require_version("Modulemd", "2.0")
@@ -100,7 +100,7 @@ def createrepo_c_with_builtin_module_support():
     """
     cmd = ["rpm", "-q", "createrepo_c", "--queryformat", "%{VERSION}"]
     createrepo_c_version = subprocess.check_output(cmd).decode("utf-8")
-    return version.parse(createrepo_c_version) >= version.parse("0.16.1")
+    return LooseVersion(createrepo_c_version) >= LooseVersion("0.16.1")
 
 
 def main():
