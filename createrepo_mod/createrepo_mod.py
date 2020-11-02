@@ -20,7 +20,6 @@ import os
 import sys
 import subprocess
 import argparse
-import fnmatch
 from distutils.version import LooseVersion
 
 import gi
