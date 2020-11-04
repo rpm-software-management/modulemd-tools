@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.4
+Version: 0.5
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -80,6 +80,22 @@ cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
 
 
 %changelog
+* Thu Nov 05 2020 Jakub Kadlcik <frostyx@email.cz> 0.5-1
+- Release for epel8 as well (frostyx@email.cz)
+- Require createrepo_c for the createrepo_mod package (frostyx@email.cz)
+- modulemd-merge: improve README.md file (frostyx@email.cz)
+- repo2module: improve README.md file (frostyx@email.cz)
+- dir2module: improve README.md file (frostyx@email.cz)
+- Improve README.md file (frostyx@email.cz)
+- createrepo_mod: improve README.md file (frostyx@email.cz)
+- Loosen the python3-libmodulemd dependency to just libmodulemd
+  (frostyx@email.cz)
+- createrepo_mod: use just createrepo_c if it has built-in module support
+  (frostyx@email.cz)
+- Explicitly depend on python3-setuptools (frostyx@email.cz)
+- createrepo_mod: dump modules.yaml into the correct directory
+  (frostyx@email.cz)
+
 * Mon Aug 10 2020 Jakub Kadlcik <frostyx@email.cz> 0.4-1
 - createrepo_mod: support also non-module repositories (frostyx@email.cz)
 
