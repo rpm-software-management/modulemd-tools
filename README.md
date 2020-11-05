@@ -38,6 +38,15 @@ For more information about `modulemd-merge`, please see
 [modulemd-merge/README.md](modulemd-merge/README.md)
 
 
+### modulemd_tools (python library)
+Provides convenient functions for working with modulemd
+YAML definitions. It is a place for sharing code among other tools
+within this project. ~~It is also meant to be used as a dependency for
+other tools, such as build-systems.~~ **It is not ready to be used by
+other tools yet, be cautious.**
+[modulemd_tools/README.md](modulemd_tools/README.md)
+
+
 ## Use cases
 
 ### Creating a module repository from a regular repository
