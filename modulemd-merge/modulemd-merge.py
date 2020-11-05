@@ -98,7 +98,7 @@ def merge_file(merger, filename):
 
     merger.associate_index(index, 0)
 
-def parse_args():
+def get_arg_parser():
     description = "Merge several modules.yaml files (rpm modularity metadata) into one."
     parser = argparse.ArgumentParser("modulemd-merge",
                                      description=description, formatter_class=argparse.RawTextHelpFormatter)
@@ -116,7 +116,10 @@ def parse_args():
                         "repomd.xml files are parsed and modules hrefs contained are merged.\n"
                         "If a directory is given, it is searched for repodata/repomd.xml and repomd.xml")
     parser.add_argument("output", help="YAML output filename")
+    return parser
 
+def parse_args():
+    parser = get_arg_parser()
     args = parser.parse_args()
 
     if args.verbose and not args.debug:
