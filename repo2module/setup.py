@@ -10,7 +10,7 @@ setup(
     name='repo2module',
     version='0.1',
     packages=['repo2module'],
-    url='https://github.com/sgallagher/repo2module',
+    url='https://github.com/rpm-software-management/modulemd-tools',
     license='MIT',
     author='Stephen Gallagher',
     author_email='sgallagh@redhat.com',

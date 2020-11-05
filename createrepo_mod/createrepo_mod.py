@@ -125,7 +125,7 @@ def get_arg_parser():
 
     description = ("A small wrapper around createrepo_c and modifyrepo_c to"
                    "provide an easy tool for generating module repositories")
-    parser = argparse.ArgumentParser("%prog", description=description)
+    parser = argparse.ArgumentParser("createrepo_mod", description=description)
     parser.add_argument("path", metavar="directory_to_index",
                         help="Directory to index")
     return parser

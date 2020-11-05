@@ -73,7 +73,9 @@ def get_source_packages(packages):
     return source_packages
 
 
-@click.command()
+@click.command(help=("Generates modules.yaml file with a module, "
+                     "that provides all RPM packages that are available within "
+                     "a repository."))
 @click.option('-d', '--debug/--nodebug', default=False)
 @click.option('-n', '--module-name',
               default=lambda: os.path.basename(os.environ.get('PWD')),

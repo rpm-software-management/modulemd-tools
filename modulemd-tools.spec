@@ -10,9 +10,11 @@ Source0: https://github.com/rpm-software-management/modulemd-tools/archive/%{ver
 
 BuildRequires: libmodulemd >= 2
 BuildRequires: createrepo_c
-BuildRequires: python3-devel
+BuildRequires: createrepo_c
+BuildRequires: argparse-manpage
 BuildRequires: python3-setuptools
 BuildRequires: python3-click
+BuildRequires: python3-click-man
 BuildRequires: python3-dnf
 BuildRequires: python3-hawkey
 BuildRequires: python3-createrepo_c
@@ -53,6 +55,8 @@ modulemd-merge - Merge several modules.yaml files into one. This is useful for
 %build
 cd repo2module
 %py3_build
+cd ..
+./man/generate-manpages.sh
 
 
 %install
@@ -65,6 +69,9 @@ cp createrepo_mod/createrepo_mod.py %{buildroot}%{_bindir}/createrepo_mod
 cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
 
 cp -r modulemd_tools/modulemd_tools %{buildroot}%{python3_sitelib}/modulemd_tools
+
+install -d %{buildroot}%{_mandir}/man1
+cp man/*.1 %{buildroot}%{_mandir}/man1/
 
 
 %check
@@ -83,6 +90,11 @@ cd modulemd_tools
 %{_bindir}/createrepo_mod
 %{_bindir}/modulemd-merge
 %{python3_sitelib}/modulemd_tools
+
+%{_mandir}/man1/repo2module.1*
+%{_mandir}/man1/dir2module.1*
+%{_mandir}/man1/createrepo_mod.1*
+%{_mandir}/man1/modulemd-merge.1*
 
 
 %changelog
