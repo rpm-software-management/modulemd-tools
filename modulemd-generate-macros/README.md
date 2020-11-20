@@ -59,7 +59,7 @@ filled in the document (e.g. `name`, `stream`, `version`, `context`, and
 `arch`). Otherwise, something like this error might appear.
 
 ```
-$ modulemd-generate-macros.py foo:devel:123:f32:x86_64.modulemd.yaml
+$ modulemd-generate-macros foo:devel:123:f32:x86_64.modulemd.yaml
 Failed to parse ../createrepo_mod/foo:devel:123:f32:x86_64.modulemd.yaml
 Make sure it is a valid modulemd YAML file
 
