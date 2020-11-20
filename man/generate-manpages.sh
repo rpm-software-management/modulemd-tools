@@ -24,7 +24,7 @@ argparse-manpage \
     --function get_arg_parser \
     --author "Jakub Kadlčík" \
     --author-email "jkadlcik@redhat.com" \
-    --project-name "dir2module" \
+    --project-name "createrepo_mod" \
     --url HOMEPAGE \
     > ./man/createrepo_mod.1
 
@@ -34,7 +34,7 @@ argparse-manpage \
     --function get_arg_parser \
     --author "Gerd v. Egidy" \
     --author-email "gerd.von.egidy@intra2net.com" \
-    --project-name "dir2module" \
+    --project-name "modulemd-merge" \
     --url HOMEPAGE \
     > ./man/modulemd-merge.1
 
