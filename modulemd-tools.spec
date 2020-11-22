@@ -10,9 +10,10 @@ Source0: https://github.com/rpm-software-management/modulemd-tools/archive/%{ver
 
 BuildRequires: libmodulemd >= 2
 BuildRequires: createrepo_c
-BuildRequires: createrepo_c
 BuildRequires: argparse-manpage
+BuildRequires: python3-devel
 BuildRequires: python3-setuptools
+BuildRequires: python3-gobject
 BuildRequires: python3-click
 BuildRequires: python3-click-man
 BuildRequires: python3-dnf
