@@ -61,7 +61,7 @@ modulemd-generate-macros - Generate module-build-macros SRPM package, which is
 cd repo2module
 %py3_build
 cd ..
-./man/generate-manpages.sh
+PYTHONPATH=./modulemd_tools ./man/generate-manpages.sh
 
 
 %install
