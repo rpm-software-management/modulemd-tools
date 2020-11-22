@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.5
+Version: 0.6
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -114,6 +114,11 @@ cd modulemd_tools
 
 
 %changelog
+* Sun Nov 22 2020 Jakub Kadlcik <frostyx@email.cz> 0.6-1
+- Generate manpages for all tools in this repository 
+- modulemd-generate-macros: add a tool for generating module-build-macros
+- modulemd_tools: add the first pieces of a python library (for internal usage only)
+
 * Thu Nov 05 2020 Jakub Kadlcik <frostyx@email.cz> 0.5-1
 - Release for epel8 as well (frostyx@email.cz)
 - Require createrepo_c for the createrepo_mod package (frostyx@email.cz)
