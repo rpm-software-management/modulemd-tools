@@ -1,0 +1,31 @@
+.TH modulemd-generate-macros "1" Manual
+.SH NAME
+modulemd-generate-macros
+.SH SYNOPSIS
+.B modulemd-generate-macros
+[-h] [--disttag DISTTAG] [--conflicts-from-file CONFLICTS_FROM_FILE] yaml
+.SH DESCRIPTION
+Generate `module\-build\-macros` SRPM package, which is a central piece for
+building modules. It should be present in the buildroot before any other
+module packages are submitted to be built.
+.SH OPTIONS
+.TP
+\fByaml\fR
+Path to modulemd YAML file
+
+.TP
+\fB\-\-disttag\fR \fI\,DISTTAG\/\fR
+Disttag
+
+.TP
+\fB\-\-conflicts\-from\-file\fR \fI\,CONFLICTS_FROM_FILE\/\fR
+Path to a file containing conflicts definitions and their reasoning. Content
+of this file gets simply pasted into the specfile
+
+.SH AUTHORS
+.B modulemd\-generate\-macros
+was written by Jakub Kadlčík <jkadlcik@redhat.com>.
+.SH DISTRIBUTION
+The latest version of modulemd\-generate\-macros may be downloaded from
+.UR HOMEPAGE
+.UE

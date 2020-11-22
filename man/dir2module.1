@@ -1,0 +1,55 @@
+.TH dir2module "1" Manual
+.SH NAME
+dir2module
+.SH SYNOPSIS
+.B dir2module
+[-h] -m SUMMARY [-d DESCRIPTION] [-l LICENSE] [-r REQUIRES] [--force] [--stdout] (--dir DIR | --pkglist PKGLIST) nsvca
+.SH DESCRIPTION
+Recursively read RPMs from DIR or read them from specified pkglist.If any RPM
+is missing on unreadable, error out.Populate artifacts/rpms with RPM
+NEVRAs.Populate license/content with list of RPM licenses.Write
+N:S:V:C:A.modulemd.yaml in the current directory.Make sure the yaml is in
+modulemd v2 format.
+.SH OPTIONS
+.TP
+\fBnsvca\fR
+Module name, stream version, context and architecture in a N:S:V:C:A format
+
+.TP
+\fB\-m\fR \fI\,SUMMARY\/\fR, \fB\-\-summary\fR \fI\,SUMMARY\/\fR
+Module summary
+
+.TP
+\fB\-d\fR \fI\,DESCRIPTION\/\fR, \fB\-\-description\fR \fI\,DESCRIPTION\/\fR
+Module description
+
+.TP
+\fB\-l\fR \fI\,LICENSE\/\fR, \fB\-\-license\fR \fI\,LICENSE\/\fR
+Module license
+
+.TP
+\fB\-r\fR \fI\,REQUIRES\/\fR, \fB\-\-requires\fR \fI\,REQUIRES\/\fR
+Module runtime dependencies in a N:S format. For multiple dependencies, repeat
+this option
+
+.TP
+\fB\-\-force\fR
+Suppress all constraints and hope for the best
+
+.TP
+\fB\-\-stdout\fR
+By defult the output is saved in a file. Use this to suppress it and print to
+the STDOUT
+
+.TP
+\fB\-\-dir\fR \fI\,DIR\/\fR
+.TP
+\fB\-\-pkglist\fR \fI\,PKGLIST\/\fR
+
+.SH AUTHORS
+.B dir2module
+was written by Jakub Kadlčík <jkadlcik@redhat.com>.
+.SH DISTRIBUTION
+The latest version of dir2module may be downloaded from
+.UR HOMEPAGE
+.UE

@@ -15,7 +15,9 @@ BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: python3-gobject
 BuildRequires: python3-click
+%if ! 0%{?rhel}
 BuildRequires: python3-click-man
+%endif
 BuildRequires: python3-dnf
 BuildRequires: python3-hawkey
 BuildRequires: python3-createrepo_c
@@ -61,7 +63,12 @@ modulemd-generate-macros - Generate module-build-macros SRPM package, which is
 cd repo2module
 %py3_build
 cd ..
-PYTHONPATH=./modulemd_tools ./man/generate-manpages.sh
+
+# There is a missing python3-click-man package for EPEL8 and therefore we cannot
+# generate the manpages on the fly. They are temporarily commited into git repo.
+# Once RHBZ 1900423 gets resolved, just uncomment the following line. Please see
+# https://bugzilla.redhat.com/show_bug.cgi?id=1900423
+# PYTHONPATH=./modulemd_tools ./man/generate-manpages.sh
 
 
 %install
