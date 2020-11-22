@@ -102,6 +102,7 @@ cd modulemd_tools
 %{_mandir}/man1/dir2module.1*
 %{_mandir}/man1/createrepo_mod.1*
 %{_mandir}/man1/modulemd-merge.1*
+%{_mandir}/man1/modulemd-generate-macros.1.*
 
 
 %changelog
