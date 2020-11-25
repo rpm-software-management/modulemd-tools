@@ -207,8 +207,9 @@ Hello, world!
 ### Merging two modulemd YAML files into one
 
 Sometimes you might need to merge two modulemd YAML files. Such a task is done
-e.g. internally in `createrepo_mod` and `createrepo_c` (TODO and newer) when
-dumping `modules.yaml` file based on input modulemd YAML files.
+e.g. internally in `createrepo_mod` and `createrepo_c` (`0.16.1` and
+newer) when dumping `modules.yaml` file based on input modulemd YAML
+files.
 
 In the following example we have two input files -
 `foo:devel:123:f32:x86_64.modulemd.yaml` and
