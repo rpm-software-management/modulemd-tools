@@ -31,6 +31,7 @@ Requires: python3-dnf
 Requires: python3-hawkey
 Requires: python3-createrepo_c
 Requires: python3-pyyaml
+Requires: python3-gobject
 
 
 %description
