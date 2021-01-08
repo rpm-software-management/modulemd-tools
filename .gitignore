@@ -1,0 +1,5 @@
+/.tox/
+/repo2module/*.egg-info/
+/repo2module/build/
+/repo2module/dist/
+__pycache__/
