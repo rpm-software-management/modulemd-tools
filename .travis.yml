@@ -1,0 +1,18 @@
+language: minimal
+
+services:
+  - docker
+
+stages:
+  - build_and_docker_push
+  - docker_pull_and_test
+
+jobs:
+  include:
+    - stage: build_and_docker_push
+      script: ./travis-stage.sh build && ./travis-stage.sh docker_push
+    - stage: docker_pull_and_test
+      env: TOXENV=py39 MODULEMD_TOOL=repo2module SITEPACKAGES=true
+      script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
+    - env: TOXENV=flake8
+      script: ./travis-stage.sh docker_pull && ./travis-stage.sh test

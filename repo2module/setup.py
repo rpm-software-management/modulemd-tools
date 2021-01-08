@@ -6,6 +6,9 @@ from setuptools import setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open('requirements.txt') as f:
+    requires = f.read().splitlines()
+
 setup(
     name='repo2module',
     version='0.1',
@@ -21,9 +24,7 @@ setup(
     # not available on PyPI and must be installed separately. On Fedora, this
     # is done with
     # `dnf install python3-libmodulemd python3-createrepo_c python3-dnf`
-    install_requires=[
-        'click'
-    ],
+    install_requires=requires,
     entry_points={
         'console_scripts': [
             'repo2module=repo2module.cli:cli'],
