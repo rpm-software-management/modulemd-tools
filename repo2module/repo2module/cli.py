@@ -5,15 +5,13 @@ import createrepo_c as cr
 import gi
 import logging
 import os
-import stat
-import sys
-
-
-gi.require_version('Modulemd', '2.0')  # noqa
-from gi.repository import Modulemd
-
-from dnf.subject import Subject
 import hawkey
+from dnf.subject import Subject
+
+
+gi.require_version('Modulemd', '2.0')
+from gi.repository import Modulemd  # noqa: E402
+
 
 DEFAULT_PROFILE = 'everything'
 
@@ -25,7 +23,7 @@ def parse_repodata(path):
     try:
         repomd = cr.Repomd(os.path.join(path, "repodata/repomd.xml"))
     except OSError as e:
-        error(e)
+        logging.error(e)
         exit(2)
 
     for record in repomd.records:
@@ -74,8 +72,8 @@ def get_source_packages(packages):
 
 
 @click.command(help=("Generates modules.yaml file with a module, "
-                     "that provides all RPM packages that are available within "
-                     "a repository."))
+                     "that provides all RPM packages that are available "
+                     "within a repository."))
 @click.option('-d', '--debug/--nodebug', default=False)
 @click.option('-n', '--module-name',
               default=lambda: os.path.basename(os.environ.get('PWD')),
