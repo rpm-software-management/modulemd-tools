@@ -3,8 +3,24 @@ import unittest
 from unittest import mock
 from parameterized import parameterized
 import yaml
+from distutils.version import LooseVersion
 from modulemd_tools.yaml import (is_valid, validate, create, update, dump,
                                  upgrade, _yaml2stream, _stream2yaml)
+
+import gi
+gi.require_version("Modulemd", "2.0")
+from gi.repository import Modulemd
+
+
+def old_libmodulemd():
+    """
+    Reading YAML string via `Modulemd.ModuleStream.read_string` and dumping it
+    again encapsulates its value in double-quotes, and it messes up with some of
+    our tests (since the older version does exactly the opposite). Let's just
+    skip those few test on EPEL8 until it receives an update.
+    See also `080e2bb`
+    """
+    return LooseVersion(Modulemd.get_version()) < LooseVersion("2.11.1")
 
 
 class TestYaml(unittest.TestCase):
@@ -300,6 +316,7 @@ class TestYaml(unittest.TestCase):
         self.assertEqual(mod_stream.get_summary(),
                          "A test module in all its beautiful beauty")
 
+    @unittest.skipIf(old_libmodulemd(), "Old modulemd drops stream value quotes")
     def test_upgrade_to_same_version(self):
         result = upgrade(yaml1, 2)
         self.assertEqual(result, yaml1)
@@ -366,6 +383,7 @@ class TestYaml(unittest.TestCase):
         self.assertIn("YAML contained more than a single subdocument",
                       str(context.exception))
 
+    @unittest.skipIf(old_libmodulemd(), "Old modulemd drops stream value quotes")
     def test_stream2yaml(self):
         mod_stream = _yaml2stream(yaml1)
         self.assertEqual(_stream2yaml(mod_stream), yaml1)
