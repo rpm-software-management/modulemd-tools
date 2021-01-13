@@ -382,7 +382,7 @@ document: modulemd
 version: 2
 data:
   name: foo
-  stream: devel
+  stream: "devel"
   version: 123
   context: f32
   summary: Summary and stuff
@@ -415,7 +415,7 @@ yaml2_invalid = """
 document: modulemd
 version: 2
 data:
-  stream: devel
+  stream: "devel"
   version: 123
   context: f32
   summary: Summary and stuff
@@ -446,7 +446,7 @@ document: modulemd
 version: 2
 data:
   name: foo
-  stream: devel
+  stream: "devel"
   version: 123
   context: f32
   summary: Summary and stuff
@@ -516,7 +516,7 @@ document: modulemd
 version: 2
 data:
   name: foo
-  stream: master
+  stream: "master"
   version: 1
   summary: A test module in all its beautiful beauty
   description: >-
@@ -530,7 +530,7 @@ document: modulemd
 version: 2
 data:
   name: foo
-  stream: stable
+  stream: "stable"
   version: 123
   context: f32
   summary: Summary and stuff
@@ -550,7 +550,7 @@ document: modulemd
 version: 2
 data:
   name: foo
-  stream: master
+  stream: "master"
   version: 1
   summary: A test module in all its beautiful beauty
   description: >-
@@ -564,7 +564,7 @@ document: modulemd
 version: 2
 data:
   name: bar
-  stream: stable
+  stream: "stable"
   version: 123
   context: f32
   summary: Summary and stuff
@@ -584,7 +584,7 @@ document: modulemd
 version: 2
 data:
   name: foo
-  stream: master
+  stream: "master"
   version: 1
   summary: A test module in all its beautiful beauty
   description: >-
