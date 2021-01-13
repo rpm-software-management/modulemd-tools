@@ -8,12 +8,12 @@ BuildArch: noarch
 URL: https://github.com/rpm-software-management/modulemd-tools
 Source0: https://github.com/rpm-software-management/modulemd-tools/archive/%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires: libmodulemd >= 2
 BuildRequires: createrepo_c
 BuildRequires: argparse-manpage
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: python3-gobject
+BuildRequires: python3-libmodulemd >= 2.9.3
 BuildRequires: python3-click
 %if ! 0%{?rhel}
 BuildRequires: python3-click-man
@@ -24,7 +24,6 @@ BuildRequires: python3-createrepo_c
 BuildRequires: python3-pyyaml
 BuildRequires: python3-parameterized
 
-Requires: libmodulemd >= 2
 Requires: createrepo_c
 Requires: python3-click
 Requires: python3-dnf
@@ -32,6 +31,7 @@ Requires: python3-hawkey
 Requires: python3-createrepo_c
 Requires: python3-pyyaml
 Requires: python3-gobject
+Requires: python3-libmodulemd >= 2.9.3
 
 
 %description
