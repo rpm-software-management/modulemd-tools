@@ -24,7 +24,7 @@ from distutils.version import LooseVersion
 
 import gi
 gi.require_version("Modulemd", "2.0")
-from gi.repository import Modulemd
+from gi.repository import Modulemd  # noqa: E402
 
 
 def run_createrepo(args):
