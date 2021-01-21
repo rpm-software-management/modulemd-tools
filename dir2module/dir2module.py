@@ -17,7 +17,7 @@ from dnf.subject import Subject
 
 
 gi.require_version("Modulemd", "2.0")
-from gi.repository import Modulemd
+from gi.repository import Modulemd  # noqa: E402
 
 
 class Module(object):
@@ -125,11 +125,11 @@ class Package(object):
     def _get_header(self):
         """
         Examine a RPM package file and return its header
-        See https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/ch16s04.html
+        See docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/ch16s04.html
         """
         ts = rpm.TransactionSet()
         ts.setKeyring(rpm.keyring())
-        ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES|rpm._RPMVSF_NODIGESTS)
+        ts.setVSFlags(rpm._RPMVSF_NOSIGNATURES | rpm._RPMVSF_NODIGESTS)
         with open(self.path, "r") as f:
             hdr = ts.hdrFromFdno(f.fileno())
             return hdr
@@ -218,7 +218,6 @@ def main():
         path = os.path.expanduser(args.pkglist)
         packages = find_packages_in_file(path)
 
-
     packages = [Package(package) for package in packages]
     licenses = {package.license for package in packages}
     nevras = {package.nevra for package in packages}
@@ -237,7 +236,7 @@ def main():
 
     if missing_labels and not args.force:
         raise RuntimeError("All packages need to contain the `modularitylabel` header. "
-                       "To suppress this constraint, use `--force` parameter")
+                           "To suppress this constraint, use `--force` parameter")
 
     module = Module(name, stream, version, context, arch, args.summary,
                     description, args.license, licenses, nevras, requires)
@@ -247,7 +246,6 @@ def main():
     else:
         module.dump()
         print("Created {0}".format(module.filename))
-
 
 
 if __name__ == "__main__":

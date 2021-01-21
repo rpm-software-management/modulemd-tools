@@ -9,7 +9,7 @@ from modulemd_tools.yaml import (is_valid, validate, create, update, dump,
 
 import gi
 gi.require_version("Modulemd", "2.0")
-from gi.repository import Modulemd
+from gi.repository import Modulemd  # noqa: E402
 
 
 def old_libmodulemd():
@@ -392,7 +392,7 @@ class TestYaml(unittest.TestCase):
         with self.assertRaises(RuntimeError) as context:
             _stream2yaml(mod_stream)
         self.assertIn("Could not validate stream to emit: Summary is missing",
-                       str(context.exception))
+                      str(context.exception))
 
 
 yaml1 = """---

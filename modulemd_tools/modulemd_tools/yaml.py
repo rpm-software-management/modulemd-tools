@@ -7,8 +7,9 @@ and all transformation functions are `str` -> `str`.
 import os
 import gi
 import yaml
+
 gi.require_version("Modulemd", "2.0")
-from gi.repository import Modulemd
+from gi.repository import Modulemd  # noqa: E402
 
 
 def is_valid(mod_yaml):
@@ -66,7 +67,8 @@ def update(mod_yaml, name=None, stream=None, version=None, context=None,
     value is used instead.
 
     For the official documentation of the modulemd YAML format and it's values,
-    please see https://github.com/fedora-modularity/libmodulemd/blob/main/yaml_specs/modulemd_stream_v2.yaml
+    please see
+    https://github.com/fedora-modularity/libmodulemd/blob/main/yaml_specs/modulemd_stream_v2.yaml
     It will allow you to better understand the parameters of this function.
 
     Args:
@@ -223,7 +225,7 @@ def upgrade(mod_yaml, version):
     Downgrades aren't supported even in case where it would be possible.
     """
     parsed = yaml.safe_load(mod_yaml or "")
-    if not parsed or not "version" in parsed:
+    if not parsed or "version" not in parsed:
         raise ValueError("Missing modulemd version")
 
     supported = [1, 2]

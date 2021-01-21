@@ -19,10 +19,6 @@ import subprocess
 import argparse
 from modulemd_tools.yaml import _yaml2stream, load
 
-import gi
-gi.require_version("Modulemd", "2.0")
-from gi.repository import Modulemd
-
 
 log = logging.getLogger("MBS")
 
@@ -264,7 +260,6 @@ def main():
         print("{0}\n".format(str(ex)))
         print("Please review {}/module-build-macros.spec".format(td))
         sys.exit(1)
-
 
 
 if __name__ == "__main__":

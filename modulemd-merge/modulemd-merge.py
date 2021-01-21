@@ -16,7 +16,8 @@ import createrepo_c as cr
 
 import gi
 gi.require_version("Modulemd", "2.0")
-from gi.repository import Modulemd
+from gi.repository import Modulemd  # noqa: E402
+
 
 def hande_repomd(args, merger, repomd_filename):
     try:
@@ -51,11 +52,13 @@ def hande_repomd(args, merger, repomd_filename):
     logging.debug("{fn}: modules section found in repomd.xml, but href file {href} does not exist".
                   format(fn=repomd_filename, href=filename))
     if not args.ignore_no_input:
-        raise ValueError("{fn}: modules section found in repomd.xml, but href file {href} does not exist".
-                         format(fn=repomd_filename, href=filename))
+        raise ValueError("{fn}: modules section found in repomd.xml, but href file {href} does "
+                         "not exist".format(fn=repomd_filename, href=filename))
     return False
 
-# check type and existence of input file, directly or indirectly calls merge_file when a yaml is found
+
+# check type and existence of input file, directly or indirectly calls merge_file
+# when a yaml is found
 def merge_input(args, merger, filename):
     if os.path.isdir(filename):
         logging.debug("{}: is a directory".format(filename))
@@ -66,7 +69,8 @@ def merge_input(args, merger, filename):
         else:
             logging.debug("{}: no repomd.xml in or below directory".format(filename))
             if not args.ignore_no_input:
-                raise ValueError('{fn} is a directory, but no repomd.xml file existing in or below'.format(fn=filename))
+                raise ValueError('{fn} is a directory, but no repomd.xml file existing in or below'
+                                 .format(fn=filename))
 
     elif os.path.isfile(filename):
         logging.debug("{}: is a regular file".format(filename))
@@ -81,6 +85,7 @@ def merge_input(args, merger, filename):
         if not args.ignore_no_input:
             raise ValueError('input file {fn} does not exist'.format(fn=filename))
 
+
 def merge_file(merger, filename):
     logging.debug("{}: Loading YAML".format(filename))
 
@@ -94,14 +99,16 @@ def merge_file(merger, filename):
 
     modnames = index.get_module_names()
     defstreams = index.get_default_streams()
-    logging.info("{}: Found {} modulemds and {} modulemd-defaults".format(filename, len(modnames), len(defstreams)))
+    logging.info("{}: Found {} modulemds and {} modulemd-defaults".format(filename, len(modnames),
+                 len(defstreams)))
 
     merger.associate_index(index, 0)
 
+
 def get_arg_parser():
     description = "Merge several modules.yaml files (rpm modularity metadata) into one."
-    parser = argparse.ArgumentParser("modulemd-merge",
-                                     description=description, formatter_class=argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser("modulemd-merge", description=description,
+                                     formatter_class=argparse.RawTextHelpFormatter)
 
     # flag options
     parser.add_argument("-v", "--verbose", help="increase output verbosity",
@@ -114,9 +121,11 @@ def get_arg_parser():
     # positional arguments
     parser.add_argument("input", nargs="+", help="input filename(s) or directories.\n"
                         "repomd.xml files are parsed and modules hrefs contained are merged.\n"
-                        "If a directory is given, it is searched for repodata/repomd.xml and repomd.xml")
+                        "If a directory is given, it is searched for repodata/repomd.xml\n"
+                        "and repomd.xml")
     parser.add_argument("output", help="YAML output filename")
     return parser
+
 
 def parse_args():
     parser = get_arg_parser()
@@ -128,6 +137,7 @@ def parse_args():
         logging.basicConfig(format='%(message)s', level=logging.DEBUG)
 
     return args
+
 
 def main():
     args = parse_args()
@@ -141,7 +151,8 @@ def main():
 
     modnames = merged_index.get_module_names()
     defstreams = merged_index.get_default_streams()
-    logging.info("merged result: {} modulemds and {} modulemd-defaults".format(len(modnames), len(defstreams)))
+    logging.info("merged result: {} modulemds and {} modulemd-defaults".format(len(modnames),
+                                                                               len(defstreams)))
 
     logging.debug("Writing YAML to {}".format(args.output))
     with open(args.output, 'w') as output:
@@ -151,6 +162,7 @@ def main():
             output.write("")
         else:
             output.write(merged_index.dump_to_string())
+
 
 if __name__ == "__main__":
     try:
