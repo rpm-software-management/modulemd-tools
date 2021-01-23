@@ -12,7 +12,6 @@ BuildRequires: createrepo_c
 BuildRequires: argparse-manpage
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
-BuildRequires: python3-gobject
 BuildRequires: python3-libmodulemd >= 2.9.3
 BuildRequires: python3-click
 %if ! 0%{?rhel}
@@ -30,7 +29,6 @@ Requires: python3-dnf
 Requires: python3-hawkey
 Requires: python3-createrepo_c
 Requires: python3-pyyaml
-Requires: python3-gobject
 Requires: python3-libmodulemd >= 2.9.3
 
 
