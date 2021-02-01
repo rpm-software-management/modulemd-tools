@@ -5,6 +5,7 @@ import createrepo_c as cr
 import gi
 import logging
 import os
+import sys
 import hawkey
 from dnf.subject import Subject
 
@@ -87,6 +88,7 @@ def get_source_packages(packages):
 @click.option('-c', '--module-context',
               default='abcdef12',
               show_default=True)
+@click.option('-O', '--to-stdout', default=False, is_flag=True)
 @click.argument('repo_path', type=click.Path(exists=True))
 @click.argument('modules_yaml', default='modules.yaml')
 def cli(debug,
@@ -94,6 +96,7 @@ def cli(debug,
         module_stream,
         module_version,
         module_context,
+        to_stdout,
         repo_path,
         modules_yaml):
 
@@ -101,7 +104,8 @@ def cli(debug,
         logging.basicConfig(level=logging.DEBUG)
 
     abs_repo_path = os.path.abspath(repo_path)
-    abs_modules_yaml = os.path.abspath(modules_yaml)
+    if not to_stdout:
+        abs_modules_yaml = os.path.abspath(modules_yaml)
 
     packages = parse_repodata(abs_repo_path)
 
@@ -138,6 +142,10 @@ def cli(debug,
     index = Modulemd.ModuleIndex.new()
     index.add_module_stream(stream)
     index.add_defaults(defaults)
+
+    if to_stdout:
+        sys.stdout.write(index.dump_to_string())
+        return
 
     logging.debug("Writing YAML to {}".format(abs_modules_yaml))
     try:

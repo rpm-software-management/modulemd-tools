@@ -14,5 +14,7 @@ jobs:
     - stage: docker_pull_and_test
       env: TOXENV=py39 MODULEMD_TOOL=repo2module SITEPACKAGES=true
       script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
+    - env: TOXENV=py39 MODULEMD_TOOL=dir2module SITEPACKAGES=true
+      script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
     - env: TOXENV=flake8
       script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
