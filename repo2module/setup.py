@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+import os.path
 
 from setuptools import setup
 
-with open("README.md", "r") as fh:
+
+dirname = os.path.dirname(os.path.realpath(__file__))
+
+
+with open(os.path.join(dirname, "README.md"), "r") as fh:
     long_description = fh.read()
 
-with open('requirements.txt') as f:
+with open(os.path.join(dirname, 'requirements.txt')) as f:
     requires = f.read().splitlines()
 
 setup(

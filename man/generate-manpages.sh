@@ -10,7 +10,7 @@ python3 repo2module/setup.py \
 
 
 argparse-manpage \
-    --pyfile dir2module/dir2module.py \
+    --pyfile dir2module/dir2module/dir2module.py \
     --function get_arg_parser \
     --author "Jakub Kadlčík" \
     --author-email "jkadlcik@redhat.com" \

@@ -20,6 +20,7 @@ BuildRequires: python3-hawkey
 BuildRequires: python3-createrepo_c
 BuildRequires: python3-pyyaml
 BuildRequires: python3-parameterized
+BuildRequires: python3-pytest
 
 Requires: createrepo_c
 Requires: python3-click
@@ -61,6 +62,10 @@ cd repo2module
 %py3_build
 cd ..
 
+cd dir2module
+%py3_build
+cd ..
+
 PYTHONPATH=./modulemd_tools ./man/generate-manpages.sh
 
 
@@ -69,7 +74,10 @@ cd repo2module
 %py3_install
 cd ..
 
-cp dir2module/dir2module.py %{buildroot}%{_bindir}/dir2module
+cd dir2module
+%py3_install
+cd ..
+
 cp createrepo_mod/createrepo_mod.py %{buildroot}%{_bindir}/createrepo_mod
 cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
 cp modulemd-generate-macros/modulemd-generate-macros.py \
@@ -82,9 +90,13 @@ cp man/*.1 %{buildroot}%{_mandir}/man1/
 
 
 %check
-%{python3} repo2module/setup.py test
-cd modulemd_tools
-%{python3} -m unittest
+cd repo2module
+%{python3} -m pytest
+cd ..
+
+cd dir2module
+%{python3} -m pytest
+cd ..
 
 
 %files
@@ -92,6 +104,8 @@ cd modulemd_tools
 %license LICENSE
 %{python3_sitelib}/repo2module
 %{python3_sitelib}/repo2module-*.egg-info/
+%{python3_sitelib}/dir2module
+%{python3_sitelib}/dir2module-*.egg-info/
 %{_bindir}/repo2module
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod
