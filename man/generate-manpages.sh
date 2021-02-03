@@ -30,7 +30,7 @@ argparse-manpage \
 
 
 argparse-manpage \
-    --pyfile modulemd-merge/modulemd-merge.py \
+    --pyfile modulemd-merge/modulemd_merge/modulemd_merge.py \
     --function get_arg_parser \
     --author "Gerd v. Egidy" \
     --author-email "gerd.von.egidy@intra2net.com" \

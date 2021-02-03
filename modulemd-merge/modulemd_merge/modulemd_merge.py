@@ -117,6 +117,8 @@ def get_arg_parser():
                         action="store_true")
     parser.add_argument("-i", "--ignore-no-input", help="ignore non-existing input files",
                         action="store_true")
+    parser.add_argument("-O", "--to-stdout", help="print YAML output to stdout",
+                        action="store_true")
 
     # positional arguments
     parser.add_argument("input", nargs="+", help="input filename(s) or directories.\n"
@@ -154,14 +156,21 @@ def main():
     logging.info("merged result: {} modulemds and {} modulemd-defaults".format(len(modnames),
                                                                                len(defstreams)))
 
-    logging.debug("Writing YAML to {}".format(args.output))
-    with open(args.output, 'w') as output:
-        if len(modnames) == 0 and len(defstreams) == 0:
-            # properly writing a completely empty yaml document
-            logging.debug("Writing an empty YAML")
-            output.write("")
-        else:
-            output.write(merged_index.dump_to_string())
+    if args.to_stdout:
+        output = sys.stdout
+    else:
+        logging.debug("Writing YAML to {}".format(args.output))
+        output = open(args.output, 'w')
+
+    if len(modnames) == 0 and len(defstreams) == 0:
+        # properly writing a completely empty yaml document
+        logging.debug("Writing an empty YAML")
+        output.write("")
+    else:
+        output.write(merged_index.dump_to_string())
+
+    if not args.to_stdout:
+        output.close()
 
 
 if __name__ == "__main__":
