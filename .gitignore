@@ -1,8 +1,5 @@
 /.tox/
-/dir2module/*.egg-info/
-/dir2module/build/
-/dir2module/dist/
-/repo2module/*.egg-info/
-/repo2module/build/
-/repo2module/dist/
+/*/*.egg-info/
+/*/build/
+/*/dist/
 __pycache__/

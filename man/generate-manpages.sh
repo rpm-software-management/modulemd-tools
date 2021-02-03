@@ -20,7 +20,7 @@ argparse-manpage \
 
 
 argparse-manpage \
-    --pyfile createrepo_mod/createrepo_mod.py \
+    --pyfile createrepo_mod/createrepo_mod/createrepo_mod.py \
     --function get_arg_parser \
     --author "Jakub Kadlčík" \
     --author-email "jkadlcik@redhat.com" \
