@@ -70,6 +70,10 @@ cd createrepo_mod
 %py3_build
 cd ..
 
+cd modulemd-merge
+%py3_build
+cd ..
+
 PYTHONPATH=./modulemd_tools ./man/generate-manpages.sh
 
 
@@ -86,7 +90,10 @@ cd createrepo_mod
 %py3_install
 cd ..
 
-cp modulemd-merge/modulemd-merge.py %{buildroot}%{_bindir}/modulemd-merge
+cd modulemd-merge
+%py3_install
+cd ..
+
 cp modulemd-generate-macros/modulemd-generate-macros.py \
     %{buildroot}%{_bindir}/modulemd-generate-macros
 
@@ -97,18 +104,22 @@ cp man/*.1 %{buildroot}%{_mandir}/man1/
 
 
 %check
-export PATH=$PATH:%{buildroot}%{_bindir}
+export PATH={buildroot}%{_bindir}:$PATH
 
 cd repo2module
-%{python3} -m pytest
+%{python3} -m pytest -vv
 cd ..
 
 cd dir2module
-%{python3} -m pytest
+%{python3} -m pytest -vv
 cd ..
 
 cd createrepo_mod
-%{python3} -m pytest
+%{python3} -m pytest -vv
+cd ..
+
+cd modulemd-merge
+%{python3} -m pytest -vv -s
 cd ..
 
 
@@ -121,6 +132,8 @@ cd ..
 %{python3_sitelib}/dir2module-*.egg-info/
 %{python3_sitelib}/createrepo_mod
 %{python3_sitelib}/createrepo_mod-*.egg-info/
+%{python3_sitelib}/modulemd_merge
+%{python3_sitelib}/modulemd_merge-*.egg-info/
 %{_bindir}/repo2module
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod

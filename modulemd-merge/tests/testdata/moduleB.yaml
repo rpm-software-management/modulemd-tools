@@ -1,0 +1,40 @@
+---
+document: modulemd-defaults
+version: 1
+data:
+  module: bar
+  stream: stable
+  profiles:
+    stable: [everything]
+...
+---
+document: modulemd
+version: 2
+data:
+  name: bar
+  stream: stable
+  version: 234
+  context: fc33
+  summary: Let's put some bar's summary here
+  description: >-
+    Let's put some bar's description here
+  license:
+    module:
+    - Bar License
+    content:
+    - A fresh bar license for your test suites
+  profiles:
+    everything:
+      rpms:
+      - bar-utils
+  api:
+    rpms:
+    - bar-utils
+  components:
+    rpms:
+      bar-utils:
+        rationale: Present in the repository
+  artifacts:
+    rpms:
+    - bar-utils-2:3-4.fc33.noarch
+...

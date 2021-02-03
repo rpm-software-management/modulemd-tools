@@ -1,0 +1,40 @@
+---
+document: modulemd-defaults
+version: 1
+data:
+  module: foo
+  stream: devel
+  profiles:
+    devel: [everything]
+...
+---
+document: modulemd
+version: 2
+data:
+  name: foo
+  stream: devel
+  version: 123
+  context: fc33
+  summary: Let's put some foo's summary here
+  description: >-
+    Let's put some foo's description here
+  license:
+    module:
+    - Foo License
+    content:
+    - A fresh foo license for your test suites
+  profiles:
+    everything:
+      rpms:
+      - foo-utils
+  api:
+    rpms:
+    - foo-utils
+  components:
+    rpms:
+      foo-utils:
+        rationale: Present in the repository
+  artifacts:
+    rpms:
+    - foo-utils-1:2-3.fc33.noarch
+...
