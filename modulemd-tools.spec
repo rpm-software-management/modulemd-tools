@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.6
+Version: 0.7
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -121,6 +121,13 @@ cd ..
 
 
 %changelog
+* Tue Feb 09 2021 Jakub Kadlcik <frostyx@email.cz> 0.7-1
+- Generate manpages on the fly
+- Automated test builds incl. Docker/Travis
+- Fix PEP8 in all tools
+- modulemd_tools: temporarily skip some tests on EPEL8 or Fedora
+- Drop libmodulemd dependency in favor of python3-libmodulemd
+
 * Sun Nov 22 2020 Jakub Kadlcik <frostyx@email.cz> 0.6-1
 - Generate manpages for all tools in this repository 
 - modulemd-generate-macros: add a tool for generating module-build-macros
