@@ -20,5 +20,7 @@ jobs:
       script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
     - env: TOXENV=py39 MODULEMD_TOOL=modulemd-merge SITEPACKAGES=true
       script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
+    - env: TOXENV=py39 MODULEMD_TOOL=modulemd_tools SITEPACKAGES=true
+      script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
     - env: TOXENV=flake8
       script: ./travis-stage.sh docker_pull && ./travis-stage.sh test
