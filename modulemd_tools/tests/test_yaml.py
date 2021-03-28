@@ -1,7 +1,6 @@
 import os
 import unittest
 from unittest import mock
-from parameterized import parameterized
 import yaml
 from distutils.version import LooseVersion
 from modulemd_tools.yaml import (is_valid, validate, create, update, dump,
@@ -327,11 +326,11 @@ class TestYaml(unittest.TestCase):
         self.assertIn("Cannot downgrade modulemd version",
                       str(context.exception))
 
-    @parameterized.expand([[None], [""], ["foo: bar"]])
-    def test_upgrade_empty_yaml(self, mod_yaml):
-        with self.assertRaises(ValueError) as context:
-            upgrade(mod_yaml, 2)
-        self.assertIn("Missing modulemd version", str(context.exception))
+    def test_upgrade_empty_yaml(self):
+        for mod_yaml in [None, "", "foo: bar"]:
+            with self.assertRaises(ValueError) as context:
+                upgrade(mod_yaml, 2)
+            self.assertIn("Missing modulemd version", str(context.exception))
 
     def test_upgrade_unexpected_version(self):
         # Neither current modulemd version cannot be unexpected
