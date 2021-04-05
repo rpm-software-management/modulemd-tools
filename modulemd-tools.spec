@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.7
+Version: 0.8
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -159,6 +159,13 @@ cd ..
 
 
 %changelog
+* Tue Apr 06 2021 Jakub Kadlcik <frostyx@email.cz> 0.8-1
+- modulemd_tools: drop python3-parameterized dependency (frostyx@email.cz)
+- Package modulemd_tools helper lib (fvalder@redhat.com)
+- Add modulemd-merge tests (fvalder@redhat.com)
+- Add createrepo_mod tests (fvalder@redhat.com)
+- Replace master in fedora releaser to rawhide (frostyx@email.cz)
+
 * Tue Feb 09 2021 Jakub Kadlcik <frostyx@email.cz> 0.7-1
 - Generate manpages on the fly
 - Automated test builds incl. Docker/Travis
