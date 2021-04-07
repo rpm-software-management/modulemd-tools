@@ -1,9 +1,6 @@
 import unittest
 import os.path
-
 import createrepo_c
-from click.testing import CliRunner
-
 import repo2module.cli
 from repo2module.cli import parse_repodata, get_source_packages
 
@@ -31,8 +28,8 @@ def test_get_source_packages():
 
 @unittest.skip("Does not work with the latest libmodulemd (2.12.0)")
 def test_repo2module(module_yaml_output):
-    runner = CliRunner()
-    result = runner.invoke(repo2module.cli.cli, ['-n', 'dummy', '-O', test_repo_dir])
-
-    assert result.exit_code == 0
-    assert result.output == module_yaml_output
+    # runner = CliRunner()
+    # result = runner.invoke(repo2module.cli.cli, ['-n', 'dummy', '-O', test_repo_dir])
+    # assert result.exit_code == 0
+    # assert result.output == module_yaml_output
+    raise NotImplementedError
