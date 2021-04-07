@@ -3,10 +3,14 @@
 HOMEPAGE="https://github.com/rpm-software-management/modulemd-tools"
 
 
-python3 repo2module/setup.py \
-    --command-packages=click_man.commands man_pages \
-    --target ./man \
-    &> /dev/null
+argparse-manpage \
+    --pyfile repo2module/repo2module/cli.py \
+    --function get_arg_parser \
+    --author "Stephen Gallagher" \
+    --author-email "sgallagh@redhat.com" \
+    --project-name "repo2module" \
+    --url HOMEPAGE \
+    > ./man/repo2module.1
 
 
 argparse-manpage \
