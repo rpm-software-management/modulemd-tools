@@ -18,6 +18,7 @@ BuildRequires: python3-hawkey
 BuildRequires: python3-createrepo_c
 BuildRequires: python3-pyyaml
 BuildRequires: python3-pytest
+BuildRequires: python3-koji
 
 Requires: createrepo_c
 Requires: python3-dnf
@@ -25,6 +26,7 @@ Requires: python3-hawkey
 Requires: python3-createrepo_c
 Requires: python3-pyyaml
 Requires: python3-libmodulemd >= 2.9.3
+Requires: python3-koji
 
 
 %description
@@ -47,6 +49,8 @@ modulemd-merge - Merge several modules.yaml files into one. This is useful for
 modulemd-generate-macros - Generate module-build-macros SRPM package, which is
     a central piece for building modules. It should be present in the buildroot
     before any other module packages are submitted to be built.
+
+bld2repo - Simple tool for dowloading build required RPMs of a modular build from koji.
 
 
 %prep
@@ -74,7 +78,11 @@ cd modulemd_tools
 %py3_build
 cd ..
 
-PYTHONPATH=./modulemd_tools ./man/generate-manpages.sh
+cd bld2repo
+%py3_build
+cd ..
+
+PYTHONPATH=./modulemd_tools:./bld2repo ./man/generate-manpages.sh
 
 
 %install
@@ -95,6 +103,10 @@ cd modulemd-merge
 cd ..
 
 cd modulemd_tools
+%py3_install
+cd ..
+
+cd bld2repo
 %py3_install
 cd ..
 
@@ -128,6 +140,9 @@ cd modulemd_tools
 %{python3} -m pytest -vv
 cd ..
 
+cd bld2repo
+%{python3} -m pytest -vv
+cd ..
 
 %files
 %doc README.md
@@ -142,17 +157,21 @@ cd ..
 %{python3_sitelib}/modulemd_merge-*.egg-info/
 %{python3_sitelib}/modulemd_tools
 %{python3_sitelib}/modulemd_tools-*.egg-info/
+%{python3_sitelib}/bld2repo
+%{python3_sitelib}/bld2repo-*.egg-info/
 %{_bindir}/repo2module
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod
 %{_bindir}/modulemd-merge
 %{_bindir}/modulemd-generate-macros
+%{_bindir}/bld2repo
 
 %{_mandir}/man1/repo2module.1*
 %{_mandir}/man1/dir2module.1*
 %{_mandir}/man1/createrepo_mod.1*
 %{_mandir}/man1/modulemd-merge.1*
 %{_mandir}/man1/modulemd-generate-macros.1.*
+%{_mandir}/man1/bld2repo.1.*
 
 
 %changelog

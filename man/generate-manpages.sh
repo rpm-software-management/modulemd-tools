@@ -51,3 +51,13 @@ argparse-manpage \
     --project-name "modulemd-generate-macros" \
     --url HOMEPAGE \
     > ./man/modulemd-generate-macros.1
+
+
+argparse-manpage \
+    --pyfile bld2repo/bld2repo/cli.py \
+    --function get_arg_parser \
+    --author "Martin Čurlej" \
+    --author-email "mcurlej@redhat.com" \
+    --project-name "bld2repo" \
+    --url HOMEPAGE \
+    > ./man/bld2repo.1

@@ -39,7 +39,6 @@ For more information about `modulemd-merge`, please see
 
 
 ### modulemd-generate-macros
-
 Generate `module-build-macros` SRPM package, which is a central piece
 for building modules. It should be present in the buildroot before any
 other module packages are submitted to be built.
@@ -55,6 +54,13 @@ within this project. ~~It is also meant to be used as a dependency for
 other tools, such as build-systems.~~ **It is not ready to be used by
 other tools yet, be cautious.**
 [modulemd_tools/README.md](modulemd_tools/README.md)
+
+
+### bld2repo
+Simple tool for dowloading build required RPMs of a modular build from koji.
+
+For more information about `bld2repo`, please see
+[bld2repo/README.md](bld2repo/README.md)
 
 
 ## Use cases

@@ -1,0 +1,33 @@
+[
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 80062,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-pki-core-10.6-8020020210330222148-bbc64e6e",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 80063,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-pki-core-10.6-8020020210330222148-bbc64e6e-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "",
+        "id": 80123,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "RHSA-2021:69566-pending",
+        "perm": "trusted",
+        "perm_id": 6
+    }
+]
+
