@@ -1,0 +1,33 @@
+{
+    "build_id": 1557161,
+    "cg_id": null,
+    "completion_time": "2021-03-30 23:30:32.156112",
+    "completion_ts": 1617147032.15611,
+    "creation_event_id": 38240589,
+    "creation_time": "2021-03-30 23:15:00.109509",
+    "creation_ts": 1617146100.10951,
+    "epoch": null,
+    "extra": {
+        "source": {
+            "original_url": "git://pkgs.devel.redhat.com/rpms/pki-core?#026f2b900ad160e096ceec13f43d7bbce45a11ad"
+        }
+    },
+    "id": 1557161,
+    "name": "pki-core",
+    "nvr": "pki-core-10.8.3-6.module+el8.2.0+10554+cf83aa72",
+    "owner_id": 4066,
+    "owner_name": "mbs",
+    "package_id": 31009,
+    "package_name": "pki-core",
+    "release": "6.module+el8.2.0+10554+cf83aa72",
+    "source": "git://pkgs.devel.redhat.com/rpms/pki-core#026f2b900ad160e096ceec13f43d7bbce45a11ad",
+    "start_time": "2021-03-30 23:15:00.102532",
+    "start_ts": 1617146100.10253,
+    "state": 1,
+    "task_id": 35853377,
+    "version": "10.8.3",
+    "volume_id": 9,
+    "volume_name": "rhel-8",
+    "cg_name": null
+}
+
