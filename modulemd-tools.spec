@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.9
+Version: 0.10
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -175,6 +175,9 @@ cd ..
 
 
 %changelog
+* Mon Jun 14 2021 Jakub Kadlcik <frostyx@email.cz> 0.10-1
+- Added bld2repo (mcurlej@redhat.com)
+
 * Fri Apr 09 2021 Jakub Kadlcik <frostyx@email.cz> 0.9-1
 - repo2module: drop python-click dependency (frostyx@email.cz)
 
