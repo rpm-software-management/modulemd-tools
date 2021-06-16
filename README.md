@@ -63,6 +63,43 @@ For more information about `bld2repo`, please see
 [bld2repo/README.md](bld2repo/README.md)
 
 
+## Installation instructions
+
+The `modulemd-tools` package is available in the official Fedora
+repositories, and RHEL 8.5 and higher. As such, it can be easily
+installed with:
+
+```
+dnf install modulemd-tools
+```
+
+There is also a Copr repository providing up-to-date stable builds for
+EPEL8. It is recommended to use this repository for installing
+`modulemd-tools` on RHEL 8.4 and lower.
+
+```
+dnf copr enable frostyx/modulemd-tools-epel
+dnf install modulemd-tools
+```
+
+If you prefer to install the latest stable package from this
+repository, use
+
+```
+git clone https://github.com/rpm-software-management/modulemd-tools.git
+cd modulemd-tools
+sudo dnf builddep modulemd-tools.spec
+tito build --rpm --install
+```
+
+Alternatively, if you want to build and install a package from the
+latest commit, use
+
+```
+tito build --rpm --test --install
+```
+
+
 ## Use cases
 
 ### Creating a module repository from a regular repository
