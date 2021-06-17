@@ -48,7 +48,7 @@ def main():
 
     pkgs, rpm_num = add_rpm_urls(pkgs, config)
 
-    rpm_bulk_download(pkgs, rpm_num, config.arch)
+    rpm_bulk_download(pkgs, rpm_num, config.result_dir)
 
     create_repo(config.result_dir)
 
