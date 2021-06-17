@@ -108,7 +108,7 @@ def rpm_bulk_download(pkgs, rpm_num, working_dir):
     for pkg in pkgs:
         for url in pkg["rpm_urls"]:
             # we print the status of the download
-            status = "[{rpms}/{left}]".format(rpms=rpm_num, left=rpm_dwnlded)
+            status = "[{done}/{total}]".format(done=rpm_dwnlded, total=rpm_num)
             print(status, end="\r", flush=True)
             # we store the rpm in a similar location as it is on the storage server
             url_parts = url.split("/")
@@ -129,7 +129,7 @@ def rpm_bulk_download(pkgs, rpm_num, working_dir):
             rpm_dwnlded += 1
 
     # update the status last time to mark all of the rpms downloaded
-    status = "[{rpms}/{left}]".format(rpms=rpm_num, left=rpm_dwnlded)
+    status = "[{done}/{total}]".format(done=rpm_dwnlded, total=rpm_num)
     print(status)
     print("Download successful.")
 
