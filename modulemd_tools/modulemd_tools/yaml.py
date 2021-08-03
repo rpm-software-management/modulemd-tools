@@ -104,14 +104,9 @@ def update(mod_yaml, name=None, stream=None, version=None, context=None,
 
     """
     mod_stream = _yaml2stream(mod_yaml)
-
-    # AFAIK It is not possible to change name and stream of an existing module,
-    # so we need to workaround it by creating a new module with desired N:S and
-    # then update it from the previous yaml
     name = name or mod_stream.get_module_name()
     stream = stream or mod_stream.get_stream_name()
-    mod_stream = Modulemd.ModuleStreamV2.new(name, stream)
-    mod_stream = mod_stream.read_string(mod_yaml, True, name, stream)
+    mod_stream = Modulemd.read_packager_string(mod_yaml, name, stream)
 
     if version:
         mod_stream.set_version(version)
@@ -235,9 +230,8 @@ def upgrade(mod_yaml, version):
     if parsed["version"] > version:
         raise ValueError("Cannot downgrade modulemd version")
 
-    mod_stream = Modulemd.ModuleStream.read_string(
+    mod_stream = Modulemd.read_packager_string(
         mod_yaml,
-        True,
         parsed["data"].get("name", ""),
         parsed["data"].get("stream", ""))
     mod_stream_upgraded = mod_stream.upgrade(version)
@@ -295,7 +289,7 @@ def _generate_filename(mod_yaml):
 
 def _yaml2stream(mod_yaml):
     try:
-        return Modulemd.ModuleStream.read_string(mod_yaml, True, None, None)
+        return Modulemd.read_packager_string(mod_yaml)
     except gi.repository.GLib.GError as ex:
         raise ValueError(ex.message)
 
