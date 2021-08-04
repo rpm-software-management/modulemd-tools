@@ -234,7 +234,14 @@ def upgrade(mod_yaml, version):
         mod_yaml,
         parsed["data"].get("name", ""),
         parsed["data"].get("stream", ""))
-    mod_stream_upgraded = mod_stream.upgrade(version)
+
+    mod_upgraded = mod_stream.upgrade_ext(version)
+    mod_stream_upgraded = mod_upgraded.get_stream_by_NSVCA(
+        mod_stream.get_stream_name(),
+        mod_stream.get_version(),
+        mod_stream.get_context(),
+        mod_stream.get_arch())
+
     return _stream2yaml(mod_stream_upgraded)
 
 
