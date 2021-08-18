@@ -15,7 +15,7 @@ def dummy_module():
         'description': 'One dummy module for your tests',
         'module_license': 'No License',
         'licenses': [],
-        'package_nevras': [],
+        'packages': [],
         'requires': {}
     }
 
