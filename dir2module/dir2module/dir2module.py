@@ -20,13 +20,13 @@ gi.require_version("Modulemd", "2.0")
 from gi.repository import Modulemd  # noqa: E402
 
 
-class Module(object):
+class ModuleBase:
     """
-    Provide a high-level interface for representing modules and yaml generation
-    based on their values.
+    Base class for modulemd things
     """
+
     def __init__(self, name, stream, version, context, arch, summary,
-                 description, module_license, licenses, package_nevras, requires):
+                 description, module_license, licenses, packages, requires):
         self.name = name
         self.stream = stream
         self.version = version
@@ -36,17 +36,68 @@ class Module(object):
         self.description = description
         self.module_license = module_license
         self.licenses = licenses
-        self.package_nevras = package_nevras
+        self.packages = packages
         self.requires = requires
+
+    @property
+    def filename_format(self):
+        """
+        String format for the modulemd filename. It can contain the following
+        variables:
+        {N} - Module name
+        {S} - Module stream name
+        {V} - Module version
+        {C} - Module context
+        {A} - Module architecture
+        """
+        raise NotImplementedError
+
+    def dumps(self):
+        """
+        Generate YAML based on input parameters and return it as a string
+        """
+        raise NotImplementedError
 
     @property
     def filename(self):
         """
         Generate filename for a module yaml
         """
-        return "{N}:{S}:{V}:{C}:{A}.modulemd.yaml".format(
+        return self.filename_format.format(
             N=self.name, S=self.stream, V=self.version,
             C=self.context, A=self.arch)
+
+    def dump(self):
+        """
+        Generate modulemd yaml based on input parameters write it into file
+        """
+        with open(self.filename, "w") as moduleyaml:
+            moduleyaml.write(self.dumps())
+
+    @property
+    def package_names(self):
+        """
+        Return the list of unique package names within this module
+        """
+        return {package.header.name for package in self.packages}
+
+    @property
+    def package_nevras(self):
+        """
+        Return the list of unique package NEVRAs within this module
+        """
+        return {package.nevra for package in self.packages}
+
+
+class Module(ModuleBase):
+    """
+    Provide a high-level interface for representing modules and yaml generation
+    based on their values.
+    """
+
+    @property
+    def filename_format(self):
+        return "{N}:{S}:{V}:{C}:{A}.modulemd.yaml"
 
     def dumps(self):
         """
@@ -70,16 +121,37 @@ class Module(object):
             dependencies.add_runtime_stream(depname, depstream)
         mod_stream.add_dependencies(dependencies)
 
+        profile = Modulemd.Profile.new("common")
+        for pkgname in self.package_names:
+            profile.add_rpm(pkgname)
+        mod_stream.add_profile(profile)
+
         index = Modulemd.ModuleIndex.new()
         index.add_module_stream(mod_stream)
         return index.dump_to_string()
 
-    def dump(self):
+
+class ModuleDefaults(ModuleBase):
+    """
+    Provide a high-level interface for representing modulemd defaults files
+    """
+
+    @property
+    def filename_format(self):
+        return "{N}:{S}:{V}:{C}:{A}.modulemd-defaults.yaml"
+
+    def dumps(self):
         """
-        Generate modulemd yaml based on input parameters write it into file
+        Generate modulemd_defaults yaml based on input parameters and return it
+        as a string
         """
-        with open(self.filename, "w") as moduleyaml:
-            moduleyaml.write(self.dumps())
+        mod_defaults = Modulemd.DefaultsV1.new(self.name)
+        mod_defaults.set_default_stream(self.stream)
+        mod_defaults.add_default_profile_for_stream(self.stream, "common")
+
+        index = Modulemd.ModuleIndex.new()
+        index.add_defaults(mod_defaults)
+        return index.dump_to_string()
 
 
 class Package(object):
@@ -220,7 +292,6 @@ def main():
 
     packages = [Package(package) for package in packages]
     licenses = {package.license for package in packages}
-    nevras = {package.nevra for package in packages}
 
     requires = parse_dependencies(args.requires)
     description = args.description \
@@ -238,14 +309,19 @@ def main():
         raise RuntimeError("All packages need to contain the `modularitylabel` header. "
                            "To suppress this constraint, use `--force` parameter")
 
-    module = Module(name, stream, version, context, arch, args.summary,
-                    description, args.license, licenses, nevras, requires)
+    modargs = [name, stream, version, context, arch, args.summary, description,
+               args.license, licenses, packages, requires]
+    module = Module(*modargs)
+    module_defaults = ModuleDefaults(*modargs)
 
     if args.stdout:
         print(module.dumps())
     else:
         module.dump()
         print("Created {0}".format(module.filename))
+
+        module_defaults.dump()
+        print("Created {0}".format(module_defaults.filename))
 
 
 if __name__ == "__main__":
