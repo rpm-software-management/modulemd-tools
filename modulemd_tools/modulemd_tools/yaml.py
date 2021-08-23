@@ -236,13 +236,7 @@ def upgrade(mod_yaml, version):
         parsed["data"].get("name", ""),
         parsed["data"].get("stream", ""))
 
-    mod_upgraded = mod_stream.upgrade_ext(version)
-    mod_stream_upgraded = mod_upgraded.get_stream_by_NSVCA(
-        mod_stream.get_stream_name(),
-        mod_stream.get_version(),
-        mod_stream.get_context(),
-        mod_stream.get_arch())
-
+    mod_stream_upgraded = _modulestream_upgrade_ext(mod_stream, version)
     return _stream2yaml(mod_stream_upgraded)
 
 
@@ -324,3 +318,21 @@ def _modulemd_read_packager_string(mod_yaml, name=None, stream=None):
         return mod_stream
 
     return Modulemd.read_packager_string(mod_yaml, name, stream)
+
+
+def _modulestream_upgrade_ext(mod_stream, version):
+    """
+    For the time being we happen to be in a transition state when
+    `Modulemd.ModuleStream.upgrade` is deprecated and throws warnings on
+    Fedora but we still use old libmodulemd (2.9.4) on RHEL8, which doesn't
+    provide its replacement in the form of `Modulemd.ModuleStream.upgrade_ext`.
+    """
+    if StrictVersion(Modulemd.get_version()) < StrictVersion("2.10"):
+        return mod_stream.upgrade(version)
+
+    mod_upgraded = mod_stream.upgrade_ext(version)
+    return mod_upgraded.get_stream_by_NSVCA(
+        mod_stream.get_stream_name(),
+        mod_stream.get_version(),
+        mod_stream.get_context(),
+        mod_stream.get_arch())
