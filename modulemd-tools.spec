@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.10
+Version: 0.11
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -175,6 +175,21 @@ cd ..
 
 
 %changelog
+* Mon Aug 23 2021 Jakub Kadlcik <frostyx@email.cz> 0.11-1
+- modulemd_tools: compatibility for upgrade_ext on EPEL8 (frostyx@email.cz)
+- modulemd_tools: compatibility for read_packager_string on EPEL8
+  (frostyx@email.cz)
+- dir2module: generate also profiles and modulemd-defaults file
+  (frostyx@email.cz)
+- modulemd_tools: use upgrade_ext instead of upgrade (frostyx@email.cz)
+- modulemd_tools: use read_packager_string instead of read_string
+  (frostyx@email.cz)
+- Add installation instructions (frostyx@email.cz)
+- bld2repo: do not create empty repos when --result-dir is used
+  (kdudka@redhat.com)
+- bld2repo: print status in a more intuitive format (kdudka@redhat.com)
+- tito: stop releasing for Fedora 32 (frostyx@email.cz)
+
 * Mon Jun 14 2021 Jakub Kadlcik <frostyx@email.cz> 0.10-1
 - Added bld2repo (mcurlej@redhat.com)
 
