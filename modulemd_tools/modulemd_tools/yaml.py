@@ -7,6 +7,7 @@ and all transformation functions are `str` -> `str`.
 import os
 import gi
 import yaml
+from distutils.version import StrictVersion
 
 gi.require_version("Modulemd", "2.0")
 from gi.repository import Modulemd  # noqa: E402
@@ -106,7 +107,7 @@ def update(mod_yaml, name=None, stream=None, version=None, context=None,
     mod_stream = _yaml2stream(mod_yaml)
     name = name or mod_stream.get_module_name()
     stream = stream or mod_stream.get_stream_name()
-    mod_stream = Modulemd.read_packager_string(mod_yaml, name, stream)
+    mod_stream = _modulemd_read_packager_string(mod_yaml, name, stream)
 
     if version:
         mod_stream.set_version(version)
@@ -230,7 +231,7 @@ def upgrade(mod_yaml, version):
     if parsed["version"] > version:
         raise ValueError("Cannot downgrade modulemd version")
 
-    mod_stream = Modulemd.read_packager_string(
+    mod_stream = _modulemd_read_packager_string(
         mod_yaml,
         parsed["data"].get("name", ""),
         parsed["data"].get("stream", ""))
@@ -296,7 +297,7 @@ def _generate_filename(mod_yaml):
 
 def _yaml2stream(mod_yaml):
     try:
-        return Modulemd.read_packager_string(mod_yaml)
+        return _modulemd_read_packager_string(mod_yaml)
     except gi.repository.GLib.GError as ex:
         raise ValueError(ex.message)
 
@@ -308,3 +309,18 @@ def _stream2yaml(mod_stream):
         return idx.dump_to_string()
     except gi.repository.GLib.GError as ex:
         raise RuntimeError(ex.message)
+
+
+def _modulemd_read_packager_string(mod_yaml, name=None, stream=None):
+    """
+    For the time being we happen to be in a transition state when
+    `Modulemd.ModuleStream.read_string` is deprecated and throws warnings on
+    Fedora but we still use old libmodulemd (2.9.4) on RHEL8, which doesn't
+    provide its replacement in the form of `Modulemd.read_packager_string`.
+    """
+    if StrictVersion(Modulemd.get_version()) < StrictVersion("2.11"):
+        mod_stream = Modulemd.ModuleStreamV2.new(name, stream)
+        mod_stream = mod_stream.read_string(mod_yaml, True, name, stream)
+        return mod_stream
+
+    return Modulemd.read_packager_string(mod_yaml, name, stream)
