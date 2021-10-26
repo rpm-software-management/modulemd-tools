@@ -1,0 +1,13 @@
+document: modulemd-packager
+version: 3
+data:
+# Many spaces
+    configurations :
+        # Comment A
+    - context: 'A'
+         # Inter comment
+      platform: f34
+       # Trailing comment
+    - context: 'B'
+      platform: f35
+
