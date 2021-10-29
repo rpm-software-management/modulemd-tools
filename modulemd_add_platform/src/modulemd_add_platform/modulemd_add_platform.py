@@ -9,7 +9,6 @@ import tempfile
 import gi
 gi.require_version('Modulemd', '2.0')
 from gi.repository import Modulemd
-#from gi.repository import Glib
 
 def dequote_yaml_string(input):
     """Remove string separators from a YAML string scalar.
