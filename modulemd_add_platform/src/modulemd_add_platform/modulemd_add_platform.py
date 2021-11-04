@@ -147,9 +147,9 @@ def process_string(content, old_platform, new_platform):
     It returns an error code and a string.
     In case of no error, code will be 0 and the string will be the processed,
     output document.
-    In case of an error, code will nonzero and the string will contain an
+    In case of an error, code will be nonzero and the string will contain an
     error message.
-    A special error -1 means the document needs no edition.
+    A special error -1 means the document needs no editing.
     """
 
     # Parse and validate the content
