@@ -63,3 +63,41 @@ def test_new_platform_exists():
     error, output = process_string(input, 'B', 'B')
     assert(error == -1)
 
+def test_positive_with_comments():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+    # Many spaces
+        configurations :
+            # Comment A
+        - context: 'A'
+             # Inter comment
+          platform: A
+           # Trailing comment
+        - context: 'B'
+          platform: B
+    """
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+    # Many spaces
+        configurations :
+            # Comment A
+        - context: 'A'
+             # Inter comment
+          platform: A
+           # Trailing comment
+        - context: 'X'
+             # Inter comment
+          platform: X
+           # Trailing comment
+        - context: 'B'
+          platform: B
+    """
+
+    error, output = process_string(input, 'A', 'X')
+    assert(error == 0)
+    assert(output == expected)
+
