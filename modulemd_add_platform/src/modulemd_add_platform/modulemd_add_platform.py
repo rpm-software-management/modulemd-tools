@@ -129,7 +129,7 @@ def equaled_modulemd_packager(a, b):
 
 def generate_context(contexts):
     """Generate a new string which does not exist in the given list."""
-    for integer in range():
+    for integer in range(sys.maxsize):
         context = '{!s}'.format(integer)
         if context not in contexts:
             return context
