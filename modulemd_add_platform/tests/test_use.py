@@ -101,3 +101,31 @@ def test_positive_with_comments():
     assert(error == 0)
     assert(output == expected)
 
+def test_positive_conflicting_context():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: 'B'
+          platform: C
+    """
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: '0'
+          platform: B
+        - context: 'B'
+          platform: C
+    """
+
+    error, output = process_string(input, 'A', 'B')
+    assert(error == 0)
+    assert(output == expected)
+
