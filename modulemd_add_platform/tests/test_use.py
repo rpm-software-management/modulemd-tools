@@ -129,3 +129,33 @@ def test_positive_conflicting_context():
     assert(error == 0)
     assert(output == expected)
 
+def test_positive_multiple_contexts():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: 'B'
+          platform: A
+    """
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: '0'
+          platform: B
+        - context: 'B'
+          platform: A
+        - context: '1'
+          platform: B
+    """
+
+    error, output = process_string(input, 'A', 'B')
+    assert(error == 0)
+    assert(output == expected)
+
