@@ -159,3 +159,27 @@ def test_positive_multiple_contexts():
     assert(error == 0)
     assert(output == expected)
 
+def test_positive_new_platform_is_invalid_context():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+    """
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: '0'
+          platform: 1.2
+    """
+
+    error, output = process_string(input, 'A', '1.2')
+    assert(error == 0)
+    assert(output == expected)
+
