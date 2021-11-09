@@ -134,6 +134,16 @@ def generate_context(contexts):
         if context not in contexts:
             return context
 
+def validate_context(context):
+    """Check the given string is a valid context.
+
+    Return True if it valid, False otherwise.
+    (libmodulemd does not yet export the validation function. This our own
+    implementation.)
+    """
+    return re.match(r'^[A-Za-z0-9]{1,10}$', context)
+
+
 def duplicate_configuration(template_configuration, new_context, new_platform):
     """Copy a template configuration, set the new context, and return it."""
     new_configuration = template_configuration.copy()
@@ -179,6 +189,8 @@ def process_string(content, old_platform, new_platform):
     elif len(template_configurations) == 1:
         # Try using the new platform as the new context
         if new_platform in contexts:
+            new_context = generate_context(contexts)
+        elif not validate_context(new_platform):
             new_context = generate_context(contexts)
         else:
             new_context = new_platform
