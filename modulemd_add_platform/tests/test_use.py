@@ -37,6 +37,15 @@ def test_positive():
     assert(error == 0)
     assert(output == expected)
 
+def test_invalid_input_document():
+    input = """
+    document: gibberish
+    version: 3
+    data:
+    """
+    error, output = process_string(input, 'f35', 'f36')
+    assert(error == 1)
+
 def test_no_old_platform():
     input = """
     document: modulemd-packager
