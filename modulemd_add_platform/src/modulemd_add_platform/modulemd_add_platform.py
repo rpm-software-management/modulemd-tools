@@ -226,90 +226,118 @@ def process_string(content, old_platform, new_platform):
 
     return 0, edited_content
 
-def process_file(file, old_platform, new_platform):
+def process_file(file, stdout, old_platform, new_platform):
     """Add a configuration for a new platform to the modulemd file.
 
-    In case of error, return the error message.
-    In case of success, return (None, notice), there warning is an optinal
-    notification the use could be interrested in.
+    The file is overwritten if stdout is False. Otherwise, the file is left
+    intact and the modified content is printed.
+
+    In case of error, return (True, an error message).
+    In case of success, return (False, a warning), where the warning is an
+    optinal notification the use could be interrested in.
     """
 
     # Open the modulemd-packager file
     try:
         fd = open(file, encoding='UTF-8')
     except Exception as e:
-        return 'Could not open the modulemd-packager file: {}'.format(e)
+        return (True,
+                'Could not open the modulemd-packager file: {}'.format(e))
     # Read the file
     try:
         content = fd.read()
     except Exception as e:
         fd.close()
-        return '{}: Could not read the modulemd-packager file: {}'.format(file,
-                e)
-    # Retrieve permissions of the file
-    try:
-        stat = os.fstat(fd.fileno())
-    except:
-        fd.close()
-        return '{}: Could not stat the modulemd-packager file: {}'.format(file, e)
+        return (True,
+                '{}: Could not read the modulemd-packager file: {}'.format(
+                    file, e))
+    if not stdout:
+        # Retrieve permissions of the file
+        try:
+            stat = os.fstat(fd.fileno())
+        except:
+            fd.close()
+            return (True,
+                    '{}: Could not stat the modulemd-packager file: {}'.format(
+                    file, e))
     # Close the file
     fd.close()
 
     # Edit the document in memory
     error, text = process_string(content, old_platform, new_platform)
     if error == -1:
-        return None, '{}: Skipped: {}'.format(file, text)
+        return (False, '{}: Skipped: {}'.format(file, text))
     elif error:
-        return '{}: {}'.format(file, text)
+        return (True, '{}: {}'.format(file, text))
     # TODO: Handle soft errors by printing/keeping the edited text (damage etc.)
 
-    # Store the edited document into a temporary file
+    # Print the edited document to a standard output
+    if stdout:
+        try:
+            sys.stdout.write(text)
+        except Exception as e:
+            return (True,
+                    '{}: Could not write to a standard output: {}'.format(e))
+        return (False, None)
+
+    # Or store the edited document into a temporary file
     try:
         temp_fd, temp_name = tempfile.mkstemp(dir=Path(file).parent, text=True)
         temp_file = os.fdopen(temp_fd, mode='w', encoding='UTF-8')
         temp_file.write(text)
     except Exception as e:
         temp_file.close()
-        return '{}: Could not write to a temporary file: {}'.format(temp_name,
-                e)
+        return (True,
+                '{}: Could not write to a temporary file: {}'.format(
+                    temp_name, e))
     # Copy file permissions
     try:
         os.fchmod(temp_fd, stat.st_mode)
     except Exception as e:
         temp_file.close()
-        return '{}: Could not copy a file mode: {}'.format(temp_name, e)
+        return (True,
+                '{}: Could not copy a file mode: {}'.format(temp_name, e))
     try:
         os.fchown(temp_fd, stat.st_uid, stat.st_gid)
     except Exception as e:
         temp_file.close()
-        return '{}: Could not copy a file ownership: {}'.format(temp_name, e)
+        return (True,
+                '{}: Could not copy a file ownership: {}'.format(temp_name,
+                    e))
     # Close the descriptor
     try:
         temp_file.close()
     except Exception as e:
-        return '{}: Could not close the file: {}'.format(temp_name, e)
+        return (True, '{}: Could not close the file: {}'.format(temp_name, e))
     # And replace the file
     try:
         os.replace(temp_name, file)
     except Exception as e:
-        return '{}: Could not rename to {}: {}'.format(temp_name, file, e)
+        return (True, '{}: Could not rename to {}: {}'.format(temp_name, file,
+            e))
 
 def main():
     arg_parser = argparse.ArgumentParser(
         description = 'Add a context for the given platform')
-    arg_parser.add_argument('file')
+    arg_parser.add_argument('file', metavar='FILE',
+            help='A file with packager-modulemd document to edit')
     arg_parser.add_argument('--old', required=True, metavar='PLATFORM',
             help='old platform')
     arg_parser.add_argument('--new', required=True, metavar='PLATFORM',
             help='new platform')
+    arg_parser.add_argument('--stdout', action='store_true',
+            help='print the editted document to a standard output instead of'
+                'rewriting the FILE')
     arguments = arg_parser.parse_args()
     # TODO: Validate platform values
-    error, warning = process_file(arguments.file, arguments.old, arguments.new)
+    error, message = process_file(arguments.file, arguments.stdout,
+            arguments.old, arguments.new)
     if error:
-        sys.stderr.write('Error: {}\n'.format(error))
+        sys.stderr.write('Error: {}\n'.format(message))
         exit(1)
-    if warning:
+    if message:
         sys.stderr.write('{}\n'.format(warning))
+    exit(0)
 
 
 if __name__ == '__main__':
