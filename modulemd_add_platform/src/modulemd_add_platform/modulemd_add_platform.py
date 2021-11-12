@@ -27,7 +27,7 @@ def dequote_yaml_string(input):
     if result:
         return result.group(1)
 
-def edit(content, old_platform, new_platform, context_map):
+def edit(logger, content, old_platform, new_platform, context_map):
     """Manually add build configurations in YAML document.
 
     Content is a modulemd-packager-v3 YAML document with contexts of for
@@ -47,7 +47,7 @@ def edit(content, old_platform, new_platform, context_map):
     new_context_starts_at_line_number = -1;
     old_context_lines = []
     for line in content.splitlines():
-        logging.debug('INPUT: %s', line)
+        logger.debug('INPUT: %s', line)
         output.append(line)
 
         # Comments can interleave disrespecting indentation
@@ -66,7 +66,7 @@ def edit(content, old_platform, new_platform, context_map):
                             r'(\2)(\s.*|#.*|$)',
                         line)
                 if result:
-                    logging.debug('HIT old platform')
+                    logger.debug('HIT old platform')
                     this_context_is_old_platform = True
                     line = result.group(1) + result.group(2) + new_platform \
                             + result.group(2)
@@ -74,9 +74,9 @@ def edit(content, old_platform, new_platform, context_map):
                 continue
             else:
                 in_context = False
-                logging.debug('END context of %s', current_context)
+                logger.debug('END context of %s', current_context)
                 for x in record:
-                    logging.debug('RECORDED: %s', x)
+                    logger.debug('RECORDED: %s', x)
                 if current_context in context_map:
                     # Insert the recorded context in before the last output line
                     for x in record:
@@ -98,7 +98,7 @@ def edit(content, old_platform, new_platform, context_map):
                 if current_context in context_map:
                     record.append(context_value_prefix + "'"
                             + context_map[current_context] +"'")
-                logging.debug('START context "%s"', current_context)
+                logger.debug('START context "%s"', current_context)
             continue
 
         # TODO: Restrict the space prefix to a second level
@@ -106,7 +106,7 @@ def edit(content, old_platform, new_platform, context_map):
         if result:
             in_configurations = True
             indent_configurations = result.group(1)
-            logging.debug('START configurations')
+            logger.debug('START configurations')
             continue
 
     return '\n'.join(output)
@@ -148,7 +148,7 @@ def duplicate_configuration(template_configuration, new_context, new_platform):
     new_configuration.set_platform(new_platform)
     return new_configuration
 
-def process_string(content, old_platform, new_platform):
+def process_string(logger, content, old_platform, new_platform):
     """Add a configuration for a new platform to the modulemd document string.
 
     It returns an error code and a string.
@@ -208,7 +208,7 @@ def process_string(content, old_platform, new_platform):
         document.add_build_config(new_configuration)
 
     # Edit the document preserving formatting
-    edited_content = edit(content, old_platform, new_platform,
+    edited_content = edit(logger, content, old_platform, new_platform,
             old_to_new_context_map)
 
     # Reparse the document to verify it was not damaged
@@ -223,7 +223,7 @@ def process_string(content, old_platform, new_platform):
 
     return 0, edited_content
 
-def process_file(file, stdout, old_platform, new_platform):
+def process_file(logger, file, stdout, old_platform, new_platform):
     """Add a configuration for a new platform to the modulemd file.
 
     The file is overwritten if stdout is False. Otherwise, the file is left
@@ -261,7 +261,7 @@ def process_file(file, stdout, old_platform, new_platform):
     fd.close()
 
     # Edit the document in memory
-    error, text = process_string(content, old_platform, new_platform)
+    error, text = process_string(logger, content, old_platform, new_platform)
     if error == -1:
         return (False, '{}: Skipped: {}'.format(file, text))
     elif error:
@@ -329,10 +329,12 @@ def main():
             help='Log parsing and editting')
     arguments = arg_parser.parse_args()
 
+    logger = logging.getLogger(__name__)
+    logger.addHandler(logging.StreamHandler())
     if arguments.debug:
-        logging.basicConfig(level=logging.DEBUG)
+        logger.setLevel(level=logging.DEBUG)
     # TODO: Validate platform values
-    error, message = process_file(arguments.file, arguments.stdout,
+    error, message = process_file(logger, arguments.file, arguments.stdout,
             arguments.old, arguments.new)
     if error:
         sys.stderr.write('Error: {}\n'.format(message))
