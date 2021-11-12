@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 import argparse
+import logging
 import os
 from pathlib import Path
 import re
@@ -46,7 +47,7 @@ def edit(content, old_platform, new_platform, context_map):
     new_context_starts_at_line_number = -1;
     old_context_lines = []
     for line in content.splitlines():
-        print(line)
+        logging.debug('INPUT: %s', line)
         output.append(line)
 
         # Comments can interleave disrespecting indentation
@@ -65,7 +66,7 @@ def edit(content, old_platform, new_platform, context_map):
                             r'(\2)(\s.*|#.*|$)',
                         line)
                 if result:
-                    print('HIT old platform')
+                    logging.debug('HIT old platform')
                     this_context_is_old_platform = True
                     line = result.group(1) + result.group(2) + new_platform \
                             + result.group(2)
@@ -73,9 +74,9 @@ def edit(content, old_platform, new_platform, context_map):
                 continue
             else:
                 in_context = False
-                print('END context of ' + current_context)
+                logging.debug('END context of %s', current_context)
                 for x in record:
-                    print('RECORDED: ' + x)
+                    logging.debug('RECORDED: %s', x)
                 if current_context in context_map:
                     # Insert the recorded context in before the last output line
                     for x in record:
@@ -97,7 +98,7 @@ def edit(content, old_platform, new_platform, context_map):
                 if current_context in context_map:
                     record.append(context_value_prefix + "'"
                             + context_map[current_context] +"'")
-                print('START context "{}"'.format(current_context))
+                logging.debug('START context "%s"', current_context)
             continue
 
         # TODO: Restrict the space prefix to a second level
@@ -105,12 +106,8 @@ def edit(content, old_platform, new_platform, context_map):
         if result:
             in_configurations = True
             indent_configurations = result.group(1)
-            print('START configurations')
+            logging.debug('START configurations')
             continue
-
-    print('OUTPUT:')
-    for line in output:
-        print(line)
 
     return '\n'.join(output)
 
@@ -328,7 +325,12 @@ def main():
     arg_parser.add_argument('--stdout', action='store_true',
             help='print the editted document to a standard output instead of'
                 'rewriting the FILE')
+    arg_parser.add_argument('--debug', action='store_true',
+            help='Log parsing and editting')
     arguments = arg_parser.parse_args()
+
+    if arguments.debug:
+        logging.basicConfig(level=logging.DEBUG)
     # TODO: Validate platform values
     error, message = process_file(arguments.file, arguments.stdout,
             arguments.old, arguments.new)
