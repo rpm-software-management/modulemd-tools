@@ -91,23 +91,27 @@ def test_single_quoted_escaping():
     """Sinlge quotes recongizes only a doubled single quote.
     """
 
-    input = "'a''\\a'"
+    input = "'a''\\a'#s"
     expected_value = "a'\\a"
     expected_style = "'"
+    expected_suffix = '#s'
 
-    value, style = dequote_yaml_string(input)
+    value, style, suffix = dequote_yaml_string(input)
     assert(value == expected_value)
     assert(style == expected_style)
+    assert(suffix == expected_suffix)
 
 def test_double_quoted_escaping():
     """Double quotes with escape sequences.
     """
 
-    input = '"\\\\\\"\\x20\\u0020\\U00000020"'
+    input = '"\\\\\\"\\x20\\u0020\\U00000020"#s'
     expected_value = '\\"   '
     expected_style = '"'
+    expected_suffix = '#s'
 
-    value, style = dequote_yaml_string(input)
+    value, style, suffix = dequote_yaml_string(input)
     assert(value == expected_value)
     assert(style == expected_style)
+    assert(suffix == expected_suffix)
 
