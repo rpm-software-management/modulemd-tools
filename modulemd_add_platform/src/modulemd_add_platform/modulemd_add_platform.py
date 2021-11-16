@@ -11,21 +11,111 @@ import gi
 gi.require_version('Modulemd', '2.0')
 from gi.repository import Modulemd
 
+# YAML backslash escape to Unicode charater mapping
+yaml_escapes = {
+        '0': '\0',
+        'a': '\a',
+        'b': '\b',
+        't': '\t',
+        'n': '\n',
+        'v': '\v',
+        'f': '\f',
+        'r': '\r',
+        'e': '\u001B',
+        '"': '"',
+        '/': '/',
+        '\\': '\\',
+        'N': '\u0085',
+        '_': '\u00A0',
+        'L': '\u2028',
+        'P': '\u2029'
+        }
+
 def dequote_yaml_string(input):
     """Remove string separators from a YAML string scalar.
+    Return a string value and a quoting style used in the string.
+    Quoting style is a double quote, a single quote, an empty string
+    (for no quoting). This function assumes valid YAML.
 
-    E.g. input is "'FOO'", output is "FOO". In case of error returns None.
+    E.g. input is "'FOO'", output is ("FOO", "'"). In case of error returns
+    (None, None).
     """
-    # TODO: backslash escaping
-    result = re.match(r'^\s*"([^"]*)"', input)
+    # Double-quoted?
+    result = re.match(r'^\s*"(.*)', input)
     if result:
-        return result.group(1)
-    result = re.match(r'^\s*\'([^\']*)\'', input)
+        escape = False
+        hexleft = 0
+        output = ''
+        for character in result.group(1):
+            if hexleft > 0:
+                hexleft -= 1
+                hexvalue <<= 4
+                hexvalue += int(character, base=16)
+                if hexleft == 0:
+                    output += chr(hexvalue)
+                continue
+            if escape:
+                escape = False
+                # \xHH, \uHHHH, \UHHHHHHHH
+                if character == 'x':
+                    hexleft = 2
+                    hexvalue = 0
+                elif character == 'u':
+                    hexleft = 4
+                    hexvalue = 0
+                elif character == 'U':
+                    hexleft = 8
+                    hexvalue = 0
+                else:
+                    output += yaml_escapes[character];
+                continue
+            if character == '\\':
+                escape = True
+                continue
+            if character == '"':
+                # TODO: Return a suffix
+                break
+            output += character
+        return (output, '"')
+    # Single quoted?
+    result = re.match(r'^\s*\'(.*)', input)
     if result:
-        return result.group(1)
+        quoted = False
+        output = ''
+        for character in result.group(1):
+            if quoted:
+                quoted = False
+                if character == "'":
+                    output += "'"
+                    continue
+                else:
+                    # TODO: Return a suffix
+                    break
+            if character == "'":
+                quoted = True
+                continue
+            output += character
+        return (output, "'")
+    # Unquoted?
     result = re.match(r'^\s*([^"\'#]+)', input)
     if result:
-        return result.group(1)
+        return (result.group(1), '')
+    # Error.
+    return (None, None)
+
+def quote_yaml_string(value, style):
+    """Quote a string using the given style and return the quoted YAML scalar.
+    This is a reverse of dequote_yaml_string().
+
+    E.g. input is ('FOO', '"') output is '"FOO"'
+    """
+    # TODO: switch style if needed, escape if needed
+    if style == '':
+        return value
+    if style == "'":
+        return "'" + value + "'"
+    # Else default to double quotes
+    return '"' + value + '"'
 
 def edit(logger, content, old_platform, new_platform, context_map):
     """Manually add build configurations in YAML document.
@@ -61,6 +151,7 @@ def edit(logger, content, old_platform, new_platform, context_map):
                     r'^' + indent_configurations + indent_context + r'\S',
                     line)
             if result:
+                # TODO: escape old_platform
                 result = re.match(
                         r'^(\s+platform\s*:\s*)([\'"]?)' + old_platform +
                             r'(\2)(\s.*|#.*|$)',
@@ -68,8 +159,10 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 if result:
                     logger.debug('HIT old platform')
                     this_context_is_old_platform = True
-                    line = result.group(1) + result.group(2) + new_platform \
-                            + result.group(2)
+                    platform_style = result.group(2)
+                    line = result.group(1) \
+                            + quote_yaml_string(new_platform, platform_style) \
+                            + result.group(4)
                 record.append(line)
                 continue
             else:
@@ -78,7 +171,7 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 for x in record:
                     logger.debug('RECORDED: %s', x)
                 if current_context in context_map:
-                    # Insert the recorded context in before the last output line
+                    # Insert the recorded context before the last output line
                     for x in record:
                         output.insert(-1, x)
 
@@ -92,12 +185,14 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 in_context = True
                 context_value_prefix = result.group(1)
                 indent_context = result.group(2) + ' ' + result.group(3)
-                current_context = dequote_yaml_string(result.group(4))
+                current_context, current_context_style = dequote_yaml_string(
+                        result.group(4))
                 contexts.append(current_context)
                 record.clear()
                 if current_context in context_map:
-                    record.append(context_value_prefix + "'"
-                            + context_map[current_context] +"'")
+                    # TODO: Follow a quoting style
+                    record.append(context_value_prefix + quote_yaml_string(
+                        context_map[current_context], current_context_style))
                 logger.debug('START context "%s"', current_context)
             continue
 
