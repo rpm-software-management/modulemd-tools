@@ -33,20 +33,26 @@ yaml_escapes = {
 
 def dequote_yaml_string(input):
     """Remove string separators from a YAML string scalar.
-    Return a string value and a quoting style used in the string.
-    Quoting style is a double quote, a single quote, an empty string
+
+    Return a string value, a quoting style, and a comment suffix used in the
+    string. Quoting style is a double quote, a single quote, an empty string
     (for no quoting). This function assumes valid YAML.
 
-    E.g. input is "'FOO'", output is ("FOO", "'"). In case of error returns
-    (None, None).
+    E.g. If an input is "'FOO'#comment", output will be ("FOO", "'", "#comment").
+    In case of error returns (None, None, None).
     """
     # Double-quoted?
     result = re.match(r'^\s*"(.*)', input)
     if result:
         escape = False
+        in_suffix = False
         hexleft = 0
         output = ''
+        suffix = ''
         for character in result.group(1):
+            if in_suffix:
+                suffix += character
+                continue
             if hexleft > 0:
                 hexleft -= 1
                 hexvalue <<= 4
@@ -73,49 +79,56 @@ def dequote_yaml_string(input):
                 escape = True
                 continue
             if character == '"':
-                # TODO: Return a suffix
-                break
+                in_suffix = True
+                continue
             output += character
-        return (output, '"')
+        return (output, '"', suffix)
     # Single quoted?
     result = re.match(r'^\s*\'(.*)', input)
     if result:
         quoted = False
+        in_suffix = False
         output = ''
+        suffix = ''
         for character in result.group(1):
+            if in_suffix:
+                suffix += character
+                continue
             if quoted:
                 quoted = False
                 if character == "'":
                     output += "'"
                     continue
                 else:
-                    # TODO: Return a suffix
-                    break
+                    in_suffix = True
+                    suffix += character
+                    continue
             if character == "'":
                 quoted = True
                 continue
             output += character
-        return (output, "'")
+        return (output, "'", suffix)
     # Unquoted?
-    result = re.match(r'^\s*([^"\'#]+)', input)
+    result = re.match(r'^\s*([^"\'#]+)(.*)', input)
     if result:
-        return (result.group(1), '')
+        return (result.group(1), '', result.group(2))
     # Error.
-    return (None, None)
+    return (None, None, None)
 
-def quote_yaml_string(value, style):
-    """Quote a string using the given style and return the quoted YAML scalar.
-    This is a reverse of dequote_yaml_string().
+def quote_yaml_string(value, style, suffix):
+    """Quote a string using the given style, append a comment suffix,
+    and return the quoted YAML scalar. This is a reverse of dequote_yaml_string().
 
-    E.g. input is ('FOO', '"') output is '"FOO"'
+    E.g. if an input is ('FOO', '"', '#comment'), the output will be
+    '"FOO"#comment'.
     """
     # TODO: switch style if needed, escape if needed
     if style == '':
-        return value
+        return value + suffix
     if style == "'":
-        return "'" + value + "'"
+        return "'" + value + "'" + suffix
     # Else default to double quotes
-    return '"' + value + '"'
+    return '"' + value + '"' + suffix
 
 def edit(logger, content, old_platform, new_platform, context_map):
     """Manually add build configurations in YAML document.
@@ -159,10 +172,9 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 if result:
                     logger.debug('HIT old platform')
                     this_context_is_old_platform = True
-                    platform_style = result.group(2)
                     line = result.group(1) \
-                            + quote_yaml_string(new_platform, platform_style) \
-                            + result.group(4)
+                            + quote_yaml_string(new_platform, result.group(2),
+                                    result.group(4))
                 record.append(line)
                 continue
             else:
@@ -179,20 +191,22 @@ def edit(logger, content, old_platform, new_platform, context_map):
             # TODO: Handle "-\n context". Comments can interleave.
             result = re.match(
                     r'^(' + indent_configurations +
-                        r'(\s*)-(\s+)context\s*:\s*)(\S+)',
+                        r'(\s*)-(\s+)context\s*:\s*)(.*)',
                     line)
             if result:
                 in_context = True
                 context_value_prefix = result.group(1)
                 indent_context = result.group(2) + ' ' + result.group(3)
-                current_context, current_context_style = dequote_yaml_string(
-                        result.group(4))
+                current_context, current_context_style, \
+                    current_context_suffix = dequote_yaml_string(
+                            result.group(4))
                 contexts.append(current_context)
                 record.clear()
                 if current_context in context_map:
                     # TODO: Follow a quoting style
                     record.append(context_value_prefix + quote_yaml_string(
-                        context_map[current_context], current_context_style))
+                        context_map[current_context], current_context_style,
+                        current_context_suffix))
                 logger.debug('START context "%s"', current_context)
             continue
 

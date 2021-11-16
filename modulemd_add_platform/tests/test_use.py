@@ -84,9 +84,9 @@ def test_positive_with_comments():
     # Many spaces
         configurations :
             # Comment A
-        - context: 'A'
+        - context: 'A' # Context suffix comment
              # Inter comment
-          platform: A
+          platform: A  # Platform suffix comment
            # Trailing comment
         - context: 'B'
           platform: B
@@ -98,13 +98,13 @@ def test_positive_with_comments():
     # Many spaces
         configurations :
             # Comment A
-        - context: 'A'
+        - context: 'A' # Context suffix comment
              # Inter comment
-          platform: A
+          platform: A  # Platform suffix comment
            # Trailing comment
-        - context: 'X'
+        - context: 'X' # Context suffix comment
              # Inter comment
-          platform: X
+          platform: X  # Platform suffix comment
            # Trailing comment
         - context: 'B'
           platform: B
