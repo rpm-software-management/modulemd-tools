@@ -267,6 +267,22 @@ def edit(logger, content, old_platform, new_platform, context_map):
             logger.debug('START configurations')
             continue
 
+    # If the old context block was right at the end of the document.
+    if in_context:
+        in_context = False
+        logger.debug('END context "%s"', current_context)
+        for x in record:
+            logger.debug('RECORDED: %s', x)
+        if current_context in context_map:
+            # Append the recorded context after the last output line
+            for x in record:
+                output.append(x)
+
+    # Accaunt for the end-of-line character of the last line.
+    if content.endswith('\n'):
+        logger.debug('Appending final new line')
+        output.append('')
+
     return '\n'.join(output)
 
 def equaled_modulemd_packager(a, b):
