@@ -1,6 +1,6 @@
 import pytest
 from modulemd_add_platform.modulemd_add_platform \
-        import process_string, dequote_yaml_string
+        import process_string, dequote_yaml_string, quote_yaml_string
 import logging
 
 logger = logging.getLogger('null')
@@ -87,8 +87,25 @@ def test_double_quotes():
     assert(error == 0)
     assert(output == expected)
 
+def test_unquoted_escaping():
+    """Unquoted style does not recognize any sequences.
+    """
+
+    input = "a'\"\\ b #s"
+    expected_value = "a'\"\\ b"
+    expected_style = ""
+    expected_suffix = " #s"
+
+    value, style, suffix = dequote_yaml_string(input)
+    assert(value == expected_value)
+    assert(style == expected_style)
+    assert(suffix == expected_suffix)
+
+    output = quote_yaml_string(value, style, suffix)
+    assert(output == input)
+
 def test_single_quoted_escaping():
-    """Sinlge quotes recongizes only a doubled single quote.
+    """Single-quote style recongizes only a doubled single-quote sequence.
     """
 
     input = "'a''\\a'#s"
@@ -101,17 +118,23 @@ def test_single_quoted_escaping():
     assert(style == expected_style)
     assert(suffix == expected_suffix)
 
+    output = quote_yaml_string(value, style, suffix)
+    assert(output == input)
+
 def test_double_quoted_escaping():
-    """Double quotes with escape sequences.
+    """Double-quotes style with escape sequences.
     """
 
-    input = '"\\\\\\"\\x20\\u0020\\U00000020"#s'
-    expected_value = '\\"   '
+    input = '"\\\\\\"\\x20\\u0020\\U00000020\\n"#s'
+    expected_value = '\\"   \n'
     expected_style = '"'
     expected_suffix = '#s'
+    expected_output = '"\\\\\\"   \\n"#s'
 
     value, style, suffix = dequote_yaml_string(input)
     assert(value == expected_value)
     assert(style == expected_style)
     assert(suffix == expected_suffix)
 
+    output = quote_yaml_string(value, style, suffix)
+    assert(output == expected_output)

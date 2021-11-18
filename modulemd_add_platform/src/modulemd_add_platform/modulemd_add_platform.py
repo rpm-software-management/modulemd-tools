@@ -30,6 +30,24 @@ yaml_escapes = {
         'L': '\u2028',
         'P': '\u2029'
         }
+# Unicode to YAML backslash escape mapping for double-quoted strings
+yaml_deescapes = {
+        '\0': '\\0',
+        '\a': '\\a',
+        '\b': '\\b',
+        '\t': '\\t',
+        '\n': '\\n',
+        '\v': '\\v',
+        '\f': '\\f',
+        '\r': '\\r',
+        '\u001B': '\\e',
+        '"': '\\"',
+        '\\': '\\\\',
+        '\u0085': '\\N',
+        '\u00A0': '\\_',
+        '\u2028': '\\L',
+        '\u2029': '\\P'
+        }
 
 def dequote_yaml_string(input):
     """Remove string separators from a YAML string scalar.
@@ -109,7 +127,7 @@ def dequote_yaml_string(input):
             output += character
         return (output, "'", suffix)
     # Unquoted?
-    result = re.match(r'^\s*([^"\'#]+)(.*)', input)
+    result = re.match(r'^\s*([^#]*[^#\s])(\s*(?:#.*)?)', input)
     if result:
         return (result.group(1), '', result.group(2))
     # Error.
@@ -119,16 +137,47 @@ def quote_yaml_string(value, style, suffix):
     """Quote a string using the given style, append a comment suffix,
     and return the quoted YAML scalar. This is a reverse of dequote_yaml_string().
 
+    Be ware that if the value contains characters forbidden in the requested
+    quoting style, this function will produce a double-quoted string instead
+    which is the most expressive style.
+
     E.g. if an input is ('FOO', '"', '#comment'), the output will be
     '"FOO"#comment'.
     """
-    # TODO: switch style if needed, escape if needed
+    # Switch style if needed.
+    # Printable line-oriented characters (e.g. '\n', '\r') excluded on purpose
+    if not re.match(
+            r'\A[\x20-\x7E\xA0-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]*\Z',
+            value):
+        style = '"'
+    if style == '' and (re.match(r"\A[\s'\"]", value)
+            or re.match(r"\s\Z", value) or re.match("[#:]", value)):
+        style = '"'
+
+    # Format without quotes
     if style == '':
         return value + suffix
+    # Format with single-quotes
     if style == "'":
-        return "'" + value + "'" + suffix
+        output = ''
+        for character in value:
+            if character == "'":
+                output += "''"
+                continue
+            output += character
+        return "'" + output + "'" + suffix
     # Else default to double quotes
-    return '"' + value + '"' + suffix
+    output = ''
+    for character in value:
+        if character in yaml_deescapes:
+            output += yaml_deescapes[character]
+        elif not re.match(
+            r'[\x20-\x7E\xA0-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]',
+            value):
+            output += '\\U{:08X}'.format(ord(character))
+        else:
+            output += character
+    return '"' + output + '"' + suffix
 
 def edit(logger, content, old_platform, new_platform, context_map):
     """Manually add build configurations in YAML document.
@@ -179,7 +228,7 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 continue
             else:
                 in_context = False
-                logger.debug('END context of %s', current_context)
+                logger.debug('END context "%s"', current_context)
                 for x in record:
                     logger.debug('RECORDED: %s', x)
                 if current_context in context_map:
@@ -328,7 +377,9 @@ def process_string(logger, content, old_platform, new_platform):
 
     # Compare library-edited and manually edited documents
     if not equaled_modulemd_packager(document, edited_document):
-        return 4, 'Editing would demage the modulemd-packager document.'
+        return 4, \
+            'Editing would demage the modulemd-packager document:\n{}'.format(
+                    edited_content)
 
     return 0, edited_content
 
