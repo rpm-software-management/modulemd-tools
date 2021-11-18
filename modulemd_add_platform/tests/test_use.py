@@ -41,6 +41,52 @@ def test_positive():
     assert(error == 0)
     assert(output == expected)
 
+def test_positive_the_last_line():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+"""
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: 'B'
+          platform: B
+"""
+
+    error, output = process_string(logger, input, 'A', 'B')
+    assert(error == 0)
+    assert(output == expected)
+
+def test_positive_no_trailing_newline():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A"""
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+        - context: 'A'
+          platform: A
+        - context: 'B'
+          platform: B"""
+
+    error, output = process_string(logger, input, 'A', 'B')
+    assert(error == 0)
+    assert(output == expected)
+
 def test_invalid_input_document():
     input = """
     document: gibberish
