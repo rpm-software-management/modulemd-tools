@@ -61,7 +61,8 @@ def test_single_quotes():
     assert(output == expected)
 
 def test_double_quotes():
-    """Original uses double quotes, output has them too.
+    """Original uses double quotes, platform is properly dequoted,
+    output used double quotes too.
     """
 
     input = """
@@ -70,7 +71,7 @@ def test_double_quotes():
     data:
         configurations:
         - context: "A"
-          platform: "A"
+          platform: "\x41"
     """
     expected = """
     document: modulemd-packager
@@ -78,7 +79,7 @@ def test_double_quotes():
     data:
         configurations:
         - context: "A"
-          platform: "A"
+          platform: "\x41"
         - context: "B"
           platform: "B"
     """
