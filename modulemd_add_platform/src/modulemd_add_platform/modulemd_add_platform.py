@@ -481,6 +481,9 @@ def process_file(logger, file, stdout, old_platform, new_platform):
         return (True, '{}: Could not rename to {}: {}'.format(temp_name, file,
             e))
 
+    # Successfully stored
+    return (False, None)
+
 def main():
     arg_parser = argparse.ArgumentParser(
         description = 'Add a context for the given platform')
