@@ -213,17 +213,15 @@ def edit(logger, content, old_platform, new_platform, context_map):
                     r'^' + indent_configurations + indent_context + r'\S',
                     line)
             if result:
-                # TODO: escape old_platform
-                result = re.match(
-                        r'^(\s+platform\s*:\s*)([\'"]?)' + old_platform +
-                            r'(\2)(\s.*|#.*|$)',
-                        line)
+                result = re.match(r'^(\s+platform\s*:\s*)([\'"\S].*)', line)
                 if result:
-                    logger.debug('HIT old platform')
-                    this_context_is_old_platform = True
-                    line = result.group(1) \
-                            + quote_yaml_string(new_platform, result.group(2),
-                                    result.group(4))
+                    platform, style, suffix = dequote_yaml_string(
+                            result.group(2))
+                    if platform == old_platform:
+                        logger.debug('HIT old platform')
+                        this_context_is_old_platform = True
+                        line = result.group(1) \
+                                + quote_yaml_string(new_platform, style, suffix)
                 record.append(line)
                 continue
             else:
