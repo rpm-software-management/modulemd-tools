@@ -187,8 +187,6 @@ def edit(logger, content, old_platform, new_platform, context_map):
     to new contexts listed in context_map values. When duplicating, it will
     rewrite old_platform to new_platform.
     """
-    # TODO: There can be multiple contexts for a platform. All of them should
-    # be duplicated.
     output = []
     record = []
     contexts = []
@@ -250,7 +248,6 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 contexts.append(current_context)
                 record.clear()
                 if current_context in context_map:
-                    # TODO: Follow a quoting style
                     record.append(context_value_prefix + quote_yaml_string(
                         context_map[current_context], current_context_style,
                         current_context_suffix))
