@@ -384,7 +384,8 @@ def process_string(logger, content, old_platform, new_platform):
     try:
         edited_document = Modulemd.read_packager_string(edited_content)
     except Exception as e:
-        return 3, 'Unable to parse the edited document: {}'.format(e)
+        return 3, 'Unable to parse the edited document: {}:\n{}'.format(e,
+                edited_content)
 
     # Compare library-edited and manually edited documents
     if not equaled_modulemd_packager(document, edited_document):
@@ -437,7 +438,6 @@ def process_file(logger, file, stdout, old_platform, new_platform):
         return (False, '{}: Skipped: {}'.format(file, text))
     elif error:
         return (True, '{}: {}'.format(file, text))
-    # TODO: Handle soft errors by printing/keeping the edited text (damage etc.)
 
     # Print the edited document to a standard output
     if stdout:
