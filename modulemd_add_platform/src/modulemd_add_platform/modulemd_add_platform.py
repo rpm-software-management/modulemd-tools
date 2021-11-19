@@ -205,10 +205,11 @@ def edit(logger, content, old_platform, new_platform, context_map):
 
         if in_context:
             result = re.match(
-                    r'^' + indent_configurations + indent_context + r'\S',
+                    r'^' + indent_configurations + indent_context,
                     line)
             if result:
-                result = re.match(r'^(\s+platform\s*:\s*)([\'"\S].*)', line)
+                result = re.match(r'^('+ indent_configurations
+                        + indent_context + r'platform\s*:\s*)([\'"\S].*)', line)
                 if result:
                     platform, style, suffix = dequote_yaml_string(
                             result.group(2))
@@ -261,7 +262,7 @@ def edit(logger, content, old_platform, new_platform, context_map):
     # If the old context block was right at the end of the document.
     if in_context:
         in_context = False
-        logger.debug('END context "%s"', current_context)
+        logger.debug('END context "%s" at end of document', current_context)
         for x in record:
             logger.debug('RECORDED: %s', x)
         if current_context in context_map:

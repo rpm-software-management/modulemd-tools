@@ -242,3 +242,33 @@ def test_positive_new_platform_is_invalid_context():
     assert(error == 0)
     assert(output == expected)
 
+def test_positive_nested_fields_inside_a_context():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+            - context: 'A'
+              platform: A
+              buildrequires:
+                  foo: [bar]
+    """
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+            - context: 'A'
+              platform: A
+              buildrequires:
+                  foo: [bar]
+            - context: 'B'
+              platform: B
+              buildrequires:
+                  foo: [bar]
+    """
+
+    error, output = process_string(logger, input, 'A', 'B')
+    assert(error == 0)
+    assert(output == expected)
+
