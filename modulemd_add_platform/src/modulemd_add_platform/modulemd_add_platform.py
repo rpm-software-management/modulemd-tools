@@ -189,13 +189,10 @@ def edit(logger, content, old_platform, new_platform, context_map):
     """
     output = []
     record = []
-    contexts = []
     in_configurations = False
     in_context = False
     current_context = ''
     this_context_is_old_platform = False
-    new_context_starts_at_line_number = -1;
-    old_context_lines = []
     for line in content.splitlines():
         logger.debug('INPUT: %s', line)
         output.append(line)
@@ -245,7 +242,6 @@ def edit(logger, content, old_platform, new_platform, context_map):
                 current_context, current_context_style, \
                     current_context_suffix = dequote_yaml_string(
                             result.group(4))
-                contexts.append(current_context)
                 record.clear()
                 if current_context in context_map:
                     record.append(context_value_prefix + quote_yaml_string(
