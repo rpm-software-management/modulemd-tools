@@ -45,7 +45,6 @@ def get_buildrequire_pkgs_from_build(build_id, session, config):
         for rpm in tagged_rpms:
             if pkg["build_id"] == rpm["build_id"] and rpm["arch"] in archs:
                 pkg_md["rpms"].append(rpm)
-                tagged_rpms.remove(rpm)
 
         if pkg_md["rpms"]:
             pkgs.append(pkg_md)
