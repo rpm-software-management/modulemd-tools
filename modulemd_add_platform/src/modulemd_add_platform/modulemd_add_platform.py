@@ -314,7 +314,8 @@ def duplicate_configuration(template_configuration, new_context, new_platform):
     new_configuration.set_platform(new_platform)
     return new_configuration
 
-def process_string(logger, content, old_platform, new_platform):
+def process_string(logger, content, ignore_unsuitable, old_platform,
+        new_platform):
     """Add a configuration for a new platform to the modulemd document string.
 
     It returns an error code and a string.
@@ -322,7 +323,11 @@ def process_string(logger, content, old_platform, new_platform):
     output document.
     In case of an error, code will be nonzero and the string will contain an
     error message.
-    A special error -1 means the document needs no editing.
+    A special error -1 means the document needs no editing. Either because it
+    already contains a configuration the new platform, or because
+    ignore_unsuitable argument is True and the string does not contain
+    a configuration for the old platform or the string is a modulemd-v2
+    document, which does not use configurations.
     """
 
     # Parse and validate the content
@@ -330,6 +335,9 @@ def process_string(logger, content, old_platform, new_platform):
         document = Modulemd.read_packager_string(content)
     except Exception as e:
         return 1, 'Unable to parse a modulemd-packager document: {}'.format(e)
+    # Ignore unsuitable documents if requested
+    if type(document) == Modulemd.ModuleStreamV2:
+        return -1 if ignore_unsuitable else 1, 'This is a modulemd-v2 document'
 
     # Enumerate all contexts with the old platform
     contexts = document.get_build_config_contexts_as_strv()
@@ -348,7 +356,8 @@ def process_string(logger, content, old_platform, new_platform):
     new_configurations = []
     old_to_new_context_map = {}
     if len(template_configurations) == 0:
-        return 2, 'No context with the old platform {}.'.format(old_platform)
+        return -1 if ignore_unsuitable else 2, \
+            'No context with the old platform {}.'.format(old_platform)
     elif len(template_configurations) == 1:
         # Try using the new platform as the new context
         if new_platform in contexts:
@@ -392,15 +401,21 @@ def process_string(logger, content, old_platform, new_platform):
 
     return 0, edited_content
 
-def process_file(logger, file, stdout, old_platform, new_platform):
+def process_file(logger, file, stdout, skip, old_platform, new_platform):
     """Add a configuration for a new platform to the modulemd file.
 
     The file is overwritten if stdout is False. Otherwise, the file is left
     intact and the modified content is printed.
 
-    In case of error, return (True, an error message).
+    The file should be a modulemd-packager document with a context for the old
+    platform. If it isn't and a skip argument is False, an error will be
+    reported. Otherwise the file will be skipped. Nevertheles if the file
+    already contains a context for the new platform, the file will also be
+    skipped.
+
+    In case of an error, return (True, an error message).
     In case of success, return (False, a warning), where the warning is an
-    optinal notification the use could be interrested in.
+    optinal notification the user could be interrested in.
     """
 
     # Open the modulemd-packager file
@@ -430,7 +445,8 @@ def process_file(logger, file, stdout, old_platform, new_platform):
     fd.close()
 
     # Edit the document in memory
-    error, text = process_string(logger, content, old_platform, new_platform)
+    error, text = process_string(logger, content, skip, old_platform,
+            new_platform)
     if error == -1:
         return (False, '{}: Skipped: {}'.format(file, text))
     elif error:
@@ -486,15 +502,18 @@ def process_file(logger, file, stdout, old_platform, new_platform):
 
 def main():
     arg_parser = argparse.ArgumentParser(
-        description = 'Add a context for the given platform')
+            description = 'Add a context for the given platform.')
     arg_parser.add_argument('file', metavar='FILE',
-            help='A file with packager-modulemd document to edit')
+            help='A file with modulemd-packager document to edit')
     arg_parser.add_argument('--old', required=True, metavar='PLATFORM',
             help='old platform')
     arg_parser.add_argument('--new', required=True, metavar='PLATFORM',
             help='new platform')
+    arg_parser.add_argument('--skip', action='store_true',
+            help='ignore documents without a context for the old platform '
+                'and modulemd-v2 documents')
     arg_parser.add_argument('--stdout', action='store_true',
-            help='print the editted document to a standard output instead of'
+            help='print the editted document to a standard output instead of '
                 'rewriting the FILE')
     arg_parser.add_argument('--debug', action='store_true',
             help='Log parsing and editting')
@@ -506,12 +525,12 @@ def main():
         logger.setLevel(level=logging.DEBUG)
     # TODO: Validate platform values
     error, message = process_file(logger, arguments.file, arguments.stdout,
-            arguments.old, arguments.new)
+            arguments.skip, arguments.old, arguments.new)
     if error:
         sys.stderr.write('Error: {}\n'.format(message))
         exit(1)
     if message:
-        sys.stderr.write('{}\n'.format(warning))
+        sys.stderr.write('{}\n'.format(message))
     exit(0)
 
 

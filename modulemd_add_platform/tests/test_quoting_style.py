@@ -29,7 +29,7 @@ def test_no_quotes():
           platform: B
     """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
@@ -56,7 +56,7 @@ def test_single_quotes():
           platform: 'B'
     """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
@@ -84,7 +84,7 @@ def test_double_quotes():
           platform: "B"
     """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 

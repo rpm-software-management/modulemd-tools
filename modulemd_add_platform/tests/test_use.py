@@ -37,7 +37,7 @@ def test_positive():
           platform: f36
     """
 
-    error, output = process_string(logger, input, 'f35', 'f36')
+    error, output = process_string(logger, input, False, 'f35', 'f36')
     assert(error == 0)
     assert(output == expected)
 
@@ -61,7 +61,7 @@ def test_positive_the_last_line():
           platform: B
 """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
@@ -83,7 +83,7 @@ def test_positive_no_trailing_newline():
         - context: 'B'
           platform: B"""
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
@@ -93,7 +93,7 @@ def test_invalid_input_document():
     version: 3
     data:
     """
-    error, output = process_string(logger, input, 'f35', 'f36')
+    error, output = process_string(logger, input, False, 'f35', 'f36')
     assert(error == 1)
 
 def test_no_old_platform():
@@ -105,7 +105,7 @@ def test_no_old_platform():
         - context: 'A'
           platform: 'A'
     """
-    error, output = process_string(logger, input, 'f35', 'f36')
+    error, output = process_string(logger, input, False, 'f35', 'f36')
     assert(error == 2)
 
 def test_new_platform_exists():
@@ -119,7 +119,7 @@ def test_new_platform_exists():
         - context: 'B'
           platform: 'B'
     """
-    error, output = process_string(logger, input, 'B', 'B')
+    error, output = process_string(logger, input, False, 'B', 'B')
     assert(error == -1)
 
 def test_positive_with_comments():
@@ -156,7 +156,7 @@ def test_positive_with_comments():
           platform: B
     """
 
-    error, output = process_string(logger, input, 'A', 'X')
+    error, output = process_string(logger, input, False, 'A', 'X')
     assert(error == 0)
     assert(output == expected)
 
@@ -184,7 +184,7 @@ def test_positive_conflicting_context():
           platform: C
     """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
@@ -214,7 +214,7 @@ def test_positive_multiple_contexts():
           platform: B
     """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
@@ -238,7 +238,7 @@ def test_positive_new_platform_is_invalid_context():
           platform: 1.2
     """
 
-    error, output = process_string(logger, input, 'A', '1.2')
+    error, output = process_string(logger, input, False, 'A', '1.2')
     assert(error == 0)
     assert(output == expected)
 
@@ -268,7 +268,7 @@ def test_positive_nested_fields_inside_a_context():
                   foo: [bar]
     """
 
-    error, output = process_string(logger, input, 'A', 'B')
+    error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
 
