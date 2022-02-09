@@ -32,6 +32,7 @@ argparse-manpage \
     --url HOMEPAGE \
     > ./man/createrepo_mod.1
 
+cp modulemd_add_platform/modulemd_add_platform.1 ./man
 
 argparse-manpage \
     --pyfile modulemd-merge/modulemd_merge/modulemd_merge.py \
