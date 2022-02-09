@@ -1,0 +1,109 @@
+.TH MODULEMD_ADD_PLATFORM "1" "" "modulemd-tools" "User Commands"
+.SH NAME
+modulemd_add_platform \- add a context for a new platform to modulemd-packager document
+.SH SYNOPSIS
+.SY modulemd_add_platform
+[\fB\-\-debug\fP]
+\fB\-\-old\fP \fIPLATFORM\fP
+\fB\-\-new\fP \fIPLATFORM\fP
+[\fB\-\-stdout\fP] [\fB\-\-skip\fP]
+\fIFILE\fI
+.SY modulemd_add_platform
+{\fB\-h\fP|\fB\-\-help\fP}
+.YS
+.SH DESCRIPTION
+This tool adds a new context configuration to a modulemd-packager YAML file.
+The file defines how to build a module.
+.P
+The tool loads a \fIFILE\fP, locates all context configurations with a plaform
+equivalent to the \fB\-\-old\fP argument, duplicates the configurations under
+new context identifiers, and replaces there the platforms with a new one
+specified in \fB\-\-new\fP argument. If a context for the new platform already
+exists, the file will be kept unchanged.
+.P
+As the new context identifier is used the new platform value. If such context
+already exists, a new, unique, small decimal number (e.g. "0", "1") will be
+used.
+.P
+This tool aims to preserve a physical representation of the YAML files. That
+includes white spaces, comments, and quoting styles. Also all fields of the
+configuration, like \fBbuildrequires\fP, or \fBbuildopts\fP will be preserved.
+.P
+Finally, the the new content is validated and if no damage is detected, the
+content is saved back to the \fIFILE\fP. Users are advised to check the
+changes before commiting to them.
+.SH OPTIONS
+.TP
+\fB\-\-old\fP \fIPLATFORM\fP
+Use context configurations of this old \fIPLATFORM\fP as a template for
+addition. This option is mandatory.
+.TP
+\fB\-\-new\fP \fIPLATFORM\fP
+Set this \fIPLATFORM\fP in the new configurations. This option is mandatory.
+.TP
+\fB\-\-skip\fP
+If specified, the files without a context configuration for the old platform and
+files of modulemd-v2 format will be ignored. Otherwise, an error is reported.
+.TP
+\fB\-\-stdout\fP
+The edited document will be printed to a standard output instead of rewriting
+the \fIFILE\fP in place.
+.TP
+\fB\-\-debug\fP
+Print various debugging messages about parsing and editing the YAML files to
+an error output.
+.TP
+\fB\-h\fP, \fB\-\-help\fP
+Show a usage text and exit without processing any files.
+.SH EXAMPLE
+Let's have a file \fB/tmp/test.yaml\fP:
+.P
+.RS
+.EX
+document: modulemd-packager
+version: 3
+data:
+    configurations:
+    - context: 'A'
+      platform: f34
+.EE
+.RE
+.P
+Adding a configuration for \fBplatform:f35\fP can be achieved with
+\fBmodulemd_add_platform \-\-old f34 \-\-new f35 /tmp/test.yaml\fP command.
+The resulting file will be:
+.P
+.RS
+.EX
+document: modulemd-packager
+version: 3
+data:
+    configurations:
+    - context: 'A'
+      platform: f34
+    - context: 'f35'
+      platform: f35
+.EE
+.RE
+.SH EXIT CODE
+Return a zero exit code if the \fIFILE\fP was successfully edited or the
+\fIFILE\fP already contained the new platform.
+.P
+Return non-zero exit code if an error occurred.
+.P
+If the input \fBFILE\fP does not contain a context for the old platform, or if
+the file is modulemd-v2 document, which does not use context configurations,
+the behaviour depends on a use of \fB\-\-skip\fP option. If it isn't used,
+a non-zero code will be returned. Otherwise, zero code will be returned.
+.SH REPORTING BUGS
+Bugs and feature requests can be reported at the
+.UR https://github.com/rpm-software-management/modulemd-tools
+modulemd-tools home page
+.UE .
+.SH SEE ALSO
+Specification of the modulemd-packager documents is available among
+a documentation for \fBlibmodulemd\fP package or in \fByaml_spec\fP directory
+at the
+.UR https://github.com/fedora-modularity/libmodulemd
+libmodulemd home page
+.UE .
