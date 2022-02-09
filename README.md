@@ -31,6 +31,14 @@ For more information about `createrepo_mod`, please see
 [createrepo_mod/README.md](createrepo_mod/README.md)
 
 
+### modulemd_add_platform
+Add a context configuration for a new platform to a modulemd-packager-v3
+document.
+
+For more information about `modulemd_add_platform`, please see
+[modulemd_add_platform/README](modulemd_add_platform/README)
+
+
 ### modulemd-merge
 Merge several modules.yaml files into one.
 
@@ -278,6 +286,20 @@ $ grep name modules.yaml -A2
   version: 123
 ```
 
+
+### Building a module for the next distribution version
+
+Modulemd YAML files in modulemd-packager format needs to list each supported
+platform stream. When porting a module to the next distribution version it is
+necessary to add a new `context configuration` matching the new platform.
+`modulemd_add_platform` tool helps with it.
+
+For instance, porting a `module.yaml` from Fedora 35 to Fedora 36 can be
+achieved with:
+
+```
+$ modulemd_add_platform --old f35 --new f36 module.yaml
+```
 
 
 [modularity-label]: https://sgallagh.wordpress.com/2019/08/14/sausage-factory-modules-fake-it-till-you-make-it/
