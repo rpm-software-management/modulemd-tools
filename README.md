@@ -36,7 +36,7 @@ Add a context configuration for a new platform to a modulemd-packager-v3
 document.
 
 For more information about `modulemd_add_platform`, please see
-[modulemd_add_platform/README](modulemd_add_platform/README)
+[modulemd_add_platform/README.md](modulemd_add_platform/README.md)
 
 
 ### modulemd-merge
