@@ -31,12 +31,12 @@ For more information about `createrepo_mod`, please see
 [createrepo_mod/README.md](createrepo_mod/README.md)
 
 
-### modulemd_add_platform
+### modulemd-add-platform
 Add a context configuration for a new platform to a modulemd-packager-v3
 document.
 
-For more information about `modulemd_add_platform`, please see
-[modulemd_add_platform/README.md](modulemd_add_platform/README.md)
+For more information about `modulemd-add-platform`, please see
+[modulemd-add-platform/README.md](modulemd-add-platform/README.md)
 
 
 ### modulemd-merge
@@ -292,13 +292,13 @@ $ grep name modules.yaml -A2
 Modulemd YAML files in modulemd-packager format needs to list each supported
 platform stream. When porting a module to the next distribution version it is
 necessary to add a new `context configuration` matching the new platform.
-`modulemd_add_platform` tool helps with it.
+`modulemd-add-platform` tool helps with it.
 
 For instance, porting a `module.yaml` from Fedora 35 to Fedora 36 can be
 achieved with:
 
 ```
-$ modulemd_add_platform --old f35 --new f36 module.yaml
+$ modulemd-add-platform --old f35 --new f36 module.yaml
 ```
 
 
