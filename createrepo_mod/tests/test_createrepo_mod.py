@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 dirname = os.path.dirname(os.path.realpath(__file__))
 test_packages_dir = os.path.join(dirname, "packages")
 test_module_yamls_dir = os.path.join(dirname, "module_yamls")
+modulemd_merge = "/usr/bin/modulemd-merge"
 
 
 def test_run_createrepo(test_output_dir):
@@ -30,7 +31,10 @@ def test_find_module_yamls():
     assert len(find_module_yamls(test_module_yamls_dir)) > 0
 
 
-@pytest.mark.skipif(shutil.which("modulemd-merge") is None, reason="requires modulemd-merge")
+# Ideally we would like to check if shutil.which("modulemd-merge") exists but
+# it started failing in mock for some reason
+@pytest.mark.skipif(not os.path.exists(modulemd_merge),
+                    reason="requires modulemd-merge")
 def test_dump_modules_yaml(test_output_dir):
     dump_modules_yaml(test_output_dir, find_module_yamls(test_module_yamls_dir))
     assert os.path.isfile(os.path.join(test_output_dir, "modules.yaml"))
