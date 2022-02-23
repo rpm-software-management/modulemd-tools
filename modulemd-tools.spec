@@ -76,7 +76,7 @@ cd createrepo_mod
 cd ..
 
 cd modulemd-add-platform
-%pyproject_wheel
+%py3_build
 cd ..
 
 cd modulemd-merge
@@ -108,8 +108,7 @@ cd createrepo_mod
 cd ..
 
 cd modulemd-add-platform
-%pyproject_install
-%pyproject_save_files modulemd_add_platform
+%py3_install
 cd ..
 
 cd modulemd-merge
@@ -162,7 +161,7 @@ cd bld2repo
 %{python3} -m pytest -vv
 cd ..
 
-%files -f %{pyproject_files}
+%files
 %doc README.md
 %license LICENSE
 %{python3_sitelib}/repo2module
@@ -177,6 +176,8 @@ cd ..
 %{python3_sitelib}/modulemd_tools-*.egg-info/
 %{python3_sitelib}/bld2repo
 %{python3_sitelib}/bld2repo-*.egg-info/
+%{python3_sitelib}/modulemd_add_platform
+%{python3_sitelib}/modulemd_add_platform-*.egg-info/
 %{_bindir}/repo2module
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod
