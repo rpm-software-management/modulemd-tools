@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.12
+Version: 0.13
 Release: 1%{?dist}
 Summary: Collection of tools for parsing and generating modulemd YAML files
 License: MIT
@@ -196,6 +196,12 @@ cd ..
 
 
 %changelog
+* Wed Feb 23 2022 Jakub Kadlcik <frostyx@email.cz> 0.13-1
+- modulemd_add_platform: don't use pyproject macros (frostyx@email.cz)
+- createrepo_mod: fix failing test because of modulemd-merge (frostyx@email.cz)
+- Add modulemd_add_platform tool (ppisar@redhat.com)
+- Fix bld2repo issue causing possibly missed dependencies (fvalder@redhat.com)
+
 * Wed Feb 09 2022 Petr Pisar <ppisar@redhat.com> - 0.12-1
 - Add modulemd-add-platform tool
 
