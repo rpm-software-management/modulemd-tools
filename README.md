@@ -1,11 +1,16 @@
 # modulemd-tools
 
-Collection of tools for parsing and generating modulemd YAML files
+Collection of tools for modular (in terms of Fedora Modularity origin) content creators
 
 
 ## Tools provided by this package
 
+[>>> Detailed README about individual tools usage <<<](README-DETAILED.md)
+
 ### repo2module
+
+**Author: Stephen Gallagher <<sgallagh@redhat.com>>**
+
 Takes a YUM repository on its input and creates modules.yaml
 containing YAML module definitions generated for each package.
 
@@ -14,6 +19,9 @@ For more information about `repo2module`, please see
 
 
 ### dir2module
+
+**Author: Jakub Kadlcik <<frostyx@email.cz>>**
+
 Generates a module YAML definition based on essential module
 information provided via command-line parameters. The packages provided by
 the module are found in a specified directory or a text file containing
@@ -24,6 +32,9 @@ For more information about `dir2module`, please see
 
 
 ### createrepo_mod
+
+**Author: Jakub Kadlcik <<frostyx@email.cz>>**
+
 A small wrapper around `createrepo_c` and `modifyrepo_c` to
 provide an easy tool for generating module repositories.
 
@@ -32,6 +43,9 @@ For more information about `createrepo_mod`, please see
 
 
 ### modulemd-add-platform
+
+**Author: Petr Pisar <<ppisar@redhat.com>>**
+
 Add a context configuration for a new platform to a modulemd-packager-v3
 document.
 
@@ -40,6 +54,9 @@ For more information about `modulemd-add-platform`, please see
 
 
 ### modulemd-merge
+
+**Author: Gerd v. Egidy <<gerd.von.egidy@intra2net.com>>**
+
 Merge several modules.yaml files into one.
 
 For more information about `modulemd-merge`, please see
@@ -47,6 +64,9 @@ For more information about `modulemd-merge`, please see
 
 
 ### modulemd-generate-macros
+
+**Author: Jakub Kadlcik <<frostyx@email.cz>>**
+
 Generate `module-build-macros` SRPM package, which is a central piece
 for building modules. It should be present in the buildroot before any
 other module packages are submitted to be built.
@@ -56,6 +76,9 @@ For more information about `modulemd-generate-macros`, please see
 
 
 ### modulemd_tools (python library)
+
+**Author: Jakub Kadlcik <<frostyx@email.cz>>**
+
 Provides convenient functions for working with modulemd
 YAML definitions. It is a place for sharing code among other tools
 within this project. ~~It is also meant to be used as a dependency for
@@ -65,6 +88,9 @@ other tools yet, be cautious.**
 
 
 ### bld2repo
+
+**Author: Martin Curlej <<mcurlej@redhat.com>>**
+
 Simple tool for dowloading build required RPMs of a modular build from koji.
 
 For more information about `bld2repo`, please see

@@ -1,7 +1,7 @@
 Name: modulemd-tools
 Version: 0.13
 Release: 1%{?dist}
-Summary: Collection of tools for parsing and generating modulemd YAML files
+Summary: Collection of tools for modular (in terms of Fedora Modularity origin) content creators
 License: MIT
 BuildArch: noarch
 
@@ -63,121 +63,29 @@ bld2repo - Simple tool for dowloading build required RPMs of a modular build fro
 
 
 %build
-cd repo2module
 %py3_build
-cd ..
 
-cd dir2module
-%py3_build
-cd ..
-
-cd createrepo_mod
-%py3_build
-cd ..
-
-cd modulemd-add-platform
-%py3_build
-cd ..
-
-cd modulemd-merge
-%py3_build
-cd ..
-
-cd modulemd_tools
-%py3_build
-cd ..
-
-cd bld2repo
-%py3_build
-cd ..
-
-PYTHONPATH=./modulemd_tools:./bld2repo ./man/generate-manpages.sh
+PYTHONPATH=: ./man/generate-manpages.sh
 
 
 %install
-cd repo2module
 %py3_install
-cd ..
-
-cd dir2module
-%py3_install
-cd ..
-
-cd createrepo_mod
-%py3_install
-cd ..
-
-cd modulemd-add-platform
-%py3_install
-cd ..
-
-cd modulemd-merge
-%py3_install
-cd ..
-
-cd modulemd_tools
-%py3_install
-cd ..
-
-cd bld2repo
-%py3_install
-cd ..
-
-cp modulemd-generate-macros/modulemd-generate-macros.py \
-    %{buildroot}%{_bindir}/modulemd-generate-macros
 
 install -d %{buildroot}%{_mandir}/man1
 cp man/*.1 %{buildroot}%{_mandir}/man1/
 
 
 %check
-export PATH=%{buildroot}%{_bindir}:$PATH
-
-cd repo2module
 %{python3} -m pytest -vv
-cd ..
 
-cd dir2module
-%{python3} -m pytest -vv
-cd ..
-
-cd createrepo_mod
-%{python3} -m pytest -vv
-cd ..
-
-cd modulemd-add-platform
-%pytest
-cd ..
-
-cd modulemd-merge
-%{python3} -m pytest -vv -s
-cd ..
-
-cd modulemd_tools
-%{python3} -m pytest -vv
-cd ..
-
-cd bld2repo
-%{python3} -m pytest -vv
-cd ..
 
 %files
 %doc README.md
 %license LICENSE
-%{python3_sitelib}/repo2module
-%{python3_sitelib}/repo2module-*.egg-info/
-%{python3_sitelib}/dir2module
-%{python3_sitelib}/dir2module-*.egg-info/
-%{python3_sitelib}/createrepo_mod
-%{python3_sitelib}/createrepo_mod-*.egg-info/
-%{python3_sitelib}/modulemd_merge
-%{python3_sitelib}/modulemd_merge-*.egg-info/
+
 %{python3_sitelib}/modulemd_tools
 %{python3_sitelib}/modulemd_tools-*.egg-info/
-%{python3_sitelib}/bld2repo
-%{python3_sitelib}/bld2repo-*.egg-info/
-%{python3_sitelib}/modulemd_add_platform
-%{python3_sitelib}/modulemd_add_platform-*.egg-info/
+
 %{_bindir}/repo2module
 %{_bindir}/dir2module
 %{_bindir}/createrepo_mod

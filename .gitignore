@@ -1,6 +1,6 @@
 /.tox/
-/*/*.egg-info/
-/*/build/
-/*/dist/
+/*.egg-info/
+/build/
+/dist/
 __pycache__/
 .vscode/
