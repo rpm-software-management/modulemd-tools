@@ -1,6 +1,10 @@
 MIT License
 
-Copyright (c) 2020 Jakub Kadlcik <jkadlcik@redhat.com>
+Copyright (c) 2019-2022 Jakub Kadlcik <jkadlcik@redhat.com>,
+Gerd v. Egidy <gerd.von.egidy@intra2net.com>,
+Martin Curlej <mcurlej@redhat.com>,
+Petr Pisar <ppisar@redhat.com>,
+Stephen Gallagher <sgallagh@redhat.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

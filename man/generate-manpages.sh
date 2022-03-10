@@ -4,7 +4,7 @@ HOMEPAGE="https://github.com/rpm-software-management/modulemd-tools"
 
 
 argparse-manpage \
-    --pyfile repo2module/repo2module/cli.py \
+    --pyfile modulemd_tools/repo2module/cli.py \
     --function get_arg_parser \
     --author "Stephen Gallagher" \
     --author-email "sgallagh@redhat.com" \
@@ -14,7 +14,7 @@ argparse-manpage \
 
 
 argparse-manpage \
-    --pyfile dir2module/dir2module/dir2module.py \
+    --pyfile modulemd_tools/dir2module/dir2module.py \
     --function get_arg_parser \
     --author "Jakub Kadlčík" \
     --author-email "jkadlcik@redhat.com" \
@@ -24,7 +24,7 @@ argparse-manpage \
 
 
 argparse-manpage \
-    --pyfile createrepo_mod/createrepo_mod/createrepo_mod.py \
+    --pyfile modulemd_tools/createrepo_mod/createrepo_mod.py \
     --function get_arg_parser \
     --author "Jakub Kadlčík" \
     --author-email "jkadlcik@redhat.com" \
@@ -32,10 +32,10 @@ argparse-manpage \
     --url HOMEPAGE \
     > ./man/createrepo_mod.1
 
-cp modulemd-add-platform/modulemd-add-platform.1 ./man
+cp modulemd_tools/modulemd_add_platform/modulemd-add-platform.1 ./man
 
 argparse-manpage \
-    --pyfile modulemd-merge/modulemd_merge/modulemd_merge.py \
+    --pyfile modulemd_tools/modulemd_merge/modulemd_merge.py \
     --function get_arg_parser \
     --author "Gerd v. Egidy" \
     --author-email "gerd.von.egidy@intra2net.com" \
@@ -45,7 +45,7 @@ argparse-manpage \
 
 
 argparse-manpage \
-    --pyfile modulemd-generate-macros/modulemd-generate-macros.py \
+    --pyfile modulemd_tools/modulemd_generate_macros/modulemd_generate_macros.py \
     --function get_arg_parser \
     --author "Jakub Kadlčík" \
     --author-email "jkadlcik@redhat.com" \
@@ -55,7 +55,7 @@ argparse-manpage \
 
 
 argparse-manpage \
-    --pyfile bld2repo/bld2repo/cli.py \
+    --pyfile modulemd_tools/bld2repo/cli.py \
     --function get_arg_parser \
     --author "Martin Čurlej" \
     --author-email "mcurlej@redhat.com" \
