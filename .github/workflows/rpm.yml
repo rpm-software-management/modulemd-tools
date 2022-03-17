@@ -2,9 +2,10 @@
 name: RPM
 
 on:
-  push:
+  pull_request:
     branches: [master]
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   test:
