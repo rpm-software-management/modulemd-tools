@@ -1,0 +1,46 @@
+---
+name: RPM
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  test:
+    uses: rpm-software-management/modulemd-tools/.github/workflows/test.yml@master
+
+  rpm:
+    runs-on: self-hosted
+    concurrency: test-env
+    environment: test-env
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: (Pre) Clean up
+        run: |
+          ARCH=$(uname -i)
+          git clean -dfx
+          mock --scrub all -r fedora-35-$ARCH
+      - name: Create source RPM within mock
+        run: |
+          ARCH=$(uname -i)
+          VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)
+          git archive HEAD --prefix=modulemd-tools-$VERSION/ -o modulemd-tools-$VERSION.tar
+          gzip modulemd-tools-$VERSION.tar
+          mock -r fedora-35-$ARCH --buildsrpm --spec modulemd-tools.spec --sources modulemd-tools-$VERSION.tar.gz
+          cp /var/lib/mock/fedora-35-$ARCH/result/modulemd-tools-$VERSION-*.src.rpm .
+      - name: Clean up
+        run: |
+          ARCH=$(uname -i)
+          mock --scrub all -r fedora-35-$ARCH
+      - name: Rebuild RPM within mock
+        run: |
+          ARCH=$(uname -i)
+          VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)
+          mock -r fedora-35-$ARCH rebuild modulemd-tools-$VERSION-*.src.rpm
+      - name: (Post) Clean up
+        run: |
+          ARCH=$(uname -i)
+          git clean -dfx
+          mock --scrub all -r fedora-35-$ARCH
