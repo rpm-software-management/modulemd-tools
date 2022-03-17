@@ -21,7 +21,7 @@ jobs:
       - name: Run tests in F35 docker container
         run: |
           docker build -t modulemd-tools -f Dockerfile-tests .
-          docker run -v $GITHUB_WORKSPACE:/modulemd-tools:Z modulemd-tools
+          docker run --rm -v $GITHUB_WORKSPACE:/modulemd-tools:Z modulemd-tools
       - name: (Post) Clean up
         run: |
           docker rmi -f modulemd-tools
