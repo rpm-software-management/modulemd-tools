@@ -3,7 +3,7 @@ name: Test
 
 on:
   pull_request:
-    branches: [master]
+    branches: []
   workflow_dispatch:
   workflow_call:
 
