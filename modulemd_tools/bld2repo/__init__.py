@@ -99,17 +99,17 @@ def rpm_bulk_download(pkgs, rpm_num, working_dir):
     :param int rpm_num: number of all the rpms included in pkgs
     :param str working_dir: the dir where the rpms will be downloaded
     """
-    print("Starting bulk download of rpms...")
+    print("Starting bulk download of {total} rpms...".format(total=rpm_num))
     rpm_dwnlded = 0
 
     for pkg in pkgs:
         for url in pkg["rpm_urls"]:
-            # we print the status of the download
-            status = "[{done}/{total}]".format(done=rpm_dwnlded, total=rpm_num)
-            print(status, end="\r", flush=True)
-            # we store the rpm in a similar location as it is on the storage server
             url_parts = url.split("/")
             filename = url_parts[-1]
+            # print the status of the download
+            status = "\x1b[2K\r[{done}/{total}] {file}".format(done=rpm_dwnlded, total=rpm_num, file=filename)
+            print(status, end='', flush=True)
+            # store the rpm in a similar location as it is on the storage server
             arch = url_parts[-2]
             pkg_name = "-".join([url_parts[-5], url_parts[-4], url_parts[-3]])
             target_pkg_dir = "/".join([working_dir, pkg_name, arch])
@@ -125,10 +125,7 @@ def rpm_bulk_download(pkgs, rpm_num, working_dir):
             download_file(url, target_pkg_dir, filename)
             rpm_dwnlded += 1
 
-    # update the status last time to mark all of the rpms downloaded
-    status = "[{done}/{total}]".format(done=rpm_dwnlded, total=rpm_num)
-    print(status)
-    print("Download successful.")
+    print("\x1b[2K\rDownload successful.")
 
 
 def create_repo(working_dir):
