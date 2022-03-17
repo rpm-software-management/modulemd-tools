@@ -29,7 +29,7 @@ jobs:
           VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)
           git archive HEAD --prefix=modulemd-tools-$VERSION/ -o modulemd-tools-$VERSION.tar
           gzip modulemd-tools-$VERSION.tar
-          mock -r fedora-35-$ARCH --buildsrpm --spec modulemd-tools.spec --sources modulemd-tools-$VERSION.tar.gz
+          mock -v -r fedora-35-$ARCH --buildsrpm --spec modulemd-tools.spec --sources modulemd-tools-$VERSION.tar.gz
           cp /var/lib/mock/fedora-35-$ARCH/result/modulemd-tools-$VERSION-*.src.rpm .
       - name: Clean up
         run: |
@@ -39,7 +39,7 @@ jobs:
         run: |
           ARCH=$(uname -i)
           VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)
-          mock -r fedora-35-$ARCH rebuild modulemd-tools-$VERSION-*.src.rpm
+          mock -v -r fedora-35-$ARCH --postinstall rebuild modulemd-tools-$VERSION-*.src.rpm
       - name: (Post) Clean up
         run: |
           ARCH=$(uname -i)
