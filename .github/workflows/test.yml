@@ -1,0 +1,28 @@
+---
+name: Test
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: self-hosted
+    concurrency: test-env
+    environment: test-env
+    steps:
+      - uses: actions/checkout@v2
+      - name: (Pre) Clean up
+        run: |
+          docker rmi -f modulemd-tools
+          git clean -dfx
+      - name: Run tests in F35 docker container
+        run: |
+          docker build -t modulemd-tools -f Dockerfile-tests
+          docker run -v $GITHUB_WORKSPACE:/modulemd-tools:Z modulemd-tools
+      - name: (Post) Clean up
+        run: |
+          docker rmi -f modulemd-tools
+          git clean -dfx
