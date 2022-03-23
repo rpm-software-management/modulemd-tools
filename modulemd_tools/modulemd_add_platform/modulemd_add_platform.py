@@ -195,7 +195,6 @@ def edit(logger, content, old_platform, new_platform, context_map):
     in_configurations = False
     in_context = False
     current_context = ''
-    this_context_is_old_platform = False
     for line in content.splitlines():
         logger.debug('INPUT: %s', line)
         output.append(line)
@@ -217,7 +216,6 @@ def edit(logger, content, old_platform, new_platform, context_map):
                     platform, style, suffix = dequote_yaml_string(result.group(2))
                     if platform == old_platform:
                         logger.debug('HIT old platform')
-                        this_context_is_old_platform = True
                         line = result.group(1) \
                             + quote_yaml_string(new_platform, style, suffix)
                 record.append(line)
@@ -439,7 +437,7 @@ def process_file(logger, file, stdout, skip, old_platform, new_platform):
         # Retrieve permissions of the file
         try:
             stat = os.fstat(fd.fileno())
-        except Exception:
+        except Exception as e:
             fd.close()
             return (True,
                     '{}: Could not stat the modulemd-packager file: {}'.format(file, e))
@@ -460,7 +458,8 @@ def process_file(logger, file, stdout, skip, old_platform, new_platform):
             sys.stdout.write(text)
         except Exception as e:
             return (True,
-                    '{}: Could not write to a standard output: {}'.format(e))
+                    '{}: Could not write to a standard output: {}'.format(
+                        file, e))
         return (False, None)
 
     # Or store the edited document into a temporary file
