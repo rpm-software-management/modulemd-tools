@@ -74,7 +74,7 @@ def dequote_yaml_string(input):
                 continue
             if hexleft > 0:
                 hexleft -= 1
-                hexvalue <<= 4
+                hexvalue <<= 4  # noqa: F821
                 hexvalue += int(character, base=16)
                 if hexleft == 0:
                     output += chr(hexvalue)
@@ -207,11 +207,13 @@ def edit(logger, content, old_platform, new_platform, context_map):
 
         if in_context:
             result = re.match(
-                r'^' + indent_configurations + indent_context,
+                r'^' + indent_configurations + indent_context,  # noqa: F821
                 line)
             if result:
-                result = re.match(r'^(' + indent_configurations
-                                  + indent_context + r'platform\s*:\s*)([\'"\S].*)', line)
+                result = re.match(r'^('
+                                  + indent_configurations + indent_context  # noqa: F821
+                                  + r'platform\s*:\s*)([\'"\S].*)',
+                                  line)
                 if result:
                     platform, style, suffix = dequote_yaml_string(result.group(2))
                     if platform == old_platform:
@@ -233,12 +235,13 @@ def edit(logger, content, old_platform, new_platform, context_map):
         if in_configurations:
             # TODO: Handle "-\n context". Comments can interleave.
             result = re.match(
-                r'^(' + indent_configurations + r'(\s*)-(\s+)context\s*:\s*)(.*)',
+                r'^(' + indent_configurations   # noqa: F821
+                + r'(\s*)-(\s+)context\s*:\s*)(.*)',
                 line)
             if result:
                 in_context = True
                 context_value_prefix = result.group(1)
-                indent_context = result.group(2) + ' ' + result.group(3)
+                indent_context = result.group(2) + ' ' + result.group(3)    # noqa: F841
                 current_context, current_context_style, \
                     current_context_suffix = dequote_yaml_string(result.group(4))
                 record.clear()
@@ -253,7 +256,7 @@ def edit(logger, content, old_platform, new_platform, context_map):
         result = re.match(r'^(\s+)configurations\s*:', line)
         if result:
             in_configurations = True
-            indent_configurations = result.group(1)
+            indent_configurations = result.group(1)     # noqa: F841
             logger.debug('START configurations')
             continue
 
