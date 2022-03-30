@@ -284,9 +284,15 @@ def equaled_modulemd_packager(a, b):
 
     Return true if equaled. False otherwise. It modifies the documents.
     """
-    # convert_to_index() requires mandatory fields (e.g. summary) to be set.
-    # It seems that validation in packager_read_*() has a bug.
+    # convert_to_index() requires some mandatory fields to be set.
     for document in a, b:
+        # Automatic-mandatory fields (name, stream) are requrired for
+        # modulemd-defaults document derived from a default profile.
+        document.set_module_name('dummy')
+        document.set_stream_name('dummy')
+        # Also other mandatory fields (e.g. summary) needs to be set.
+        # It seems that validation in packager_read_*() has a bug not catching
+        # it.
         document.set_summary('dummy')
         document.set_description('dummy')
     return a.convert_to_index().dump_to_string() \

@@ -282,3 +282,36 @@ def test_positive_nested_fields_inside_a_context():
     error, output = process_string(logger, input, False, 'A', 'B')
     assert(error == 0)
     assert(output == expected)
+
+
+def test_positive_default_profile_without_module_name():
+    input = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+            - context: 'A'
+              platform: A
+        profiles:
+            foo:
+                default: true
+                rpms:
+    """
+    expected = """
+    document: modulemd-packager
+    version: 3
+    data:
+        configurations:
+            - context: 'A'
+              platform: A
+            - context: 'B'
+              platform: B
+        profiles:
+            foo:
+                default: true
+                rpms:
+    """
+
+    error, output = process_string(logger, input, False, 'A', 'B')
+    assert(error == 0)
+    assert(output == expected)
