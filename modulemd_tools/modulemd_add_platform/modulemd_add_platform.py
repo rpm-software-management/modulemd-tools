@@ -74,7 +74,7 @@ def dequote_yaml_string(input):
                 continue
             if hexleft > 0:
                 hexleft -= 1
-                hexvalue <<= 4
+                hexvalue <<= 4  # noqa: F821
                 hexvalue += int(character, base=16)
                 if hexleft == 0:
                     output += chr(hexvalue)
@@ -195,7 +195,6 @@ def edit(logger, content, old_platform, new_platform, context_map):
     in_configurations = False
     in_context = False
     current_context = ''
-    this_context_is_old_platform = False
     for line in content.splitlines():
         logger.debug('INPUT: %s', line)
         output.append(line)
@@ -208,16 +207,17 @@ def edit(logger, content, old_platform, new_platform, context_map):
 
         if in_context:
             result = re.match(
-                r'^' + indent_configurations + indent_context,
+                r'^' + indent_configurations + indent_context,  # noqa: F821
                 line)
             if result:
-                result = re.match(r'^(' + indent_configurations
-                                  + indent_context + r'platform\s*:\s*)([\'"\S].*)', line)
+                result = re.match(r'^('
+                                  + indent_configurations + indent_context  # noqa: F821
+                                  + r'platform\s*:\s*)([\'"\S].*)',
+                                  line)
                 if result:
                     platform, style, suffix = dequote_yaml_string(result.group(2))
                     if platform == old_platform:
                         logger.debug('HIT old platform')
-                        this_context_is_old_platform = True
                         line = result.group(1) \
                             + quote_yaml_string(new_platform, style, suffix)
                 record.append(line)
@@ -235,12 +235,13 @@ def edit(logger, content, old_platform, new_platform, context_map):
         if in_configurations:
             # TODO: Handle "-\n context". Comments can interleave.
             result = re.match(
-                r'^(' + indent_configurations + r'(\s*)-(\s+)context\s*:\s*)(.*)',
+                r'^(' + indent_configurations   # noqa: F821
+                + r'(\s*)-(\s+)context\s*:\s*)(.*)',
                 line)
             if result:
                 in_context = True
                 context_value_prefix = result.group(1)
-                indent_context = result.group(2) + ' ' + result.group(3)
+                indent_context = result.group(2) + ' ' + result.group(3)    # noqa: F841
                 current_context, current_context_style, \
                     current_context_suffix = dequote_yaml_string(result.group(4))
                 record.clear()
@@ -255,7 +256,7 @@ def edit(logger, content, old_platform, new_platform, context_map):
         result = re.match(r'^(\s+)configurations\s*:', line)
         if result:
             in_configurations = True
-            indent_configurations = result.group(1)
+            indent_configurations = result.group(1)     # noqa: F841
             logger.debug('START configurations')
             continue
 
@@ -439,7 +440,7 @@ def process_file(logger, file, stdout, skip, old_platform, new_platform):
         # Retrieve permissions of the file
         try:
             stat = os.fstat(fd.fileno())
-        except Exception:
+        except Exception as e:
             fd.close()
             return (True,
                     '{}: Could not stat the modulemd-packager file: {}'.format(file, e))
@@ -460,7 +461,8 @@ def process_file(logger, file, stdout, skip, old_platform, new_platform):
             sys.stdout.write(text)
         except Exception as e:
             return (True,
-                    '{}: Could not write to a standard output: {}'.format(e))
+                    '{}: Could not write to a standard output: {}'.format(
+                        file, e))
         return (False, None)
 
     # Or store the edited document into a temporary file
