@@ -1,0 +1,21 @@
+---
+name: Pull request checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened, unlocked, edited]
+
+jobs:
+  run-linter:
+    uses: ./.github/workflows/test.yml
+    with:
+      test_type: flake8
+  run-pytest:
+    uses: ./.github/workflows/test.yml
+    with:
+      test_type: py310
+  run-build:
+    needs: [run-linter, run-pytest]
+    uses: ./.github/workflows/rpm.yml

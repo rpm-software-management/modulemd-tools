@@ -1,26 +1,39 @@
 ---
-name: Test
+name: Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      test_type:
+        type: choice
+        required: true
+        description: Select type of tests
+        options:
+          - flake8
+          - py310
   workflow_call:
+    inputs:
+      test_type:
+        required: true
+        type: string
 
 jobs:
   test:
-    runs-on: self-hosted
-    concurrency: test-env
+    name: tests
+    runs-on: ubuntu-latest
     environment: test-env
+    env:
+      SITEPACKAGES: true
+    container:
+      image: ghcr.io/mkulik-rh/modulemd_tools-ci:latest
     steps:
-      - uses: actions/checkout@v2
-      - name: (Pre) Clean up
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: ${{ github.event.inputs.test_type }}
+        if: "${{ github.event.inputs.test_type != '' }}"
         run: |
-          docker rmi -f modulemd-tools
-          git clean -dfx
-      - name: Run tests in F35 docker container
+          tox -vvv -e ${{ github.event.inputs.test_type }}
+      - name: ${{ inputs.test_type }}
+        if: "${{ inputs.test_type != '' }}"
         run: |
-          docker build -t modulemd-tools -f Dockerfile-tests .
-          docker run --rm -v $GITHUB_WORKSPACE:/modulemd-tools:Z modulemd-tools
-      - name: (Post) Clean up
-        run: |
-          docker rmi -f modulemd-tools
-          git clean -dfx
+          tox -vvv -e ${{ inputs.test_type }}
