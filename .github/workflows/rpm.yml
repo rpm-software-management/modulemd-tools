@@ -1,47 +1,34 @@
 ---
-name: RPM
+name: Create RPM
 
 on:
-  pull_request:
-    branches: [master]
   workflow_dispatch:
   workflow_call:
 
 jobs:
-  test:
-    uses: rpm-software-management/modulemd-tools/.github/workflows/test.yml@master
-
   rpm:
-    runs-on: self-hosted
-    concurrency: test-env
+    runs-on: ubuntu-latest
     environment: test-env
-    needs: test
+    env:
+      ARCH: ${{ github.runner_arch }}
+    container:
+      image: ghcr.io/mkulik-rh/modulemd_tools-ci:latest
     steps:
-      - uses: actions/checkout@v2
-      - name: (Pre) Clean up
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set env variables
         run: |
-          ARCH=$(uname -i)
-          git clean -dfx
-          mock --scrub all -r fedora-35-$ARCH
-      - name: Create source RPM within mock
+          echo "ARCH=$(uname -i)" >> $GITHUB_ENV
+          echo "VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)" >> $GITHUB_ENV
+      - name: Create sources
         run: |
-          ARCH=$(uname -i)
-          VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)
           git archive HEAD --prefix=modulemd-tools-$VERSION/ -o modulemd-tools-$VERSION.tar
           gzip modulemd-tools-$VERSION.tar
-          mock -v -r fedora-35-$ARCH --buildsrpm --spec modulemd-tools.spec --sources modulemd-tools-$VERSION.tar.gz
-          cp /var/lib/mock/fedora-35-$ARCH/result/modulemd-tools-$VERSION-*.src.rpm .
-      - name: Clean up
+      - name: Setup directory tree
         run: |
-          ARCH=$(uname -i)
-          mock --scrub all -r fedora-35-$ARCH
-      - name: Rebuild RPM within mock
+          rpmdev-setuptree
+      - name: Build SRPM & RPM
         run: |
-          ARCH=$(uname -i)
-          VERSION=$(sed -n 's/Version: //p' modulemd-tools.spec | head -1)
-          mock -v -r fedora-35-$ARCH --postinstall rebuild modulemd-tools-$VERSION-*.src.rpm
-      - name: (Post) Clean up
-        run: |
-          ARCH=$(uname -i)
-          git clean -dfx
-          mock --scrub all -r fedora-35-$ARCH
+          cp modulemd-tools-$VERSION.tar.gz $HOME/rpmbuild/SOURCES/
+          cp modulemd-tools.spec $HOME/rpmbuild/SPECS/
+          rpmbuild -ba $HOME/rpmbuild/SPECS/modulemd-tools.spec
