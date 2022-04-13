@@ -1,0 +1,322 @@
+[
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89303,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210920115144-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89304,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210920115144-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89365,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210921150742-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89366,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210921150742-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89432,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210922100145-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89433,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210922100145-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89599,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927084424-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89600,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927084424-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89608,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927102812-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89609,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927102812-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89618,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927121108-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89619,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927121108-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89622,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927133654-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89623,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927133654-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89629,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927145516-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89630,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210927145516-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89713,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210929091343-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89714,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020210929091343-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89716,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-920210929091343-a0de3fd3",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 89717,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-920210929091343-a0de3fd3-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "",
+        "id": 89943,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "RHBA-2021:82053-dropped",
+        "perm": "trusted",
+        "perm_id": 6
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 94865,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220112092851-81abb488",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 94866,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220112092851-81abb488-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 95234,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220117122401-81abb488-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 97920,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220303134319-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 97921,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220303134319-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 97975,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220304072458-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 97976,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220304072458-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 98185,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220308103603-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 98186,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220308103603-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 98256,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220309151532-4a735dea",
+        "perm": "module-tagger",
+        "perm_id": 64
+    },
+    {
+        "arches": "aarch64 i686 ppc64le s390x x86_64",
+        "id": 98257,
+        "locked": false,
+        "maven_include_all": false,
+        "maven_support": false,
+        "name": "module-libreoffice-flatpak-9000020220309151532-4a735dea-build",
+        "perm": "module-tagger",
+        "perm_id": 64
+    }
+]
