@@ -16,11 +16,16 @@ https://docs.fedoraproject.org/en-US/modularity/hosting-modules/
 """
 
 
-import os
-import sys
-import subprocess
 import argparse
-from distutils.version import LooseVersion
+import os
+import subprocess
+import sys
+
+# python3-packaging in not available in RHEL 8.x
+try:
+    from packaging.version import Version
+except ModuleNotFoundError:
+    from distutils.version import LooseVersion as Version
 
 import gi
 gi.require_version("Modulemd", "2.0")
@@ -99,7 +104,7 @@ def createrepo_c_with_builtin_module_support():
     """
     cmd = ["rpm", "-q", "createrepo_c", "--queryformat", "%{VERSION}"]
     createrepo_c_version = subprocess.check_output(cmd).decode("utf-8")
-    return LooseVersion(createrepo_c_version) >= LooseVersion("0.16.1")
+    return Version(createrepo_c_version) >= Version("0.16.1")
 
 
 def main():
