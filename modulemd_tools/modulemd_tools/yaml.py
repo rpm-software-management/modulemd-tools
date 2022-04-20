@@ -7,7 +7,12 @@ and all transformation functions are `str` -> `str`.
 import os
 import gi
 import yaml
-from distutils.version import StrictVersion
+
+# python3-packaging in not available in RHEL 8.x
+try:
+    from packaging.version import Version
+except ModuleNotFoundError:
+    from distutils.version import StrictVersion as Version
 
 gi.require_version("Modulemd", "2.0")
 from gi.repository import Modulemd  # noqa: E402
@@ -312,7 +317,7 @@ def _modulemd_read_packager_string(mod_yaml, name=None, stream=None):
     Fedora but we still use old libmodulemd (2.9.4) on RHEL8, which doesn't
     provide its replacement in the form of `Modulemd.read_packager_string`.
     """
-    if StrictVersion(Modulemd.get_version()) < StrictVersion("2.11"):
+    if Version(Modulemd.get_version()) < Version("2.11"):
         mod_stream = Modulemd.ModuleStreamV2.new(name, stream)
         mod_stream = mod_stream.read_string(mod_yaml, True, name, stream)
         return mod_stream
@@ -327,7 +332,7 @@ def _modulestream_upgrade_ext(mod_stream, version):
     Fedora but we still use old libmodulemd (2.9.4) on RHEL8, which doesn't
     provide its replacement in the form of `Modulemd.ModuleStream.upgrade_ext`.
     """
-    if StrictVersion(Modulemd.get_version()) < StrictVersion("2.10"):
+    if Version(Modulemd.get_version()) < Version("2.10"):
         return mod_stream.upgrade(version)
 
     mod_upgraded = mod_stream.upgrade_ext(version)

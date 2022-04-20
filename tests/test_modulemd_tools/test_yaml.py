@@ -2,9 +2,14 @@ import os
 import unittest
 from unittest import mock
 import yaml
-from distutils.version import LooseVersion
 from modulemd_tools.modulemd_tools.yaml import (
     is_valid, validate, create, update, dump, upgrade, _yaml2stream, _stream2yaml)
+
+# python3-packaging in not available in RHEL 8.x
+try:
+    from packaging.version import Version
+except ModuleNotFoundError:
+    from distutils.version import LooseVersion as Version
 
 import gi
 gi.require_version("Modulemd", "2.0")
@@ -19,7 +24,7 @@ def old_libmodulemd():
     skip those few test on EPEL8 until it receives an update.
     See also `080e2bb`
     """
-    return LooseVersion(Modulemd.get_version()) < LooseVersion("2.11.1")
+    return Version(Modulemd.get_version()) < Version("2.11.1")
 
 
 class TestYaml(unittest.TestCase):
