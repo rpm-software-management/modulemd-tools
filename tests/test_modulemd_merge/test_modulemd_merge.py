@@ -24,19 +24,20 @@ def test_modulemd_merge_loading():
     assert modulemd_merge
 
 
-def test_modulemd_merge_two_yamls(capsys, two_modules_merged_yamls):
+def test_modulemd_merge_two_yamls(tmp_file, two_modules_merged_yamls):
 
     inputs = (os.path.join(test_data_dir, "moduleA.yaml"),
               os.path.join(test_data_dir, "moduleB.yaml"))
-    with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs)):
+    kwargs = {"ignore_no_input": True, "output": tmp_file, "to_stdout": False}
+    with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs, **kwargs)):
         modulemd_merge.main()
 
-    captured = capsys.readouterr()
-    assert [d for d in yaml.load_all(captured.out, Loader=yaml.SafeLoader)] == [
-        d for d in yaml.load_all(two_modules_merged_yamls, Loader=yaml.SafeLoader)]
+    with open(tmp_file, "r") as f:
+        assert [d for d in yaml.load_all(f, Loader=yaml.SafeLoader)] == [
+            d for d in yaml.load_all(two_modules_merged_yamls, Loader=yaml.SafeLoader)]
 
 
-def test_modulemd_merge_two_yamls_first_missing(capsys):
+def test_modulemd_merge_two_yamls_first_missing():
 
     inputs = (os.path.join(test_data_dir, "missing-file.yaml"),
               os.path.join(test_data_dir, "moduleB.yaml"))
@@ -47,38 +48,40 @@ def test_modulemd_merge_two_yamls_first_missing(capsys):
     assert f"input file {test_data_dir}/missing-file.yaml does not exist" in str(excinfo.value)
 
 
-def test_modulemd_merge_two_yamls_first_missing_ignore_no_input(capsys, moduleB_yaml):
+def test_modulemd_merge_two_yamls_first_missing_ignore_no_input(tmp_file, moduleB_yaml):
 
     inputs = (os.path.join(test_data_dir, "missing-file.yaml"),
               os.path.join(test_data_dir, "moduleB.yaml"))
-    kwargs = {"ignore_no_input": True}
+    kwargs = {"ignore_no_input": True, "output": tmp_file, "to_stdout": False}
     with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs, **kwargs)):
         modulemd_merge.main()
 
-    captured = capsys.readouterr()
-    assert [d for d in yaml.load_all(captured.out, Loader=yaml.SafeLoader)] == [
-        d for d in yaml.load_all(moduleB_yaml, Loader=yaml.SafeLoader)]
+    with open(tmp_file, "r") as f:
+        assert [d for d in yaml.load_all(f, Loader=yaml.SafeLoader)] == [
+            d for d in yaml.load_all(moduleB_yaml, Loader=yaml.SafeLoader)]
 
 
-def test_modulemd_merge_module_with_repodata_dir(capsys, module_with_repodata_dir):
+def test_modulemd_merge_module_with_repodata_dir(tmp_file, module_with_repodata_dir):
 
     inputs = (os.path.join(test_data_dir, "moduleA.yaml"),
               test_repodata_dir)
-    with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs)):
+    kwargs = {"output": tmp_file, "to_stdout": False}
+    with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs, **kwargs)):
         modulemd_merge.main()
 
-    captured = capsys.readouterr()
-    assert [d for d in yaml.load_all(captured.out, Loader=yaml.SafeLoader)] == [
-        d for d in yaml.load_all(module_with_repodata_dir, Loader=yaml.SafeLoader)]
+    with open(tmp_file, "r") as f:
+        assert [d for d in yaml.load_all(f, Loader=yaml.SafeLoader)] == [
+            d for d in yaml.load_all(module_with_repodata_dir, Loader=yaml.SafeLoader)]
 
 
-def test_modulemd_merge_module_with_repomd_file(capsys, module_with_repodata_dir):
+def test_modulemd_merge_module_with_repomd_file(tmp_file, module_with_repodata_dir):
 
     inputs = (os.path.join(test_data_dir, "moduleA.yaml"),
               test_repomd_file)
-    with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs)):
+    kwargs = {"output": tmp_file, "to_stdout": False}
+    with patch("argparse.ArgumentParser.parse_args", return_value=_testrun_args(inputs, **kwargs)):
         modulemd_merge.main()
 
-    captured = capsys.readouterr()
-    assert [d for d in yaml.load_all(captured.out, Loader=yaml.SafeLoader)] == [
-        d for d in yaml.load_all(module_with_repodata_dir, Loader=yaml.SafeLoader)]
+    with open(tmp_file, "r") as f:
+        assert [d for d in yaml.load_all(f, Loader=yaml.SafeLoader)] == [
+            d for d in yaml.load_all(module_with_repodata_dir, Loader=yaml.SafeLoader)]

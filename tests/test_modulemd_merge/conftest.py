@@ -1,6 +1,13 @@
+import tempfile
 from textwrap import dedent
 
 import pytest
+
+
+@pytest.fixture
+def tmp_file():
+    tmp = tempfile.NamedTemporaryFile()
+    return tmp.name
 
 
 @pytest.fixture
