@@ -1,19 +1,18 @@
 import os
 from unittest import mock
 import tempfile
-
+import json
 import pytest
 
 from modulemd_tools.bld2repo import (
-    get_buildrequire_pkgs_from_build, add_rpm_urls, rpm_bulk_download, create_repo)
+    filter_buildrequire_pkgs, get_buildrequire_pkgs_from_build, add_rpm_urls, rpm_bulk_download, create_repo, get_koji_build_info)
 from modulemd_tools.bld2repo.config import Config
-from .utils import load_test_data
 
 
-def test_get_buildrequire_pkgs_from_build_default():
+def test_get_buildrequire_pkgs_from_build_default(load_test_data):
     """ Test for gathering x86_64 build dependencies."""
 
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
     build_tag_md = load_test_data("pki_core_build_tag")
@@ -24,7 +23,8 @@ def test_get_buildrequire_pkgs_from_build_default():
     mock_session.listTags.return_value = tags
     mock_session.listTaggedRPMS.return_value = build_tag_md
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
 
     assert type(pkgs) == list
     assert len(pkgs) == 50
@@ -33,10 +33,10 @@ def test_get_buildrequire_pkgs_from_build_default():
             assert rpm["arch"] in ["x86_64", "noarch"]
 
 
-def test_get_buildrequire_pkgs_from_build_aarch64():
+def test_get_buildrequire_pkgs_from_build_aarch64(load_test_data):
     """ Test for gathering aarch64 build dependencies."""
 
-    config = Config("koji_fake_url", "koji_fake_storage", "aarch64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "aarch64", ".")
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
     build_tag_md = load_test_data("pki_core_build_tag")
@@ -47,7 +47,8 @@ def test_get_buildrequire_pkgs_from_build_aarch64():
     mock_session.listTags.return_value = tags
     mock_session.listTaggedRPMS.return_value = build_tag_md
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
 
     assert type(pkgs) == list
     assert len(pkgs) == 50
@@ -56,10 +57,66 @@ def test_get_buildrequire_pkgs_from_build_aarch64():
             assert rpm["arch"] in ["aarch64", "noarch"]
 
 
-def test_add_rpm_urls():
+@mock.patch("modulemd_tools.bld2repo.download_file")
+@pytest.mark.parametrize("arch", ["aarch64", "x86_64"])
+@pytest.mark.parametrize("wrong_mbs_build_id", [False, "missing", "bad"])
+@pytest.mark.parametrize("missing_modulemd", [True, False])
+def test_filter_buildrequire_pkgs(mock_download_file, arch, wrong_mbs_build_id, missing_modulemd, load_test_data):
+    """ Test for filtering build dependencies based on builorder."""
+
+    # This have conflict exceptions. No need to test it.
+    if wrong_mbs_build_id and missing_modulemd:
+        pytest.skip("Conflicting exceptions. Test not needed.")
+
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", arch, ".")
+    build = load_test_data("librevenge_build")
+    tags = load_test_data("librevenge_tags")
+    build_tag_md = load_test_data("librevenge_build_tag")
+    mbs_build_data = load_test_data("librevenge_mbs_build")
+
+    mock_session = mock.Mock()
+
+    mock_session.getBuild.return_value = build
+    mock_session.listTags.return_value = tags
+    mock_session.listTaggedRPMS.return_value = build_tag_md
+
+    if missing_modulemd:
+        del mbs_build_data["modulemd"]
+
+    mock_download_file.return_value = json.dumps(mbs_build_data)
+
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
+
+    # Fake wrong mbs build_id
+    if wrong_mbs_build_id == "missing":
+        build['release'] = build['release'].replace("+", ".")
+    elif wrong_mbs_build_id == "bad":
+        char_idx = build['release'].rfind("+")
+        build['release'] = build['release'][:char_idx] + "d+" + build['release'][char_idx + 2:]
+
+    if missing_modulemd:
+        with pytest.raises(Exception, match="Metadata modulemd not found"):
+            filter_buildrequire_pkgs(build, pkgs, config)
+    elif wrong_mbs_build_id:
+        match_error_msg = "cannot be found" if wrong_mbs_build_id == "missing" else "is not valid"
+        with pytest.raises(Exception, match=match_error_msg):
+            filter_buildrequire_pkgs(build, pkgs, config)
+    else:
+        pkgs_filtered = filter_buildrequire_pkgs(build, pkgs, config)
+
+        assert type(pkgs) == list
+        assert len(pkgs) == 197
+        assert len(pkgs_filtered) == 3
+        for pkg in pkgs_filtered:
+            for rpm in pkg["rpms"]:
+                assert rpm["arch"] in [arch, "noarch"]
+
+
+def test_add_rpm_urls(load_test_data):
     """ Test for adding rpm urls to the pkgs dict for each package """
 
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
     build_tag_md = load_test_data("pki_core_build_tag")
@@ -70,7 +127,8 @@ def test_add_rpm_urls():
     mock_session.listTags.return_value = tags
     mock_session.listTaggedRPMS.return_value = build_tag_md
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
     pkgs, rpm_num = add_rpm_urls(pkgs, config)
 
     expected_rpm_num = 0
@@ -90,11 +148,11 @@ def test_add_rpm_urls():
 
 
 @mock.patch("modulemd_tools.bld2repo.download_file")
-def test_rpm_bulk_download(mock_download_file):
+def test_rpm_bulk_download(mock_download_file, load_test_data):
     """ Test if the rpm files are downloaded. """
 
     tmp_dir = tempfile.TemporaryDirectory()
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
 
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
@@ -113,7 +171,8 @@ def test_rpm_bulk_download(mock_download_file):
 
     mock_download_file.side_effect = download_file
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
     pkgs, rpm_num = add_rpm_urls(pkgs, config)
     rpm_bulk_download(pkgs, rpm_num, tmp_dir.name)
 
@@ -133,11 +192,11 @@ def test_rpm_bulk_download(mock_download_file):
 
 
 @mock.patch("modulemd_tools.bld2repo.download_file")
-def test_rpm_bulk_download_pkg_exist(mock_download_file):
+def test_rpm_bulk_download_pkg_exist(mock_download_file, load_test_data):
     """ Test if we create each pkg dir only once. """
 
     tmp_dir = tempfile.TemporaryDirectory()
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
 
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
@@ -156,7 +215,8 @@ def test_rpm_bulk_download_pkg_exist(mock_download_file):
 
     mock_download_file.side_effect = download_file
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
     pkgs, rpm_num = add_rpm_urls(pkgs, config)
     rpm_bulk_download(pkgs, rpm_num, tmp_dir.name)
 
@@ -167,11 +227,11 @@ def test_rpm_bulk_download_pkg_exist(mock_download_file):
 
 
 @mock.patch("modulemd_tools.bld2repo.download_file")
-def test_rpm_bulk_download_rpm_file_exists(mock_download_file):
+def test_rpm_bulk_download_rpm_file_exists(mock_download_file, load_test_data):
     """ Test if we download each rpm file only once. If the file exists we skip it. """
 
     tmp_dir = tempfile.TemporaryDirectory()
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
 
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
@@ -190,7 +250,8 @@ def test_rpm_bulk_download_rpm_file_exists(mock_download_file):
 
     mock_download_file.side_effect = download_file
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
     pkgs, rpm_num = add_rpm_urls(pkgs, config)
     rpm_bulk_download(pkgs, rpm_num, tmp_dir.name)
 
@@ -203,10 +264,10 @@ def test_rpm_bulk_download_rpm_file_exists(mock_download_file):
 
 
 @mock.patch("modulemd_tools.bld2repo.download_file")
-def test_create_repo(mock_download_file):
+def test_create_repo(mock_download_file, load_test_data):
     """ Test to create a rpm repository of out a dir. """
     tmp_dir = tempfile.TemporaryDirectory()
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
 
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
@@ -225,7 +286,8 @@ def test_create_repo(mock_download_file):
 
     mock_download_file.side_effect = download_file
 
-    pkgs = get_buildrequire_pkgs_from_build("1234", mock_session, config)
+    build = get_koji_build_info("1234", mock_session, config)
+    pkgs = get_buildrequire_pkgs_from_build(build, mock_session, config)
     pkgs, rpm_num = add_rpm_urls(pkgs, config)
     rpm_bulk_download(pkgs, rpm_num, tmp_dir.name)
     create_repo(tmp_dir.name)
@@ -235,35 +297,37 @@ def test_create_repo(mock_download_file):
 def test_no_build_found_exception():
     """ Test raise when no build found """
     mock_session = mock.Mock()
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
 
     mock_session.getBuild.return_value = {}
 
     with pytest.raises(Exception) as ex:
-        get_buildrequire_pkgs_from_build("1234", mock_session, config)
+        get_koji_build_info("1234", mock_session, config)
 
     err_msg = ex.value.args[0]
     assert "1234" in err_msg
     assert "not been found" in err_msg
 
 
-def test_not_module_exception():
+def test_not_module_exception(load_test_data):
     """ Test raise when the build does not contain a build tag and is not a module. """
     mock_session = mock.Mock()
-    config = Config("koji_fake_url", "koji_fake_storage", "x86_64", ".")
+    config = Config("koji_fake_url", "koji_fake_storage", "mbs_fake_storage", "x86_64", ".")
 
     build = load_test_data("pki_core_build")
     tags = load_test_data("pki_core_tags")
 
-    mock_session.getBuild.return_value = build
     # we remove the build tag from the tags list
     tags.pop(1)
+    mock_session.getBuild.return_value = build
     mock_session.listTags.return_value = tags
 
+    build = get_koji_build_info("1234", mock_session, config)
+
     with pytest.raises(Exception) as ex:
-        get_buildrequire_pkgs_from_build("1234", mock_session, config)
+        get_buildrequire_pkgs_from_build(build, mock_session, config)
 
     err_msg = ex.value.args[0]
-    assert "1234" in err_msg
+    assert "1557161" in err_msg
     assert "not tagged" in err_msg
     assert "'build' tag" in err_msg

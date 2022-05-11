@@ -1,0 +1,32 @@
+{
+    "build_id": 1736076,
+    "cg_id": null,
+    "completion_time": "2021-09-20 12:51:17.213808",
+    "completion_ts": 1632142277.21381,
+    "creation_event_id": 41150442,
+    "creation_time": "2021-09-20 12:27:24.425579",
+    "creation_ts": 1632140844.42558,
+    "epoch": null,
+    "extra": {
+        "source": {
+            "original_url": "git://pkgs.devel.redhat.com/rpms/librevenge?#1f9303c4fe68baf6f6038635a106eb9f07008ff0"
+        }
+    },
+    "id": 1736076,
+    "name": "librevenge",
+    "nvr": "librevenge-0.0.4-22.module+el9.0.0+12688+90c2b6fe",
+    "owner_id": 4066,
+    "owner_name": "mbs",
+    "package_id": 51062,
+    "package_name": "librevenge",
+    "release": "22.module+el9.0.0+12688+90c2b6fe",
+    "source": "git://pkgs.devel.redhat.com/rpms/librevenge#1f9303c4fe68baf6f6038635a106eb9f07008ff0",
+    "start_time": "2021-09-20 12:27:24.419513",
+    "start_ts": 1632140844.41951,
+    "state": 1,
+    "task_id": 39836361,
+    "version": "0.0.4",
+    "volume_id": 9,
+    "volume_name": "rhel-8",
+    "cg_name": null
+}

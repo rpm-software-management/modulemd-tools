@@ -1,0 +1,1476 @@
+{
+  "arches": [
+    "aarch64", 
+    "i686", 
+    "ppc64le", 
+    "s390x", 
+    "x86_64"
+  ], 
+  "base_module_buildrequires": [
+    {
+      "context": "00000000", 
+      "id": 11917, 
+      "name": "platform", 
+      "state": 5, 
+      "state_name": "ready", 
+      "stream": "el9.0.0", 
+      "stream_version": 90000.0, 
+      "version": "2"
+    }
+  ], 
+  "build_context": "fba0b49b404da249aa3226f9ad4f24529c694df1", 
+  "buildrequires": {
+    "flatpak-runtime": {
+      "context": "f5878ad0", 
+      "filtered_rpms": [], 
+      "koji_tag": "module-flatpak-runtime-el9-920210827134516-f5878ad0", 
+      "ref": "851183770ba3f85d52d3d6c06f693c075df3b77b", 
+      "stream": "el9", 
+      "version": "920210827134516"
+    }, 
+    "platform": {
+      "context": "00000000", 
+      "filtered_rpms": [], 
+      "koji_tag": "module-rhel-9.0.0-build", 
+      "ref": "virtual", 
+      "stream": "el9.0.0", 
+      "stream_collision_modules": "", 
+      "ursine_rpms": "", 
+      "version": "2"
+    }
+  }, 
+  "component_builds": [
+    153486, 
+    153479, 
+    153474, 
+    153473, 
+    153472, 
+    153471, 
+    153470, 
+    153469, 
+    153468, 
+    153475, 
+    153466, 
+    153465, 
+    153464, 
+    153463, 
+    153462, 
+    153461, 
+    153460, 
+    153459, 
+    153458, 
+    153457, 
+    153456, 
+    153455, 
+    153454, 
+    153453, 
+    153452, 
+    153451, 
+    153450, 
+    153449, 
+    153448, 
+    153447, 
+    153446, 
+    153445, 
+    153444, 
+    153443, 
+    153442, 
+    153441, 
+    153440, 
+    153439, 
+    153438, 
+    153437, 
+    153436, 
+    153435, 
+    153434, 
+    153433, 
+    153432, 
+    153431, 
+    153430, 
+    153477, 
+    153476, 
+    153467, 
+    153478, 
+    153429, 
+    153428, 
+    153427, 
+    153426, 
+    153425, 
+    153424, 
+    153423, 
+    153422, 
+    153421, 
+    153420, 
+    153419, 
+    153418, 
+    153417, 
+    153416, 
+    153415, 
+    153414, 
+    153413, 
+    153412, 
+    153411, 
+    153410, 
+    153409, 
+    153408, 
+    153407, 
+    153406, 
+    153405, 
+    153404, 
+    153403, 
+    153402, 
+    153401, 
+    153400, 
+    153399, 
+    153398, 
+    153397, 
+    153396, 
+    153395, 
+    153394, 
+    153393, 
+    153392, 
+    153391, 
+    153390, 
+    153389, 
+    153388, 
+    153387, 
+    153386, 
+    153385, 
+    153384, 
+    153383, 
+    153382, 
+    153381, 
+    153380, 
+    153379, 
+    153378, 
+    153377, 
+    153376, 
+    153375, 
+    153374, 
+    153373, 
+    153372, 
+    153371, 
+    153370, 
+    153369, 
+    153368, 
+    153367, 
+    153366, 
+    153365, 
+    153364, 
+    153363, 
+    153362, 
+    153361, 
+    153360, 
+    153359, 
+    153358, 
+    153357, 
+    153356, 
+    153355, 
+    153354, 
+    153353, 
+    153352, 
+    153351, 
+    153350, 
+    153349, 
+    153348, 
+    153347, 
+    153346, 
+    153345, 
+    153344, 
+    153343, 
+    153342, 
+    153341, 
+    153340, 
+    153339, 
+    153338, 
+    153337, 
+    153336, 
+    153335, 
+    153334, 
+    153333, 
+    153332, 
+    153331, 
+    153330, 
+    153329, 
+    153328, 
+    153327, 
+    153326, 
+    153325, 
+    153324, 
+    153323, 
+    153322, 
+    153321, 
+    153320, 
+    153319, 
+    153318, 
+    153317, 
+    153316, 
+    153315, 
+    153314, 
+    153313, 
+    153312, 
+    153311, 
+    153310, 
+    153309, 
+    153308, 
+    153307, 
+    153306, 
+    153305, 
+    153304, 
+    153303, 
+    153302, 
+    153301, 
+    153300, 
+    153299, 
+    153298, 
+    153297, 
+    153296, 
+    153295, 
+    153294, 
+    153293, 
+    153292, 
+    153291, 
+    153484, 
+    153483, 
+    153482, 
+    153481, 
+    153480, 
+    153485
+  ], 
+  "context": "4a735dea", 
+  "id": 12688, 
+  "koji_tag": "module-libreoffice-flatpak-9000020210920115144-4a735dea", 
+  "modulemd": "---\ndocument: modulemd\nversion: 2\ndata:\n  name: libreoffice\n  stream: \"flatpak\"\n  version: 9000020210920115144\n  context: 4a735dea\n  summary: Free Software Productivity Suite\n  description: >-\n    LibreOffice is an Open Source, community-developed, office productivity suite.\n    It includes the key desktop applications, such as a word processor, spreadsheet,\n    presentation manager, formula editor and drawing program, with a user interface\n    and feature set similar to other office suites.  Sophisticated and flexible, LibreOffice\n    also works transparently with a variety of file formats, including Microsoft Office\n    File Formats.\n  license:\n    module:\n    - MIT\n  xmd:\n    mbs:\n      buildrequires:\n        flatpak-runtime:\n          context: f5878ad0\n          filtered_rpms: []\n          koji_tag: module-flatpak-runtime-el9-920210827134516-f5878ad0\n          ref: 851183770ba3f85d52d3d6c06f693c075df3b77b\n          stream: el9\n          version: 920210827134516\n        platform:\n          context: 00000000\n          filtered_rpms: []\n          koji_tag: module-rhel-9.0.0-build\n          ref: virtual\n          stream: el9.0.0\n          stream_collision_modules: \n          ursine_rpms: \n          version: 2\n      commit: 1e8ee9fae1caab14ef6a9dc8a5233d96d74dc574\n      mse: TRUE\n      rpms:\n        bitmap-fonts:\n          ref: f15158fa0e153b6d19b49e786600b9b17e717c45\n        boost:\n          ref: ae291392c3a60db7add7d5a285105cdae5946e33\n        clucene:\n          ref: 2eec69f1ab64ced93177b55892ca8cd54af9760d\n        flute:\n          ref: 006e3500a44844e1658cab47001bd8090c8341e8\n        google-droid-fonts:\n          ref: c6b5f1424ab30bb351333da967dff97d3520c4e9\n        google-noto-fonts:\n          ref: 0400579b9edf9cc5313fb045a21079dcfc26cc1e\n        gstreamer1-plugins-base:\n          ref: c5f31a7d8ba09c866f195fcb6122c845b707c617\n        gstreamer1-plugins-good:\n          ref: 7349bd0497bd9e25b45e3f42fae5c3a8dd481708\n        gvfs:\n          ref: 906792e2c0506174828da01ed85880ee457aa171\n        hspell:\n          ref: 69622bd2713b60b4a99f16581ace84e10e9834fe\n        hunspell-af:\n          ref: 9c46b2309526847e558d91a2ebcb020838c787ab\n        hunspell-ar:\n          ref: 298277f6994ca070cab1dc8110be30fb5204e3bd\n        hunspell-as:\n          ref: 9cc906e22037ad73c5d3ca54897490deef5258c9\n        hunspell-bg:\n          ref: 0b8e12f17c801907bab83b2e57ea6f618c2174d9\n        hunspell-bn:\n          ref: b3896ee936f3e51c921fbcd0db1b7a4a69485708\n        hunspell-br:\n          ref: 43fc0ddcc05c28eb553795e50822ff88131085a6\n        hunspell-ca:\n          ref: f2d94b597a6aeb83ed9870117ceb50e94de57865\n        hunspell-cy:\n          ref: 57660054295a4244fd3e4994fcc9eaaf984af9b6\n        hunspell-da:\n          ref: ff50fd6e951a4961da54215259e0527f66ac0896\n        hunspell-de:\n          ref: 3dbbf0b25abba95ecd72dacdab9174abeb0fac9b\n        hunspell-el:\n          ref: bd879af5d4a622bc86fa828173e388e4225c0cef\n        hunspell-es:\n          ref: 96af5d9d81f3662128cf78abf3527b8de6a0d3f7\n        hunspell-et:\n          ref: 54c3cf012c2487a8eafb2c986212c4292c0eec00\n        hunspell-eu:\n          ref: ba7d1a03fb815d59b49b440b75b23e370085bf73\n        hunspell-fa:\n          ref: 7bf32f615e72f00fa0f8da3100f4998964f03ff5\n        hunspell-fr:\n          ref: 684058149da8136a65770c8059b17051a2d9d048\n        hunspell-ga:\n          ref: adca17da8a66290d184069fa76c1f927915104b7\n        hunspell-gl:\n          ref: 4f6029961309aff176f4fc2f4f580f276bfa86ae\n        hunspell-gu:\n          ref: 5e7167f30cbed63deff0d23bd964bf021f541b55\n        hunspell-hi:\n          ref: 4d46592d5f6a20607f3aa9a9043938db1e37e6f2\n        hunspell-hr:\n          ref: 9bdd818d36f112673edccd994b5b329e0b78d478\n        hunspell-hu:\n          ref: f2ae097ff1bfb3da88aa8573410bbbbf9caa0073\n        hunspell-id:\n          ref: 01572d853a4958d8f5df470d09ae47a4f4f65b3d\n        hunspell-it:\n          ref: aa31f65f6b67ef4d3258b4be9f7c63fbb908f4e8\n        hunspell-kk:\n          ref: 25c2eed6d35aa322dd867cfce08b95b432a53d18\n        hunspell-kn:\n          ref: f93d88c07e3a948ae5d1d6483ad5f07d87a06bb4\n        hunspell-ko:\n          ref: f8398ec6357c92ab41f2438a5bf0d02dbe36c6c4\n        hunspell-lt:\n          ref: d8b1426f094b2e857c16d367aca0e93a47cd5d3c\n        hunspell-ml:\n          ref: b90e32b292c70609c9bf0b83b8c5b68aeb1c91cd\n        hunspell-mr:\n          ref: 1b04d6af8aba8768ba2159ac292a69aaddfe58ac\n        hunspell-nl:\n          ref: ef5096f29434793e09ca76aa3ed0379508c6afcb\n        hunspell-no:\n          ref: bc65f0d6ded8e6a5fbbef53783e05cdb83af71e6\n        hunspell-nr:\n          ref: 92b54cd7fda82aaf87ced4caa0d6214b2f78ac53\n        hunspell-nso:\n          ref: badee0ba37707d6e66c45d2b80cdeaea2a7047ec\n        hunspell-or:\n          ref: 5591d64c9caedf1edcceeba4bcb8cd2cc6ef475b\n        hunspell-pa:\n          ref: f346a4100c0d3523e3fe390eb1368bf47e955008\n        hunspell-pl:\n          ref: d2f85c664c543721c904fd4cebd3017383e83580\n        hunspell-pt:\n          ref: ff76e437ee69ded2dda16086c8de8277a67092ef\n        hunspell-ro:\n          ref: 25955ddf92847ba138ae6488f5d496c7c372b993\n        hunspell-ru:\n          ref: ce434d260e336611176f7504af6d8bfef3047835\n        hunspell-si:\n          ref: e95161b44b342d10de16430da8e573a9302df8fc\n        hunspell-sk:\n          ref: c805c15133a630e1c7f09c7410d60c26782786e3\n        hunspell-sl:\n          ref: d57019940057fceaaf4870b15143106cc0682078\n        hunspell-sr:\n          ref: c5f60d3f951618b89d9f0922589dae6d78ce23be\n        hunspell-ss:\n          ref: b1946923b47b1b538c8a4328bdfe8c6c89daecd6\n        hunspell-st:\n          ref: 8fcf8cb09e1a128d9e1c16b4b8f485bb2d81a775\n        hunspell-sv:\n          ref: c4ae348dda5a089ed2e3aaeb5b620f1076f3e37b\n        hunspell-ta:\n          ref: 092f4fc0c19abcebff7ecc7191d6e3c84fe77056\n        hunspell-te:\n          ref: 7a598556c32fd89838f46de5aba81598c77cdb3c\n        hunspell-th:\n          ref: ffc6194b318dd5d574dd1035cdae814d9c35dd7c\n        hunspell-tn:\n          ref: 275b4cbaf46e4975960f63eed94f73c4f3c3f1a7\n        hunspell-ts:\n          ref: 4818355b5a5dcfeb00b29d4261cc423e9b8c8f15\n        hunspell-uk:\n          ref: 3a386b84721ab4eab5f3a30347c76c45d902dc57\n        hunspell-ve:\n          ref: c3df18032d7c0fdc80965f2fe7c7e92f21dcc003\n        hunspell-xh:\n          ref: 231d5c704608fa9f01e0d1a5d5cb0c37fe71cf04\n        hunspell-zu:\n          ref: 81f13c1af97555bcf99a190b10454000900fbd2a\n        hyphen:\n          ref: 40eee657f948ea075f5c6847ad4fb74d38892984\n        hyphen-as:\n          ref: 2e7e2a96b561efd54de74b9ff5286b6ca8192105\n        hyphen-bg:\n          ref: febee745d77a5be9efb19054608929300e84a987\n        hyphen-bn:\n          ref: cbce948e68c61987671d9bd8181e92131d1b5578\n        hyphen-ca:\n          ref: 5bc8ddb85f86e026969b622287c060b8140627f7\n        hyphen-cy:\n          ref: 3a45a9ff28ac8865350180002809d268899a2393\n        hyphen-da:\n          ref: 06cb30beca37c5500b44f7ac65d5c7818bfe7273\n        hyphen-de:\n          ref: 750cae0147e92b1c9338a328f4aa05d08267dda8\n        hyphen-el:\n          ref: 54b3229d8bd82d659349b3680d1d3ff1024956ed\n        hyphen-es:\n          ref: a33ca0dac52b70439b75576863ca5cf59a8913de\n        hyphen-eu:\n          ref: 33af4a7a6f024b693a6eb3bb99e6cf15e4b3966e\n        hyphen-fa:\n          ref: 9ea5195b23f1e142a20ddd16e301beba704e465c\n        hyphen-fr:\n          ref: 0bbb9b62b0ca63c75163a6da8a388c7a6f58f62b\n        hyphen-ga:\n          ref: bceea2cc22754ad6ac856bfecb34eec8d6c0a695\n        hyphen-gl:\n          ref: 05447da0e1cfb2b55566ff60605e015244d13b4f\n        hyphen-gu:\n          ref: 8c1ec2468a6501e2c1960a4a5eb0a4468036f1d8\n        hyphen-hi:\n          ref: 61907929a27bc927a0789b49d785c075f4001382\n        hyphen-hu:\n          ref: c915643ddb56ac7191c8168a946f00fbe692c918\n        hyphen-id:\n          ref: 026f6b55abaabf94d8a798baf9f925b801e3d1b0\n        hyphen-it:\n          ref: 22988e11d06fa7a515937405bab524b08f39a47b\n        hyphen-kn:\n          ref: 5ac798a7709a026523ad2a50686fefe78cb00e90\n        hyphen-lt:\n          ref: 4b32ee458fcbbf0d41ac06174c6a5be3424e2b53\n        hyphen-ml:\n          ref: c7b32d090e52523159aa7a46630563b22ed890da\n        hyphen-mr:\n          ref: 29fd98ea3f11a1e21c43725436006d6e84e6368b\n        hyphen-nl:\n          ref: 2c931a1391657799c0a1913dc45bff23fe71eaa3\n        hyphen-or:\n          ref: 6f1d8073424be9c957d40cc5eef3367a185d5cda\n        hyphen-pa:\n          ref: fe067545ed95166f9bdceb424209e419c9f0e042\n        hyphen-pl:\n          ref: 612eedb4bc67d543ecf2bf2d530becafcff552bc\n        hyphen-pt:\n          ref: 2bce4fc710ac251e272c6d8a1054452828af4b9d\n        hyphen-ro:\n          ref: 4ccff497d8d8a664d766a7eca9f99172d796c2dc\n        hyphen-ru:\n          ref: a391930f62c639f42bcf535ce60b567adef08aca\n        hyphen-sk:\n          ref: 04cdb7ea25994f7764ca871fd4d0f87a7fca0ab1\n        hyphen-sl:\n          ref: e2231b0a58c4267221306e5f885757a0664cca9d\n        hyphen-sv:\n          ref: bb60b15bba6fb36ed3051e317dfe2dfd4a154c72\n        hyphen-ta:\n          ref: e260341a17a820ebb159dc25a0eddf374255c821\n        hyphen-te:\n          ref: 3c5279932743707243bc2fe060601f95c17c6471\n        hyphen-uk:\n          ref: db30f82211a7e927749f8fc2ecf2b541b8768f82\n        java-11-openjdk:\n          ref: 5db4334bb9558dbe15b739638f591163995421cc\n        javapackages-tools:\n          ref: c6849223f6256a0b7d63d57f9e6e4b62243e14a8\n        libabw:\n          ref: 74229d6520c5b3dc7b23ff5039e4cf1361870d7b\n        libavc1394:\n          ref: 649dc7f0057f2c3040d5ac5fb35f209e8f696f18\n        libbase:\n          ref: 62fcfbcd22d3c7d279b9dc9d76ae2db783d32282\n        libcdr:\n          ref: 3bb3654c1e96cbf6769f96d3ec8a91948f007b97\n        libcmis:\n          ref: 86a298527c4c965fc8c43f53567f039aafe16b44\n        libdv:\n          ref: 11af926e27693f9bf6516e12c7ed3dc0035539a6\n        libeot:\n          ref: f0b7a7ceed00f38a08a90f292aed032b5e7da7bb\n        libepubgen:\n          ref: 4d30efdf2091ad43167ba6bbe6b13b820941cc47\n        libetonyek:\n          ref: 685902fde9210d6178adebb8e3300a228be2deaf\n        libexttextcat:\n          ref: 3e4037a4e5d42eb56ef1c2b39d98397ff02f4594\n        libfontenc:\n          ref: f488212a49bd0572dbd34b7b97b65e57129c3ce5\n        libfonts:\n          ref: 2bca821611afcc384473ab66ecc24824f9b6cbce\n        libformula:\n          ref: 87b98b36a0939bfe9ac18f247ae275bf30c4166d\n        libfreehand:\n          ref: e0a2675bdb143901b442dc6f03359e635a9ac5dd\n        libiec61883:\n          ref: 6cf3bd299a90e12e43e9737b74553abf0a9926ca\n        liblangtag:\n          ref: 7044272db24730098c0c6f253f5881b2ca804466\n        liblayout:\n          ref: b97b8cebaa3221c6ffbd96aa9f1ed5707ff7ba59\n        libloader:\n          ref: 07b3f4db7516b432b0988fd19a2cd2505747a662\n        libmspub:\n          ref: 5d0017cbe745ecc71f8e8398cf4bbed6a95f4990\n        libmwaw:\n          ref: d1289f0472f125a73c2d75d88807508d575b6794\n        libnumbertext:\n          ref: 7e53b21e0d84c5b2b9034f409a64223c60c441b6\n        libodfgen:\n          ref: e787991ca29f01b981e29b49dbd56aec7357fcb1\n        liborcus:\n          ref: 7c951eab5fbee351c5199e893808cd9743849de6\n        libpagemaker:\n          ref: bd3a7d467203a7daeb221b14cd03d995fe629a43\n        libqxp:\n          ref: 3f12ccd5767c556fa6cd78f852ffc6e81a95b96d\n        libraw1394:\n          ref: 649e2f6fbc6cc8ab91d35612bcc3225a14c5e272\n        libreoffice:\n          ref: cb334a5350622572a7d38508464bc587e4011605\n        libreoffice-voikko:\n          ref: 40040a0e61f7b3d4004172f6f32bcf579926a6a5\n        librepository:\n          ref: 23ffc7bf3af2c6d5a9c7fddc9e7dc3cbfb20843a\n        librevenge:\n          ref: 1f9303c4fe68baf6f6038635a106eb9f07008ff0\n        librtas:\n          ref: 91e4d40e5255f4f1e712be1919408a1fc85723f1\n        libserializer:\n          ref: fadd83ac1a4290d2174d08c4f7f26447c44c9a1b\n        libshout:\n          ref: aadb3ac9ed976e290bd48a54b7d8ad9626df67e8\n        libstaroffice:\n          ref: d5b10f5ff7f62ddde450bbd875f2e4cc8b398ff3\n        libvisio:\n          ref: fa16e1b532a4dd4457cc48dbe2bc8213d7ff0ef4\n        libvoikko:\n          ref: e97e2512a320774335e5e1f875c3043d6e31a4dd\n        libwpd:\n          ref: 0ad9a4b4454958960d32ff4d43ef111fef5e2645\n        libwpg:\n          ref: efee33ce5adbde6fb0910ba09813f8015bae31f1\n        libwps:\n          ref: 36380d8a6007c2e58cc6f98a281657ff127d0b03\n        libzmf:\n          ref: 5fbaab2e70d0af2eee7d49fc1bbc5819a2d81e54\n        lksctp-tools:\n          ref: 45ba2fb12a4e2a879224037706118c7127b6ab75\n        lpsolve:\n          ref: d3615d335a605a172e1366418bcac9d0f8a3d873\n        mariadb-connector-c:\n          ref: e43702c785df47376447bf2b41334e9e63c5527f\n        mdds:\n          ref: 28014550e4db961484741cb8ad52be0441c108ee\n        mythes-bg:\n          ref: d3f522b5305283517af72ec51bb18843cd215e51\n        mythes-ca:\n          ref: 16f6e33ebf770f685e6c9f2ea1eb49e7542d1b3a\n        mythes-cs:\n          ref: b7bc90e6bbbc369fc2db14fc0569ddeedd1daf74\n        mythes-da:\n          ref: af41651fc635c89dfff48837596575bf779fdec2\n        mythes-de:\n          ref: 8fd911a6d0d97d25e73b4197ab73989bd6b5e8ad\n        mythes-el:\n          ref: 88b05e01170b1ff234742a0d591de67a5c2887ff\n        mythes-en:\n          ref: 62064f0f9f9f160624d7257ea8b7078916244496\n        mythes-es:\n          ref: 581766c11e45e2fd2a73ff86ab696848ab0c8b70\n        mythes-fr:\n          ref: cd72317558a6fb6d39966e6e87e6a5af0b3f7f92\n        mythes-ga:\n          ref: 20a81656064f27a87dae103f17c49e770bc70930\n        mythes-hu:\n          ref: 2e70f676a7f89c4f4a9500eedfc967c3f150bc3a\n        mythes-it:\n          ref: 9b4e4ecad679e58eb3f8bc4745f3b45dda6b63c2\n        mythes-nl:\n          ref: a4502b82e764e571fbc330f2d132f77983add7fb\n        mythes-pl:\n          ref: 0ffff0a9735124a38a729d838f79e040dd9d3921\n        mythes-pt:\n          ref: 848af4bc68bccb893108b943d8b23fb7205f843e\n        mythes-ro:\n          ref: f62ddbcc1e0ebbb163189628d6f0c596b8032c3b\n        mythes-ru:\n          ref: 9d6ad30faa88b3ac9283f87c7c9ddf796f4cb555\n        mythes-sk:\n          ref: 7476305f676692b267feab19ca581a72d93f465b\n        mythes-sl:\n          ref: 6a0685064b6d866f4ee6faf14c0b83c274764ad0\n        mythes-sv:\n          ref: 7ae6cb0f2d187079f17e112b2220096041c97061\n        mythes-uk:\n          ref: 332c35d01d0bc2ab1fc78d5e84026bc0eef256f8\n        neon:\n          ref: 1d92ce8268f84ac4b51226a8e2a90908ce6c7547\n        ongres-scram:\n          ref: a0926f99d72e3fbcdf9d1b2c36a5717feda5d890\n        openjpeg2:\n          ref: f9f5ef43b596f53899e3026058b4535dd35b1a8d\n        openoffice-lv:\n          ref: 2b4e02d23bca46678e31c5fd17fc76f3e5afd1f3\n        openoffice.org-dict-cs_CZ:\n          ref: c9afa7a21f24768ad96567125970656a720c05c7\n        pakchois:\n          ref: cf0e9fa320024ae941311b5234fd5a62e26144db\n        pentaho-libxml:\n          ref: 77e5f0ebf229ff0209257d2fa1b79f715c4dc2b8\n        pentaho-reporting-flow-engine:\n          ref: 8ac6f514ff37923ca50341fcd09443e6f99eb4f5\n        poppler:\n          ref: 7b5e791aa37a14fcae525fbd0e80760a7160448c\n        poppler-data:\n          ref: 62381dee32cb573e950605fa933f79f33994234e\n        postgresql-jdbc:\n          ref: 19066ceb79aec5d54379188ca02a1c6633b6760b\n        raptor2:\n          ref: 368eaa711f2ed119a30142d03d8b1a0c11c941a0\n        rasqal:\n          ref: ce926f600dfe3cf75ffa4558ae9dcb48eb42c582\n        redland:\n          ref: ca3cc4d9411e7307294d97d22348cbf2e0776935\n        sac:\n          ref: bc50b748c6bc3be94b26c991459f1910a6a66c2d\n        taglib:\n          ref: b4e56ed47de23cd977b97d44e332771158c0b255\n        ttmkfdir:\n          ref: 19c8e74756d3a04cff99d18fc9250d95a945ddce\n        twolame:\n          ref: 1262583ddc627135f3fae70c93487a6fca3d1a2e\n        tzdata:\n          ref: fb4b89b5eaf39f498c04ee05b11a1096bd8ec65c\n        v4l-utils:\n          ref: 38e33d69a317f52fd51ed25f58ea2c06ee8b6c46\n        xmlsec1:\n          ref: 66339a3f89f632d99b6c3d5728cb5c427794a499\n        xorg-x11-font-utils:\n          ref: cdf4a7d6af9f6e7ccb60141c23dc2487dc62f522\n        xorg-x11-fonts:\n          ref: 18224d116fd5879e4da954cd110efef105a80165\n        yajl:\n          ref: cfe15991c5e8fb032bb38c1424c7471318949496\n        zaf:\n          ref: 12f9c8d2a7960c72ea4367aa339a5fd9cc21b439\n      scmurl: git://pkgs.devel.redhat.com/modules/libreoffice?#1e8ee9fae1caab14ef6a9dc8a5233d96d74dc574\n      ursine_rpms: []\n  dependencies:\n  - buildrequires:\n      flatpak-runtime: [el9]\n      platform: [el9.0.0]\n    requires:\n      flatpak-runtime: [el9]\n      platform: [el9]\n  profiles:\n    default:\n      rpms:\n      - gvfs-client\n      - libreoffice\n      - libreoffice-filters\n      - libreoffice-gtk3\n      - libreoffice-langpack-af\n      - libreoffice-langpack-ar\n      - libreoffice-langpack-as\n      - libreoffice-langpack-bg\n      - libreoffice-langpack-bn\n      - libreoffice-langpack-br\n      - libreoffice-langpack-ca\n      - libreoffice-langpack-cs\n      - libreoffice-langpack-cy\n      - libreoffice-langpack-da\n      - libreoffice-langpack-de\n      - libreoffice-langpack-dz\n      - libreoffice-langpack-el\n      - libreoffice-langpack-es\n      - libreoffice-langpack-et\n      - libreoffice-langpack-eu\n      - libreoffice-langpack-fa\n      - libreoffice-langpack-fi\n      - libreoffice-langpack-fr\n      - libreoffice-langpack-ga\n      - libreoffice-langpack-gl\n      - libreoffice-langpack-gu\n      - libreoffice-langpack-he\n      - libreoffice-langpack-hi\n      - libreoffice-langpack-hr\n      - libreoffice-langpack-hu\n      - libreoffice-langpack-id\n      - libreoffice-langpack-it\n      - libreoffice-langpack-ja\n      - libreoffice-langpack-kk\n      - libreoffice-langpack-kn\n      - libreoffice-langpack-ko\n      - libreoffice-langpack-lt\n      - libreoffice-langpack-lv\n      - libreoffice-langpack-mai\n      - libreoffice-langpack-ml\n      - libreoffice-langpack-mr\n      - libreoffice-langpack-nb\n      - libreoffice-langpack-nl\n      - libreoffice-langpack-nn\n      - libreoffice-langpack-nr\n      - libreoffice-langpack-nso\n      - libreoffice-langpack-or\n      - libreoffice-langpack-pa\n      - libreoffice-langpack-pl\n      - libreoffice-langpack-pt-BR\n      - libreoffice-langpack-pt-PT\n      - libreoffice-langpack-ro\n      - libreoffice-langpack-ru\n      - libreoffice-langpack-si\n      - libreoffice-langpack-sk\n      - libreoffice-langpack-sl\n      - libreoffice-langpack-sr\n      - libreoffice-langpack-ss\n      - libreoffice-langpack-st\n      - libreoffice-langpack-sv\n      - libreoffice-langpack-ta\n      - libreoffice-langpack-te\n      - libreoffice-langpack-th\n      - libreoffice-langpack-tn\n      - libreoffice-langpack-tr\n      - libreoffice-langpack-ts\n      - libreoffice-langpack-uk\n      - libreoffice-langpack-ve\n      - libreoffice-langpack-xh\n      - libreoffice-langpack-zh-Hans\n      - libreoffice-langpack-zh-Hant\n      - libreoffice-langpack-zu\n      - libreoffice-ogltrans\n      - libreoffice-wiki-publisher\n      - libreoffice-xsltfilter\n  components:\n    rpms:\n      bitmap-fonts:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/bitmap-fonts\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/bitmap-fonts\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      boost:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/boost\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/boost\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      clucene:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/clucene\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/clucene\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      flute:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/flute\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/flute\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      google-droid-fonts:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/google-droid-fonts\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/google-droid-fonts\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      google-noto-fonts:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/google-noto-fonts\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/google-noto-fonts\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      gstreamer1-plugins-base:\n        rationale: Build-time dependency of gstreamer1-plugins-good\n        repository: git://pkgs.devel.redhat.com/rpms/gstreamer1-plugins-base\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/gstreamer1-plugins-base\n        ref: private-sbergman-rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      gstreamer1-plugins-good:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/gstreamer1-plugins-good\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/gstreamer1-plugins-good\n        ref: rhel-9.0.0\n        buildorder: 2\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      gvfs:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/gvfs\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/gvfs\n        ref: private-sbergman-rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hspell:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hspell\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hspell\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-af:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-af\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-af\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ar:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ar\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ar\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-as:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-as\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-as\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-bg:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-bg\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-bg\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-bn:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-bn\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-bn\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-br:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-br\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-br\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ca:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ca\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ca\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-cy:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-cy\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-cy\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-da:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-da\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-da\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-de:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-de\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-de\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-el:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-el\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-el\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-es:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-es\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-es\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-et:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-et\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-et\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-eu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-eu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-eu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-fa:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-fa\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-fa\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-fr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-fr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-fr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ga:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ga\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ga\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-gl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-gl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-gl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-gu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-gu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-gu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-hi:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-hi\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-hi\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-hr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-hr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-hr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-hu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-hu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-hu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-id:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-id\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-id\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-it:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-it\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-it\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-kk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-kk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-kk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-kn:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-kn\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-kn\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ko:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ko\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ko\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-lt:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-lt\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-lt\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ml:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ml\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ml\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-mr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-mr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-mr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-nl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-nl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-nl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-no:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-no\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-no\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-nr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-nr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-nr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-nso:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-nso\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-nso\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-or:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-or\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-or\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-pa:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-pa\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-pa\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-pl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-pl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-pl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-pt:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-pt\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-pt\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ro:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ro\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ro\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ru:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ru\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ru\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-si:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-si\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-si\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-sk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-sk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-sk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-sl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-sl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-sl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-sr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-sr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-sr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ss:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ss\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ss\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-st:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-st\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-st\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-sv:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-sv\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-sv\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ta:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ta\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ta\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-te:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-te\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-te\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-th:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-th\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-th\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-tn:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-tn\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-tn\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ts:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ts\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ts\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-uk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-uk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-uk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-ve:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-ve\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-ve\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-xh:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-xh\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-xh\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hunspell-zu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hunspell-zu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hunspell-zu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-as:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-as\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-as\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-bg:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-bg\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-bg\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-bn:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-bn\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-bn\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-ca:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-ca\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-ca\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-cy:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-cy\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-cy\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-da:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-da\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-da\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-de:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-de\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-de\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-el:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-el\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-el\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-es:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-es\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-es\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-eu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-eu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-eu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-fa:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-fa\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-fa\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-fr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-fr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-fr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-ga:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-ga\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-ga\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-gl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-gl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-gl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-gu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-gu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-gu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-hi:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-hi\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-hi\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-hu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-hu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-hu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-id:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-id\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-id\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-it:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-it\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-it\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-kn:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-kn\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-kn\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-lt:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-lt\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-lt\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-ml:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-ml\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-ml\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-mr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-mr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-mr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-nl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-nl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-nl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-or:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-or\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-or\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-pa:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-pa\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-pa\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-pl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-pl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-pl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-pt:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-pt\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-pt\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-ro:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-ro\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-ro\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-ru:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-ru\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-ru\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-sk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-sk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-sk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-sl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-sl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-sl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-sv:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-sv\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-sv\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-ta:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-ta\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-ta\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-te:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-te\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-te\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      hyphen-uk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/hyphen-uk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/hyphen-uk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      java-11-openjdk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/java-11-openjdk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/java-11-openjdk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      javapackages-tools:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/javapackages-tools\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/javapackages-tools\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libabw:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libabw\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libabw\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libavc1394:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libavc1394\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libavc1394\n        ref: rhel-9.0.0\n        buildorder: 2\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libbase:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libbase\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libbase\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libcdr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libcdr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libcdr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libcmis:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libcmis\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libcmis\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libdv:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libdv\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libdv\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libeot:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libeot\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libeot\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libepubgen:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libepubgen\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libepubgen\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libetonyek:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libetonyek\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libetonyek\n        ref: rhel-9.0.0\n        buildorder: 2\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libexttextcat:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libexttextcat\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libexttextcat\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libfontenc:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libfontenc\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libfontenc\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libfonts:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libfonts\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libfonts\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libformula:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libformula\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libformula\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libfreehand:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libfreehand\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libfreehand\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libiec61883:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libiec61883\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libiec61883\n        ref: rhel-9.0.0\n        buildorder: 2\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      liblangtag:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/liblangtag\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/liblangtag\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      liblayout:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/liblayout\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/liblayout\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libloader:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libloader\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libloader\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libmspub:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libmspub\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libmspub\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libmwaw:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libmwaw\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libmwaw\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libnumbertext:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libnumbertext\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libnumbertext\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libodfgen:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libodfgen\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libodfgen\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      liborcus:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/liborcus\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/liborcus\n        ref: rhel-9.0.0\n        buildorder: 2\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libpagemaker:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libpagemaker\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libpagemaker\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libqxp:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libqxp\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libqxp\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libraw1394:\n        rationale: Runtime dependency; build-time dependency of libavc1394, libiec61883\n        repository: git://pkgs.devel.redhat.com/rpms/libraw1394\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libraw1394\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libreoffice:\n        rationale: Application package\n        repository: git://pkgs.devel.redhat.com/rpms/libreoffice\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libreoffice\n        ref: rhel-9.0.0\n        buildorder: 10\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libreoffice-voikko:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libreoffice-voikko\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libreoffice-voikko\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      librepository:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/librepository\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/librepository\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      librevenge:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/librevenge\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/librevenge\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      librtas:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/librtas\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/librtas\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libserializer:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libserializer\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libserializer\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libshout:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libshout\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libshout\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libstaroffice:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libstaroffice\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libstaroffice\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libvisio:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libvisio\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libvisio\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libvoikko:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libvoikko\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libvoikko\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libwpd:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libwpd\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libwpd\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libwpg:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libwpg\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libwpg\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libwps:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libwps\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libwps\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      libzmf:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/libzmf\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/libzmf\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      lksctp-tools:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/lksctp-tools\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/lksctp-tools\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      lpsolve:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/lpsolve\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/lpsolve\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mariadb-connector-c:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mariadb-connector-c\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mariadb-connector-c\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mdds:\n        rationale: Build-time dependency of libetonyek, liborcus\n        repository: git://pkgs.devel.redhat.com/rpms/mdds\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mdds\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-bg:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-bg\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-bg\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-ca:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-ca\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-ca\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-cs:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-cs\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-cs\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-da:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-da\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-da\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-de:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-de\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-de\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-el:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-el\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-el\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-en:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-en\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-en\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-es:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-es\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-es\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-fr:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-fr\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-fr\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-ga:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-ga\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-ga\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-hu:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-hu\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-hu\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-it:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-it\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-it\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-nl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-nl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-nl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-pl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-pl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-pl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-pt:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-pt\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-pt\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-ro:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-ro\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-ro\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-ru:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-ru\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-ru\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-sk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-sk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-sk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-sl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-sl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-sl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-sv:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-sv\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-sv\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      mythes-uk:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/mythes-uk\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/mythes-uk\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      neon:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/neon\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/neon\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      ongres-scram:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/ongres-scram\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/ongres-scram\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      openjpeg2:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/openjpeg2\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/openjpeg2\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      openoffice-lv:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/openoffice-lv\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/openoffice-lv\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      openoffice.org-dict-cs_CZ:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/openoffice.org-dict-cs_CZ\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/openoffice.org-dict-cs_CZ\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      pakchois:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/pakchois\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/pakchois\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      pentaho-libxml:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/pentaho-libxml\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/pentaho-libxml\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      pentaho-reporting-flow-engine:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/pentaho-reporting-flow-engine\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/pentaho-reporting-flow-engine\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      poppler:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/poppler\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/poppler\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      poppler-data:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/poppler-data\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/poppler-data\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      postgresql-jdbc:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/postgresql-jdbc\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/postgresql-jdbc\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      raptor2:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/raptor2\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/raptor2\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      rasqal:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/rasqal\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/rasqal\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      redland:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/redland\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/redland\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      sac:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/sac\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/sac\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      taglib:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/taglib\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/taglib\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      ttmkfdir:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/ttmkfdir\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/ttmkfdir\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      twolame:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/twolame\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/twolame\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      tzdata:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/tzdata\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/tzdata\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      v4l-utils:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/v4l-utils\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/v4l-utils\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      xmlsec1:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/xmlsec1\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/xmlsec1\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      xorg-x11-font-utils:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/xorg-x11-font-utils\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/xorg-x11-font-utils\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      xorg-x11-fonts:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/xorg-x11-fonts\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/xorg-x11-fonts\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      yajl:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/yajl\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/yajl\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n      zaf:\n        rationale: Runtime dependency\n        repository: git://pkgs.devel.redhat.com/rpms/zaf\n        cache: http://pkgs.devel.redhat.com/repo/pkgs/zaf\n        ref: rhel-9.0.0\n        arches: [aarch64, i686, ppc64le, s390x, x86_64]\n...\n", 
+  "name": "libreoffice", 
+  "owner": "sbergman", 
+  "rebuild_strategy": "only-changed", 
+  "reused_module_id": null, 
+  "runtime_context": "ea15e7c9a61e96ef020efd172eba868785e9a5f4", 
+  "scmurl": "git://pkgs.devel.redhat.com/modules/libreoffice?#1e8ee9fae1caab14ef6a9dc8a5233d96d74dc574", 
+  "scratch": false, 
+  "siblings": [], 
+  "srpms": [], 
+  "state": 5, 
+  "state_name": "ready", 
+  "state_reason": null, 
+  "state_trace": [
+    {
+      "reason": null, 
+      "state": 0, 
+      "state_name": "init", 
+      "time": "2021-09-20T11:53:08Z"
+    }, 
+    {
+      "reason": null, 
+      "state": 1, 
+      "state_name": "wait", 
+      "time": "2021-09-20T11:53:29Z"
+    }, 
+    {
+      "reason": null, 
+      "state": 2, 
+      "state_name": "build", 
+      "time": "2021-09-20T11:53:55Z"
+    }, 
+    {
+      "reason": null, 
+      "state": 3, 
+      "state_name": "done", 
+      "time": "2021-09-20T20:06:01Z"
+    }, 
+    {
+      "reason": null, 
+      "state": 5, 
+      "state_name": "ready", 
+      "time": "2021-09-20T20:06:02Z"
+    }
+  ], 
+  "state_url": "/module-build-service/1/module-builds/12688", 
+  "stream": "flatpak", 
+  "stream_version": null, 
+  "tasks": {
+    "rpms": {
+      "bitmap-fonts": {
+        "nvr": "bitmap-fonts-0.3-40.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837845
+      }, 
+      "boost": {
+        "nvr": "boost-1.75.0-6.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837840
+      }, 
+      "clucene": {
+        "nvr": "clucene-2.3.3.4-42.20130812.e8e3d20git.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837832
+      }, 
+      "flute": {
+        "nvr": "flute-1.3.0-27.OOo31.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837831
+      }, 
+      "google-droid-fonts": {
+        "nvr": "google-droid-fonts-20200215-11.module+el9.0.0+12688+90c2b6fe.2", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837827
+      }, 
+      "google-noto-fonts": {
+        "nvr": "google-noto-fonts-20201206-3.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837825
+      }, 
+      "gstreamer1-plugins-base": {
+        "nvr": "gstreamer1-plugins-base-1.18.4-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837820
+      }, 
+      "gstreamer1-plugins-good": {
+        "nvr": "gstreamer1-plugins-good-1.18.4-5.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39842147
+      }, 
+      "gvfs": {
+        "nvr": "gvfs-1.48.1-3.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837808
+      }, 
+      "hspell": {
+        "nvr": "hspell-1.4-15.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837799
+      }, 
+      "hunspell-af": {
+        "nvr": "hunspell-af-0.20080825-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837778
+      }, 
+      "hunspell-ar": {
+        "nvr": "hunspell-ar-3.5-15.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837766
+      }, 
+      "hunspell-as": {
+        "nvr": "hunspell-as-1.0.3-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837760
+      }, 
+      "hunspell-bg": {
+        "nvr": "hunspell-bg-4.3-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837751
+      }, 
+      "hunspell-bn": {
+        "nvr": "hunspell-bn-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837742
+      }, 
+      "hunspell-br": {
+        "nvr": "hunspell-br-0.15-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837740
+      }, 
+      "hunspell-ca": {
+        "nvr": "hunspell-ca-2.3-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837737
+      }, 
+      "hunspell-cy": {
+        "nvr": "hunspell-cy-0.20040425-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837735
+      }, 
+      "hunspell-da": {
+        "nvr": "hunspell-da-1.7.42-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837734
+      }, 
+      "hunspell-de": {
+        "nvr": "hunspell-de-0.20161207-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837731
+      }, 
+      "hunspell-el": {
+        "nvr": "hunspell-el-0.9-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837726
+      }, 
+      "hunspell-es": {
+        "nvr": "hunspell-es-2.3-10.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837723
+      }, 
+      "hunspell-et": {
+        "nvr": "hunspell-et-0.20030606-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837719
+      }, 
+      "hunspell-eu": {
+        "nvr": "hunspell-eu-5.1-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837715
+      }, 
+      "hunspell-fa": {
+        "nvr": "hunspell-fa-0.20070116-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837708
+      }, 
+      "hunspell-fr": {
+        "nvr": "hunspell-fr-6.2-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837703
+      }, 
+      "hunspell-ga": {
+        "nvr": "hunspell-ga-5.0-10.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837689
+      }, 
+      "hunspell-gl": {
+        "nvr": "hunspell-gl-0.20080515-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837684
+      }, 
+      "hunspell-gu": {
+        "nvr": "hunspell-gu-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837682
+      }, 
+      "hunspell-hi": {
+        "nvr": "hunspell-hi-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837680
+      }, 
+      "hunspell-hr": {
+        "nvr": "hunspell-hr-0.20040608-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837677
+      }, 
+      "hunspell-hu": {
+        "nvr": "hunspell-hu-1.6.1-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837672
+      }, 
+      "hunspell-id": {
+        "nvr": "hunspell-id-0.20040812-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837671
+      }, 
+      "hunspell-it": {
+        "nvr": "hunspell-it-2.4-0.25.20070901.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837666
+      }, 
+      "hunspell-kk": {
+        "nvr": "hunspell-kk-1.1-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837663
+      }, 
+      "hunspell-kn": {
+        "nvr": "hunspell-kn-1.0.3-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837662
+      }, 
+      "hunspell-ko": {
+        "nvr": "hunspell-ko-0.7.0-12.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837661
+      }, 
+      "hunspell-lt": {
+        "nvr": "hunspell-lt-1.2.1-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837659
+      }, 
+      "hunspell-ml": {
+        "nvr": "hunspell-ml-0.1-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837651
+      }, 
+      "hunspell-mr": {
+        "nvr": "hunspell-mr-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837648
+      }, 
+      "hunspell-nl": {
+        "nvr": "hunspell-nl-2.20.19-5.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837643
+      }, 
+      "hunspell-no": {
+        "nvr": "hunspell-no-2.0.10-15.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837636
+      }, 
+      "hunspell-nr": {
+        "nvr": "hunspell-nr-0.20091030-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837635
+      }, 
+      "hunspell-nso": {
+        "nvr": "hunspell-nso-0.20091201-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837630
+      }, 
+      "hunspell-or": {
+        "nvr": "hunspell-or-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837608
+      }, 
+      "hunspell-pa": {
+        "nvr": "hunspell-pa-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837585
+      }, 
+      "hunspell-pl": {
+        "nvr": "hunspell-pl-0.20180707-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837569
+      }, 
+      "hunspell-pt": {
+        "nvr": "hunspell-pt-0.20130125-18.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837559
+      }, 
+      "hunspell-ro": {
+        "nvr": "hunspell-ro-3.3.7-20.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837550
+      }, 
+      "hunspell-ru": {
+        "nvr": "hunspell-ru-0.99g5-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837545
+      }, 
+      "hunspell-si": {
+        "nvr": "hunspell-si-0.2.1-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837536
+      }, 
+      "hunspell-sk": {
+        "nvr": "hunspell-sk-0.20110228-20.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837527
+      }, 
+      "hunspell-sl": {
+        "nvr": "hunspell-sl-0.20070127-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837515
+      }, 
+      "hunspell-sr": {
+        "nvr": "hunspell-sr-0.20130330-18.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837511
+      }, 
+      "hunspell-ss": {
+        "nvr": "hunspell-ss-0.20091030-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837506
+      }, 
+      "hunspell-st": {
+        "nvr": "hunspell-st-0.20091030-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837499
+      }, 
+      "hunspell-sv": {
+        "nvr": "hunspell-sv-2.28-16.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837498
+      }, 
+      "hunspell-ta": {
+        "nvr": "hunspell-ta-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837430
+      }, 
+      "hunspell-te": {
+        "nvr": "hunspell-te-1.0.0-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837416
+      }, 
+      "hunspell-th": {
+        "nvr": "hunspell-th-0.20061212-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837415
+      }, 
+      "hunspell-tn": {
+        "nvr": "hunspell-tn-0.20150904-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837411
+      }, 
+      "hunspell-ts": {
+        "nvr": "hunspell-ts-0.20110323.1-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837403
+      }, 
+      "hunspell-uk": {
+        "nvr": "hunspell-uk-1.8.0-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837386
+      }, 
+      "hunspell-ve": {
+        "nvr": "hunspell-ve-0.20091030-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837383
+      }, 
+      "hunspell-xh": {
+        "nvr": "hunspell-xh-0.20091030-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837377
+      }, 
+      "hunspell-zu": {
+        "nvr": "hunspell-zu-0.20100126-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837374
+      }, 
+      "hyphen": {
+        "nvr": "hyphen-2.8.8-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837363
+      }, 
+      "hyphen-as": {
+        "nvr": "hyphen-as-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837362
+      }, 
+      "hyphen-bg": {
+        "nvr": "hyphen-bg-4.3-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837355
+      }, 
+      "hyphen-bn": {
+        "nvr": "hyphen-bn-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837350
+      }, 
+      "hyphen-ca": {
+        "nvr": "hyphen-ca-0.9.3-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837345
+      }, 
+      "hyphen-cy": {
+        "nvr": "hyphen-cy-0.20110620-20.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837343
+      }, 
+      "hyphen-da": {
+        "nvr": "hyphen-da-0.20070903-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837338
+      }, 
+      "hyphen-de": {
+        "nvr": "hyphen-de-0.20060120-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837336
+      }, 
+      "hyphen-el": {
+        "nvr": "hyphen-el-0.20051018-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837324
+      }, 
+      "hyphen-es": {
+        "nvr": "hyphen-es-2.3-11.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837322
+      }, 
+      "hyphen-eu": {
+        "nvr": "hyphen-eu-0.20190406-2.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837316
+      }, 
+      "hyphen-fa": {
+        "nvr": "hyphen-fa-0.20130404-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837299
+      }, 
+      "hyphen-fr": {
+        "nvr": "hyphen-fr-3.0-10.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837260
+      }, 
+      "hyphen-ga": {
+        "nvr": "hyphen-ga-0.20040220-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837214
+      }, 
+      "hyphen-gl": {
+        "nvr": "hyphen-gl-0.99-23.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837173
+      }, 
+      "hyphen-gu": {
+        "nvr": "hyphen-gu-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837151
+      }, 
+      "hyphen-hi": {
+        "nvr": "hyphen-hi-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837146
+      }, 
+      "hyphen-hu": {
+        "nvr": "hyphen-hu-0.20090612-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837141
+      }, 
+      "hyphen-id": {
+        "nvr": "hyphen-id-0.20040812-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837138
+      }, 
+      "hyphen-it": {
+        "nvr": "hyphen-it-0.20071127-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837135
+      }, 
+      "hyphen-kn": {
+        "nvr": "hyphen-kn-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837129
+      }, 
+      "hyphen-lt": {
+        "nvr": "hyphen-lt-0.20100531-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837113
+      }, 
+      "hyphen-ml": {
+        "nvr": "hyphen-ml-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837089
+      }, 
+      "hyphen-mr": {
+        "nvr": "hyphen-mr-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837050
+      }, 
+      "hyphen-nl": {
+        "nvr": "hyphen-nl-0.20050617-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837033
+      }, 
+      "hyphen-or": {
+        "nvr": "hyphen-or-0.7.0-20.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837028
+      }, 
+      "hyphen-pa": {
+        "nvr": "hyphen-pa-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837016
+      }, 
+      "hyphen-pl": {
+        "nvr": "hyphen-pl-0.20060726-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39837002
+      }, 
+      "hyphen-pt": {
+        "nvr": "hyphen-pt-0.20021021-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836835
+      }, 
+      "hyphen-ro": {
+        "nvr": "hyphen-ro-3.3.6-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836817
+      }, 
+      "hyphen-ru": {
+        "nvr": "hyphen-ru-0.20200325-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836807
+      }, 
+      "hyphen-sk": {
+        "nvr": "hyphen-sk-0.20031227-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836798
+      }, 
+      "hyphen-sl": {
+        "nvr": "hyphen-sl-0.20070127-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836781
+      }, 
+      "hyphen-sv": {
+        "nvr": "hyphen-sv-1.00.1-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836767
+      }, 
+      "hyphen-ta": {
+        "nvr": "hyphen-ta-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836757
+      }, 
+      "hyphen-te": {
+        "nvr": "hyphen-te-0.7.0-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836737
+      }, 
+      "hyphen-uk": {
+        "nvr": "hyphen-uk-0.20030903-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836722
+      }, 
+      "java-11-openjdk": {
+        "nvr": "java-11-openjdk-11.0.12.0.7-2.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836711
+      }, 
+      "javapackages-tools": {
+        "nvr": "javapackages-tools-6.0.0-2.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836689
+      }, 
+      "libabw": {
+        "nvr": "libabw-0.1.3-7.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836664
+      }, 
+      "libavc1394": {
+        "nvr": "libavc1394-0.5.4-16.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39842146
+      }, 
+      "libbase": {
+        "nvr": "libbase-1.1.3-31.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836647
+      }, 
+      "libcdr": {
+        "nvr": "libcdr-0.1.7-3.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836630
+      }, 
+      "libcmis": {
+        "nvr": "libcmis-0.5.2-12.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836618
+      }, 
+      "libdv": {
+        "nvr": "libdv-1.0.0-34.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836609
+      }, 
+      "libeot": {
+        "nvr": "libeot-0.01-18.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836605
+      }, 
+      "libepubgen": {
+        "nvr": "libepubgen-0.1.1-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836603
+      }, 
+      "libetonyek": {
+        "nvr": "libetonyek-0.1.10-2.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39842145
+      }, 
+      "libexttextcat": {
+        "nvr": "libexttextcat-3.4.5-11.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836601
+      }, 
+      "libfontenc": {
+        "nvr": "libfontenc-1.1.3-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836599
+      }, 
+      "libfonts": {
+        "nvr": "libfonts-1.1.3-35.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836507
+      }, 
+      "libformula": {
+        "nvr": "libformula-1.1.3-32.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836506
+      }, 
+      "libfreehand": {
+        "nvr": "libfreehand-0.1.2-11.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836489
+      }, 
+      "libiec61883": {
+        "nvr": "libiec61883-1.2.0-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39842144
+      }, 
+      "liblangtag": {
+        "nvr": "liblangtag-0.6.3-8.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836475
+      }, 
+      "liblayout": {
+        "nvr": "liblayout-0.2.10-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836467
+      }, 
+      "libloader": {
+        "nvr": "libloader-1.1.3-32.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836450
+      }, 
+      "libmspub": {
+        "nvr": "libmspub-0.1.4-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836446
+      }, 
+      "libmwaw": {
+        "nvr": "libmwaw-0.3.20-2.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836437
+      }, 
+      "libnumbertext": {
+        "nvr": "libnumbertext-1.0.6-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836434
+      }, 
+      "libodfgen": {
+        "nvr": "libodfgen-0.1.8-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836429
+      }, 
+      "liborcus": {
+        "nvr": "liborcus-0.16.1-8.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39842143
+      }, 
+      "libpagemaker": {
+        "nvr": "libpagemaker-0.0.4-13.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836427
+      }, 
+      "libqxp": {
+        "nvr": "libqxp-0.0.2-11.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836418
+      }, 
+      "libraw1394": {
+        "nvr": "libraw1394-2.1.2-14.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836414
+      }, 
+      "libreoffice": {
+        "nvr": "libreoffice-7.1.5.2-5.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39842582
+      }, 
+      "libreoffice-voikko": {
+        "nvr": "libreoffice-voikko-5.0-10.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836409
+      }, 
+      "librepository": {
+        "nvr": "librepository-1.1.3-31.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836384
+      }, 
+      "librevenge": {
+        "nvr": "librevenge-0.0.4-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836361
+      }, 
+      "librtas": {
+        "nvr": "librtas-2.0.2-13.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836345
+      }, 
+      "libserializer": {
+        "nvr": "libserializer-1.1.2-30.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836330
+      }, 
+      "libshout": {
+        "nvr": "libshout-2.4.3-7.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836316
+      }, 
+      "libstaroffice": {
+        "nvr": "libstaroffice-0.0.7-5.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836302
+      }, 
+      "libvisio": {
+        "nvr": "libvisio-0.1.7-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836294
+      }, 
+      "libvoikko": {
+        "nvr": "libvoikko-4.3-7.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836282
+      }, 
+      "libwpd": {
+        "nvr": "libwpd-0.10.3-10.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836273
+      }, 
+      "libwpg": {
+        "nvr": "libwpg-0.3.3-8.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836241
+      }, 
+      "libwps": {
+        "nvr": "libwps-0.4.12-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836210
+      }, 
+      "libzmf": {
+        "nvr": "libzmf-0.0.2-18.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836187
+      }, 
+      "lksctp-tools": {
+        "nvr": "lksctp-tools-1.0.18-11.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836093
+      }, 
+      "lpsolve": {
+        "nvr": "lpsolve-5.5.2.0-28.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836092
+      }, 
+      "mariadb-connector-c": {
+        "nvr": "mariadb-connector-c-3.1.13-3.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836089
+      }, 
+      "mdds": {
+        "nvr": "mdds-1.7.0-4.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836088
+      }, 
+      "module-build-macros": {
+        "nvr": "module-build-macros-0.1-1.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39835243
+      }, 
+      "mythes-bg": {
+        "nvr": "mythes-bg-4.3-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836087
+      }, 
+      "mythes-ca": {
+        "nvr": "mythes-ca-1.5.0-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836086
+      }, 
+      "mythes-cs": {
+        "nvr": "mythes-cs-0.20070926-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836085
+      }, 
+      "mythes-da": {
+        "nvr": "mythes-da-0.20100629.15.16-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836084
+      }, 
+      "mythes-de": {
+        "nvr": "mythes-de-0.20210302-3.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836083
+      }, 
+      "mythes-el": {
+        "nvr": "mythes-el-0.20070412-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836082
+      }, 
+      "mythes-en": {
+        "nvr": "mythes-en-3.0-33.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836076
+      }, 
+      "mythes-es": {
+        "nvr": "mythes-es-2.3-10.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836069
+      }, 
+      "mythes-fr": {
+        "nvr": "mythes-fr-2.3-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836068
+      }, 
+      "mythes-ga": {
+        "nvr": "mythes-ga-0.20071001-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836067
+      }, 
+      "mythes-hu": {
+        "nvr": "mythes-hu-0.20101019-23.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836066
+      }, 
+      "mythes-it": {
+        "nvr": "mythes-it-2.0.9l-26.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836065
+      }, 
+      "mythes-nl": {
+        "nvr": "mythes-nl-0.20130131-17.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836064
+      }, 
+      "mythes-pl": {
+        "nvr": "mythes-pl-1.5-28.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836063
+      }, 
+      "mythes-pt": {
+        "nvr": "mythes-pt-0.20060817-27.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836062
+      }, 
+      "mythes-ro": {
+        "nvr": "mythes-ro-3.3-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836061
+      }, 
+      "mythes-ru": {
+        "nvr": "mythes-ru-0.20070613-25.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836060
+      }, 
+      "mythes-sk": {
+        "nvr": "mythes-sk-0.20130130-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836058
+      }, 
+      "mythes-sl": {
+        "nvr": "mythes-sl-0.20130130-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836056
+      }, 
+      "mythes-sv": {
+        "nvr": "mythes-sv-1.3-21.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836053
+      }, 
+      "mythes-uk": {
+        "nvr": "mythes-uk-1.6.5-22.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836052
+      }, 
+      "neon": {
+        "nvr": "neon-0.31.2-11.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836050
+      }, 
+      "ongres-scram": {
+        "nvr": "ongres-scram-1.0.0~beta.2-15.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836049
+      }, 
+      "openjpeg2": {
+        "nvr": "openjpeg2-2.4.0-6.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836047
+      }, 
+      "openoffice-lv": {
+        "nvr": "openoffice-lv-1.0.0-15.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836046
+      }, 
+      "openoffice.org-dict-cs_CZ": {
+        "nvr": "openoffice.org-dict-cs_CZ-20080822-16.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836043
+      }, 
+      "pakchois": {
+        "nvr": "pakchois-0.4-23.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836040
+      }, 
+      "pentaho-libxml": {
+        "nvr": "pentaho-libxml-1.1.3-30.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836038
+      }, 
+      "pentaho-reporting-flow-engine": {
+        "nvr": "pentaho-reporting-flow-engine-0.9.4-24.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836037
+      }, 
+      "poppler": {
+        "nvr": "poppler-21.01.0-12.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836036
+      }, 
+      "poppler-data": {
+        "nvr": "poppler-data-0.4.9-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836035
+      }, 
+      "postgresql-jdbc": {
+        "nvr": "postgresql-jdbc-42.2.18-5.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836034
+      }, 
+      "raptor2": {
+        "nvr": "raptor2-2.0.15-30.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836033
+      }, 
+      "rasqal": {
+        "nvr": "rasqal-0.9.33-18.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836102
+      }, 
+      "redland": {
+        "nvr": "redland-1.0.17-29.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836030
+      }, 
+      "sac": {
+        "nvr": "sac-1.3-37.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836029
+      }, 
+      "taglib": {
+        "nvr": "taglib-1.12-6.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836027
+      }, 
+      "ttmkfdir": {
+        "nvr": "ttmkfdir-3.0.9-65.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836026
+      }, 
+      "twolame": {
+        "nvr": "twolame-0.3.13-19.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836025
+      }, 
+      "tzdata": {
+        "nvr": "tzdata-2021a-3.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836023
+      }, 
+      "v4l-utils": {
+        "nvr": "v4l-utils-1.20.0-5.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836022
+      }, 
+      "xmlsec1": {
+        "nvr": "xmlsec1-1.2.29-9.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836031
+      }, 
+      "xorg-x11-font-utils": {
+        "nvr": "xorg-x11-font-utils-7.5-53.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836101
+      }, 
+      "xorg-x11-fonts": {
+        "nvr": "xorg-x11-fonts-7.5-33.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836096
+      }, 
+      "yajl": {
+        "nvr": "yajl-2.1.0-18.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836106
+      }, 
+      "zaf": {
+        "nvr": "zaf-0-0.25.20080714svn.module+el9.0.0+12688+90c2b6fe", 
+        "state": 1, 
+        "state_reason": "", 
+        "task_id": 39836020
+      }
+    }
+  }, 
+  "time_completed": "2021-09-20T20:06:01Z", 
+  "time_modified": "2021-09-20T20:06:02Z", 
+  "time_submitted": "2021-09-20T11:53:08Z", 
+  "version": "9000020210920115144", 
+  "virtual_streams": []
+}

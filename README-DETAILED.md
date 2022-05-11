@@ -406,7 +406,7 @@ other tools yet, be cautious.**
 Simple tool which will download modular build dependencies from a 
 modular build in a koji instance and create a RPM repository out of it.
 
-## usage
+## Usage
 
 Provide a build id of modular build in koji and the cli tool will
 download all the rpms tagged in a build tag of a modular rpm build.
@@ -425,4 +425,24 @@ arguments please run:
 
 ```
 $ bld2repo -h
+```
+
+## Customization
+
+Tool can be used with koji/MBS instances other than the default ones.
+To override default parameters supply additional arguments as shown
+in the example below:
+
+```
+$ bld2repo --build-id 1234 \
+           --koji-host https://koji.example.com \
+           --koji-storage-host http://example.com \
+           --mbs-host https://mbs.engineering.example.com
+```
+
+Result directory with all downloaded RPMs can also be changed by
+providing custom path in `--result-dir`.
+
+```
+$ bld2repo --build-id 1234 --result-dir /tmp/my_result_directory
 ```
