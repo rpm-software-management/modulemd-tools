@@ -61,6 +61,11 @@ def get_source_packages(packages):
     """
     source_packages = set()
     for pkg in packages:
+        # In this case, the `pkg` is a SRPM file
+        if not pkg.rpm_sourcerpm:
+            source_packages.add(pkg.name)
+            continue
+
         # Get the source RPM NEVRA without the trailing ".rpm"
         subject = Subject(pkg.rpm_sourcerpm[:-4])
 
