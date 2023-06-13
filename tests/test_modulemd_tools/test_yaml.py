@@ -27,6 +27,10 @@ def old_libmodulemd():
     return Version(Modulemd.get_version()) < Version("2.11.1")
 
 
+def min_libmodulemd_version(version):
+    return Version(Modulemd.get_version()) >= Version(version)
+
+
 class TestYaml(unittest.TestCase):
 
     def test_is_valid(self):
@@ -57,9 +61,16 @@ class TestYaml(unittest.TestCase):
         self.assertEqual(mod1["version"], 2)
         self.assertEqual(mod1["data"]["name"], "foo")
         self.assertEqual(mod1["data"]["stream"], "stable")
-        self.assertEqual(mod1["data"]["summary"], None)
         self.assertEqual(mod1["data"]["description"], "")
-        self.assertEqual(mod1["data"]["license"]["module"], [None])
+
+        # Between libmodulemd version 2.14.0 and 2.15.0 a change in `None`
+        # vs empty string happened
+        if min_libmodulemd_version("2.15.0"):
+            self.assertEqual(mod1["data"]["summary"], "")
+            self.assertEqual(mod1["data"]["license"]["module"], [""])
+        else:
+            self.assertEqual(mod1["data"]["summary"], None)
+            self.assertEqual(mod1["data"]["license"]["module"], [None])
 
     def test_update_after_build(self):
         """
