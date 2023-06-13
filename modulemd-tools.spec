@@ -1,5 +1,5 @@
 Name: modulemd-tools
-Version: 0.13
+Version: 0.14
 Release: 1%{?dist}
 Summary: Collection of tools for modular (in terms of Fedora Modularity origin) content creators
 License: MIT
@@ -104,6 +104,23 @@ cp man/*.1 %{buildroot}%{_mandir}/man1/
 
 
 %changelog
+* Tue Jun 13 2023 Jakub Kadlcik <frostyx@email.cz> 0.14-1
+- modulemd_tools: fix tests for new libmodulemd version 2.15.0
+  (frostyx@email.cz)
+- repo2module: don't traceback because of a modular SRPM in the repo
+  (frostyx@email.cz)
+- bld2repo: add rpms filtering based on MBS buildorder (mkulik@redhat.com)
+- modulemd_merge: test using file instead of output stream (mkulik@redhat.com)
+- createrepo: replace deprecated LooseVersion (mkulik@redhat.com)
+- ci: fix workflows (mkulik@redhat.com)
+- bld2repo: print name of the file being downloaded (kdudka@redhat.com)
+- modulemd_add_platform: Don't crash on a document without a module name and
+  with a default profile (ppisar@redhat.com)
+- modulemd_add_platform: Remove an unused variable and fix formmating error
+  messages (ppisar@redhat.com)
+- Merge all tools into a single package (fvalder@redhat.com)
+- modulemd_add_platform: describe what platform is (frostyx@email.cz)
+
 * Wed Feb 23 2022 Jakub Kadlcik <frostyx@email.cz> 0.13-1
 - modulemd_add_platform: don't use pyproject macros (frostyx@email.cz)
 - createrepo_mod: fix failing test because of modulemd-merge (frostyx@email.cz)
