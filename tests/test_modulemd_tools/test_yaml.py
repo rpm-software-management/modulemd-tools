@@ -2,7 +2,7 @@ import os
 import unittest
 from unittest import mock
 import yaml
-from modulemd_tools.modulemd_tools.yaml import (
+from modulemd_tools.yaml import (
     is_valid, validate, create, update, dump, upgrade, _yaml2stream, _stream2yaml)
 
 # python3-packaging in not available in RHEL 8.x
