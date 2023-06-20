@@ -18,7 +18,7 @@ with open(os.path.join(dirname, 'test-requirements.txt')) as f:
 
 setup(
     name='modulemd-tools',
-    version='0.15',
+    version='0.16',
     packages=find_packages(exclude=("tests",)),
     url='https://github.com/rpm-software-management/modulemd-tools',
     license='MIT',
