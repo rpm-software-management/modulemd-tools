@@ -33,6 +33,16 @@ def min_libmodulemd_version(version):
 
 class TestYaml(unittest.TestCase):
 
+    def test_import(self):
+        import modulemd_tools
+        assert modulemd_tools.yaml.create
+
+        from modulemd_tools import yaml
+        assert yaml.create
+
+        from modulemd_tools.yaml import create
+        assert create
+
     def test_is_valid(self):
         self.assertTrue(is_valid(yaml1))
         self.assertFalse(is_valid(yaml2_invalid))
