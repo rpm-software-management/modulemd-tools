@@ -48,6 +48,6 @@ def test_run_modifyrepo(test_output_dir):
                     os.path.join(test_output_dir, "modules.yaml"))
 
     assert os.path.isfile(os.path.join(test_output_dir, "modules.yaml"))
-    retval = run_modifyrepo(test_output_dir)
+    retval = run_modifyrepo(test_output_dir, compress_type="gz")
     assert glob.glob(os.path.join(test_output_dir, "repodata", "*-modules.yaml.gz"))
     assert retval == 0
